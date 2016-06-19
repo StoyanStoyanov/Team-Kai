@@ -4,13 +4,13 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// Handles the collisions among between objects.
+    /// Handles the collisions between objects.
     /// </summary>
     public static class CollisionDispatcher
     {
         ///// <summary>
         ///// Checks if there are collision between the objects in the game.
-        ///// If collisions are found, then the ResponceToCollision methods are called for the objects
+        ///// If collisions are found, then the RespondToCollision methods are called for the objects
         ///// which collide.
         ///// </summary>
         public static void HandleCollisions(List<StaticObject> staticObjects, List<DynamicObject> movingObjects)
