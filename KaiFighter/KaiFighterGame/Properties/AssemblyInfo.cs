@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("KaiFighterGame")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("KaiFighterGame")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c9da101f-9467-49e8-b423-4d1fdacdc156")]
+[assembly: Guid("305a297b-dfe8-43a5-8d7f-02bfb184ee0c")]
 
 // Version information for an assembly consists of the following four values:
 //

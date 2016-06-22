@@ -1,17 +1,18 @@
 ﻿namespace KaiFighterGame.Utilities
-{ 
+{
     using System.Collections.Generic;
     using Interfaces;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     public abstract class GameObject : IRenderable, ICollidable, IProducable<GameObject>
     {
         public const string CollisionGroupString = "GameObject";
 
-        protected Position position;
+        protected Vector2 position;
         protected ObjectType objectType;
-        protected string resources;
-        protected string size; // Might be redundant, alter as needed
-        protected string image; // Might be redundant, alter as needed
+        protected string[] resources; // this needs rethinking
+        protected Texture2D image; // Later this will be an animation
 
         /// <summary>
         /// Creates a game object.
@@ -21,29 +22,45 @@
         /// <param name="resources">The resources of the object.</param>
         /// <param name="size">The size of the object.</param>
         /// <param name="image">The image of the object.</param>
-        protected GameObject(Position position, ObjectType objectType, string resources = null, string size = null, string image = null)
+        protected GameObject(Vector2 position, ObjectType objectType, string[] resources = null)
         {
-            this.position = position;
+            this.Position = position;
             this.objectType = objectType;
             this.resources = resources;
-            this.size = size;
-            this.image = image;
             this.IsDestroyed = false;
         }
 
         /// <summary>
         /// Gets the position of the object.
         /// </summary>
-        public Position Position
+        public Vector2 Position
         {
-            protected set
-            {
-                this.position = new Position(value.X, value.Y);
-            }
-
             get
             {
-                return new Position(this.position.X, this.position.Y);
+                return new Vector2(this.position.X, this.position.Y);
+            }
+
+            protected set
+            {
+                this.position = value;
+            } 
+        }
+
+        // Get the width of the object
+        public int Width
+        {
+            get
+            {
+                return this.image.Width;
+            }
+        }
+
+        // Get the height of the object
+        public int Height
+        {
+            get
+            {
+                return this.image.Height;
             }
         }
 
@@ -53,11 +70,21 @@
         public bool IsDestroyed { get; protected set; }
 
         /// <summary>
+        /// Initializes the object.
+        /// </summary>
+        public abstract void LoadObject(Texture2D texture); // could later add more things (sounds, etc.)
+
+        /// <summary>
         /// Updates the state of the object.
         /// </summary>
-        public abstract void Update();
+        public abstract void Update(GameTime gameTime);
 
-        public virtual Position GetObjectPosition()
+        /// <summary>
+        /// Draws the object.
+        /// </summary>
+        public abstract void Draw(SpriteBatch spriteBatch);
+
+        public virtual Vector2 GetObjectPosition()
         {
             return this.position;
         }
@@ -67,17 +94,12 @@
             return this.objectType;
         }
 
-        public virtual string GetObjectResources()
+        public virtual string[] GetObjectResources()
         {
             return this.resources;
         }
 
-        public virtual string GetObjectSize()
-        {
-            return this.size;
-        }
-
-        public virtual string GetObjectImage()
+        public virtual Texture2D GetObjectImage()
         {
             return this.image;
         }

@@ -5,6 +5,7 @@
     /// </summary>
     public enum ObjectType
     {
-        // TODO: Add object types
+        // TODO: Add more object types
+        Player, Enemy
     }
 }

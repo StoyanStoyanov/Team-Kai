@@ -2,18 +2,34 @@
 {
     using System;
     using Interfaces;
+    using Microsoft.Xna.Framework;
 
     /// <summary>
     /// Defines a dynamic/moving object in the game. All moving objects should inherit the DynamicObject class.
     /// </summary>
-    public abstract class DynamicObject : GameObject, IMovable, IDamagable
+    public abstract class DynamicObject : GameObject, IMovable, IDamageable
     {
-        public DynamicObject(Position position, ObjectType objectType, string resources = null, string size = null, string image = null) 
-            : base(position, objectType, resources, size, image)
+        private Vector2 objDirection = Vector2.Zero;
+
+        public DynamicObject(Vector2 position, ObjectType objectType, float movementSpeed, string[] resources = null) 
+            : base(position, objectType, resources)
         {
         }
 
         public virtual int Health { get; protected set; }
+
+        public Vector2 Direction
+        {
+            get
+            {
+                return this.objDirection;
+            }
+
+            set
+            {
+                this.objDirection = value;
+            }
+        }
 
         public void Move()
         {
