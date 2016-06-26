@@ -1,21 +1,18 @@
 ﻿namespace KaiFighterGame.Objects.DynamicObjects.Projectiles
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using Utilities;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using Utilities;
 
     public class Bullet : DynamicObject, ICloneable
     {
-        public Bullet(Vector2 position, ObjectType objectType, float movementSpeed, int power, string[] resources = null)
-            : base(position, objectType, movementSpeed, power, resources)
+        private const string CollisionGroupString = "Bullet";
+
+        public Bullet(Vector2 position, ObjectType objectType, float movementSpeed, int damage, string[] resources = null)
+            : base(position, objectType, movementSpeed, damage, resources)
         {
-        }
-        
+        }      
      
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -32,10 +29,14 @@
             throw new NotImplementedException();
         }
 
+        public override string GetCollisionGroupString()
+        {
+            return CollisionGroupString;
+        }
 
         public override void RespondToCollision(GameObject gameObject)
         {
-
+            this.IsDestroyed = true;
         }
 
         public object Clone()

@@ -39,20 +39,27 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IDestroyable.cs" />
+    <Compile Include="Factories\AbstractDynamicObjectFactory.cs" />
+    <Compile Include="Factories\AbstractStaticObjectFactory.cs" />
+    <Compile Include="Factories\DynamicObjectFactory.cs" />
+    <Compile Include="Factories\StaticObjectFactory.cs" />
+    <Compile Include="Interfaces\IDestructable.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Player.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IDamageable.cs" />
     <Compile Include="Interfaces\IMelee.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
     <Compile Include="Interfaces\IProducable.cs" />
-    <Compile Include="Interfaces\IRange.cs" />
+    <Compile Include="Interfaces\IRanged.cs" />
     <Compile Include="Interfaces\IRenderable.cs" />
     <Compile Include="Interfaces\IRenderer.cs" />
-    <Compile Include="Interfaces\ITriggerCollider.cs" />
     <Compile Include="Interfaces\IUserInterface.cs" />
     <Compile Include="KaiFighterGame.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="Objects\StaticObjects\Bonus.cs" />
+    <Compile Include="Objects\StaticObjects\Bounty.cs" />
+    <Compile Include="Objects\StaticObjects\Obstacle.cs" />
+    <Compile Include="Objects\StaticObjects\Wall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Archer.cs" />
     <Compile Include="Objects\DynamicObjects\Projectiles\Bullet.cs" />
@@ -74,10 +81,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Factories\" />
-    <Folder Include="Objects\StaticObjects\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
   </ItemGroup>

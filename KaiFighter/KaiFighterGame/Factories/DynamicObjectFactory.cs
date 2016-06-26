@@ -1,0 +1,40 @@
+﻿namespace KaiFighterGame.Factories
+{
+    using System;
+    using Utilities;
+    using Microsoft.Xna.Framework;
+    using Objects.DynamicObjects.Characters;
+    using Objects.DynamicObjects.Projectiles;
+    using Objects.DynamicObjects.Characters.Enemies;
+
+    /// <summary>
+    /// The Dynamic objects factory.
+    /// </summary>
+    public class DynamicObjectFactory : AbstractDynamicObjectFactory
+    {
+        /// <summary>
+        /// Creates the Dynamic objects in the game.
+        /// </summary>
+        /// <param name="position">The position of the object.</param>
+        /// <param name="objectType">The type of the game object.</param>
+        /// <param name="movementSpeed">The movement speed of the Dynamic object.</param>
+        /// <param name="damage">The damage of the Dynamic object</param>
+        /// <returns></returns>
+        public override DynamicObject Create(Vector2 position, ObjectType objectType, float movementSpeed, int damage = 0)
+        {
+            switch (objectType)
+            {
+                case ObjectType.Player:
+                    return new Player(position, objectType, movementSpeed, damage);
+                case ObjectType.Archer:
+                    return new Archer(position, objectType, movementSpeed, damage);
+                case ObjectType.Creep:
+                    return new Creep(position, objectType, movementSpeed, damage);
+                case ObjectType.Bullet:
+                    return new Bullet(position, objectType, movementSpeed, damage);
+                default:
+                    throw new ArgumentException();
+            }
+        }
+    }
+}

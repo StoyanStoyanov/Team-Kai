@@ -34,7 +34,7 @@
         {
             // initialize our kitty :)
             Vector2 playerSpawnPoint = new Vector2(10, 10);
-            this.fighter = new Player(playerSpawnPoint, ObjectType.Player, 5f);
+            this.fighter = new Player(playerSpawnPoint, ObjectType.Player, 5f, 50);
 
             base.Initialize();
         }

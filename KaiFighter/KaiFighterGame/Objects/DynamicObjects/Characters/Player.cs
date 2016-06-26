@@ -9,6 +9,8 @@
 
     public class Player : DynamicObject
     {
+        private const string CollisionGroupString = "Player";
+
         private Vector2 playerPos;
         private ObjectType characterType;
         private Texture2D playerImage;
@@ -16,7 +18,8 @@
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
 
-        public Player(Vector2 position, ObjectType objectType, float speed, int power, string[] resources = null) : base(position, objectType, speed, power, resources)
+        public Player(Vector2 position, ObjectType objectType, float speed, int damage, string[] resources = null) 
+            : base(position, objectType, speed, damage, resources)
         {
             this.playerPos = position;
             this.characterType = objectType;
@@ -82,27 +85,30 @@
 
                     this.playerPos.X -= 10;
                 }
-
             }
             else if (gameObject.GetCollisionGroupString() == "Bullet")
             {
-                this.Health -= (gameObject as Bullet).Power;
+                this.Health -= (gameObject as Bullet).Damage;
 
             }
             else if (gameObject.GetCollisionGroupString() == "Archer" || gameObject.GetCollisionGroupString() == "Creep")
             {
-                this.Health -= (gameObject as DynamicObject).Power;
+                this.Health -= (gameObject as DynamicObject).Damage;
             }
             else if (gameObject.GetCollisionGroupString() == "BonusHealth")
             {
                 Random rnd = new Random();
                 this.Health += rnd.Next(-5, 10);
-            }else if (gameObject.GetCollisionGroupString() == "Door")
+            }
+            else if (gameObject.GetCollisionGroupString() == "Door")
             {
                 //TODO: Go to next level
             }
+        }
 
-
+        public override string GetCollisionGroupString()
+        {
+            return CollisionGroupString;
         }
     }
 }

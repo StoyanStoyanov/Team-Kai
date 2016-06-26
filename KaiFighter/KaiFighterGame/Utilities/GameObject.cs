@@ -7,7 +7,7 @@
 
     public abstract class GameObject : IRenderable, ICollidable, IProducable<GameObject>
     {
-        public const string CollisionGroupString = "GameObject";
+        private const string CollisionGroupString = "GameObject";
 
         protected Vector2 position;
         protected ObjectType objectType;

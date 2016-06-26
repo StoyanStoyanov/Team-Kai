@@ -8,6 +8,6 @@
         /// <summary>
         /// Returns whether the object is a melee fighter.
         /// </summary>
-        bool IsMeleeFighter { get; }
+        bool IsMeele { get; }
     }
 }

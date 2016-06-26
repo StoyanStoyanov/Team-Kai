@@ -73,10 +73,8 @@
                         myObjectList[i].RespondToCollision(myObjectList[j]);
                         myObjectList[j].RespondToCollision(myObjectList[i]);
                     }
-
-
                 }
-
             }
         }
     }
+}

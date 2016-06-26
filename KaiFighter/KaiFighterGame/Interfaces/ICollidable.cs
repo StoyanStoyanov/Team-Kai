@@ -12,6 +12,9 @@
         /// </summary>
         void RespondToCollision(GameObject gameObject);
 
-
+        /// <summary>
+        /// Returns the collision group string of the object.
+        /// </summary>
+        string GetCollisionGroupString();
     }
 }

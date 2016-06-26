@@ -6,6 +6,6 @@
     public enum ObjectType
     {
         // TODO: Add more object types
-        Player, Enemy
+        Player, Archer, Creep, Bullet, Bonus, Bounty, Obstacle, Wall
     }
 }

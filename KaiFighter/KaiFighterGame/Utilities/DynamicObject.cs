@@ -10,27 +10,18 @@
     public abstract class DynamicObject : GameObject, IMovable, IDamageable
     {
         private Vector2 objDirection = Vector2.Zero;
-        private int power;
-        public DynamicObject(Vector2 position, ObjectType objectType, float movementSpeed, int power, string[] resources = null) 
+
+        public DynamicObject(Vector2 position, ObjectType objectType, float movementSpeed, int damage, string[] resources = null) 
             : base(position, objectType, resources)
         {
-            this.Power = power;
+            this.Damage = damage;
         }
 
         public virtual int Health { get; protected set; }
 
-        public int Power
-        {
-            get
-            {
-                return this.power;
-            }
-            set
-            {
-                this.power = value;
-            }
-        }
-        public Vector2 Direction
+        public int Damage { get; protected set; }
+
+        public Vector2 Direction 
         {
             get
             {
