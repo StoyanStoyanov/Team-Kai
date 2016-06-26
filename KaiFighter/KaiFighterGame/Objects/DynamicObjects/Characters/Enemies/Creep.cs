@@ -11,8 +11,8 @@
 
     class Creep: DynamicObject
     {
-        public Creep(Vector2 position, ObjectType objectType, float movementSpeed, string[] resources = null)
-            : base(position, objectType, movementSpeed, resources)
+        public Creep(Vector2 position, ObjectType objectType, float movementSpeed, int power, string[] resources = null)
+            : base(position, objectType, movementSpeed,power, resources)
         {
         }
 
@@ -28,7 +28,7 @@
 
         public override void RespondToCollision(GameObject gameObject)
         {
-
+            if (gameObject.GetType )
 
         }
 

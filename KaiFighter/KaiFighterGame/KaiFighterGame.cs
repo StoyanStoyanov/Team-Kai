@@ -1,6 +1,6 @@
 ﻿namespace KaiFighterGame
 {
-    using Characters;
+    using Objects.DynamicObjects.Characters;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;

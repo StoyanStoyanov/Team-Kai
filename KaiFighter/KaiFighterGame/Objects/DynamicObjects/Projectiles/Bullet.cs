@@ -9,12 +9,14 @@
     using Microsoft.Xna.Framework.Graphics;
     using Utilities;
 
-    public abstract class Bullet : DynamicObject, ICloneable
+    public class Bullet : DynamicObject, ICloneable
     {
-        public Bullet(Vector2 position, ObjectType objectType, float movementSpeed, string[] resources = null)
-            : base(position, objectType, movementSpeed, resources)
+        public Bullet(Vector2 position, ObjectType objectType, float movementSpeed, int power, string[] resources = null)
+            : base(position, objectType, movementSpeed, power, resources)
         {
         }
+        
+     
         public override void Draw(SpriteBatch spriteBatch)
         {
             throw new NotImplementedException();

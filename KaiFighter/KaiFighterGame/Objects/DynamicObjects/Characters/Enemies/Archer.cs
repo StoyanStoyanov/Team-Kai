@@ -10,8 +10,8 @@
     using Utilities;
     class Archer : DynamicObject
     {
-        public Archer(Vector2 position, ObjectType objectType, float movementSpeed, string[] resources = null)
-            : base(position, objectType, movementSpeed, resources)
+        public Archer(Vector2 position, ObjectType objectType, float movementSpeed,int power, string[] resources = null)
+            : base(position, objectType, movementSpeed, power, resources)
         {
         }
         public override void Draw(SpriteBatch spriteBatch)
