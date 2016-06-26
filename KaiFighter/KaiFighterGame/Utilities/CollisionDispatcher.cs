@@ -8,33 +8,75 @@
     /// </summary>
     public static class CollisionDispatcher
     {
-        ///// <summary>
-        ///// Checks if there are collision between the objects in the game.
-        ///// If collisions are found, then the RespondToCollision methods are called for the objects
-        ///// which collide.
-        ///// </summary>
-        public static void HandleCollisions(List<StaticObject> staticObjects, List<DynamicObject> movingObjects)
-        {
-            HandleStaticWithMovingCollisions(staticObjects, movingObjects);
-            HandleMovingWithMovingCollisions(movingObjects);
-        }
-
         /// <summary>
-        /// Checks for collisions between the static and the moving objects in the game.
+        /// This Method is invoked on every redraw of the Objects
         /// </summary>
-        private static void HandleMovingWithMovingCollisions(List<DynamicObject> movingObjects)
-        {
-            // TODO
-            throw new NotImplementedException();
-        }
+        /// <param name="myObjectList"></param>
 
-        /// <summary>
-        /// Checks for collisions between the moving objects in the game.
-        /// </summary>
-        private static void HandleStaticWithMovingCollisions(List<StaticObject> staticObjects, List<DynamicObject> movingObjects)
+        public static void CheckCollision(List<GameObject> myObjectList)
         {
-            // TODO
-            throw new NotImplementedException();
+            var collidedList = new List<GameObject>();
+            for (int i = 0; i < myObjectList.Count - 1; i++)
+            {
+
+                // The variable names will be chanched
+                var ax1 = myObjectList[i].Position.X;
+                var ax2 = myObjectList[i].Position.X + myObjectList[i].Width;
+                var ax3 = ax1;
+                var ax4 = ax2;
+
+                var ay1 = myObjectList[i].Position.Y;
+                var ay2 = myObjectList[i].Position.Y + myObjectList[i].Height;
+                var ay3 = ay1;
+                var ay4 = ay2;
+
+
+                for (int j = i + 1; j < myObjectList.Count; j++)
+                {
+                    var bx1 = myObjectList[j].Position.X;
+                    var bx2 = myObjectList[j].Position.X + myObjectList[i].Width;
+                    var bx3 = ax1;
+                    var bx4 = ax2;
+
+                    var by1 = myObjectList[j].Position.Y;
+                    var by2 = myObjectList[j].Position.Y + myObjectList[i].Height;
+                    var by3 = ay1;
+                    var by4 = ay2;
+
+                    var hOverLap = true;
+                    bool isColide = false;
+                    if (ax1 < bx1 && ax2 < bx1)
+                    {
+                        hOverLap = false;
+                    }
+
+                    if (ax1 > bx2 && ax2 > bx2)
+                    {
+                        hOverLap = false;
+                    }
+
+                    var vOverLap = true;
+
+                    if (ay1 < by1 && ay3 < ay1)
+                    {
+                        vOverLap = false;
+                    }
+
+                    if (ay1 > by3 && ay3 > by3)
+                    {
+                        vOverLap = false;
+                    }
+
+                    if (vOverLap && hOverLap)
+                    {
+                        isColide = true;
+                        myObjectList[i].RespondToCollision(myObjectList[j]);
+                        myObjectList[j].RespondToCollision(myObjectList[i]);
+                    }
+
+
+                }
+
+            }
         }
     }
-}

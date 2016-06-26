@@ -119,7 +119,7 @@
             return new List<GameObject>();
         }
 
-        public virtual void RespondToCollision(CollisionData collisionData)
+        public virtual void RespondToCollision(GameObject gameObject)
         {
             // Descendants will override and implement this method.
         }
