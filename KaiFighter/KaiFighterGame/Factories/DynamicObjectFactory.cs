@@ -20,18 +20,18 @@
         /// <param name="movementSpeed">The movement speed of the Dynamic object.</param>
         /// <param name="damage">The damage of the Dynamic object</param>
         /// <returns></returns>
-        public override DynamicObject Create(Vector2 position, ObjectType objectType, float movementSpeed, int damage = 0)
+        public override DynamicObject Create(Vector2 position, string imageLocation, ObjectType objectType, float movementSpeed, int damage = 0)
         {
             switch (objectType)
             {
                 case ObjectType.Player:
-                    return new Player(position, objectType, movementSpeed, damage);
+                    return new Player(position, imageLocation, objectType, movementSpeed, damage);
                 case ObjectType.Archer:
-                    return new Archer(position, objectType, movementSpeed, damage);
+                    return new Archer(position, imageLocation, objectType, movementSpeed, damage);
                 case ObjectType.Creep:
-                    return new Creep(position, objectType, movementSpeed, damage);
+                    return new Creep(position, imageLocation, objectType, movementSpeed, damage);
                 case ObjectType.Bullet:
-                    return new Bullet(position, objectType, movementSpeed, damage);
+                    return new Bullet(position, imageLocation, objectType, movementSpeed, damage);
                 default:
                     throw new ArgumentException();
             }

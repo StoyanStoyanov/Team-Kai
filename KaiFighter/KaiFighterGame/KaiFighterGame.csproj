@@ -69,6 +69,7 @@
     <Compile Include="Utilities\DynamicObject.cs" />
     <Compile Include="Utilities\GameObject.cs" />
     <Compile Include="Utilities\ObjectType.cs" />
+    <Compile Include="Utilities\SceneManager.cs" />
     <Compile Include="Utilities\StaticObject.cs" />
   </ItemGroup>
   <ItemGroup>

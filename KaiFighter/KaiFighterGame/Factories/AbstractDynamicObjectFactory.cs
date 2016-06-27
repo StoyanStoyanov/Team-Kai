@@ -5,6 +5,6 @@
 
     public abstract class AbstractDynamicObjectFactory
     {
-        public abstract DynamicObject Create(Vector2 position, ObjectType objectType, float movementSpeed, int damage = 0);
+        public abstract DynamicObject Create(Vector2 position, string imageLocation, ObjectType objectType, float movementSpeed, int damage = 0);
     }
 }

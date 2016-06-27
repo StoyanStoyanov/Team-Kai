@@ -16,18 +16,18 @@
         /// <param name="position">The position of the object.</param>
         /// <param name="objectType">The type of the game object.</param>
         /// <returns></returns>
-        public override StaticObject Create(Vector2 position, ObjectType objectType)
+        public override StaticObject Create(Vector2 position, string imageLocation, ObjectType objectType)
         {
             switch (objectType)
             {
                 case ObjectType.Bonus:
-                    return new Bonus(position, objectType);
+                    return new Bonus(position, imageLocation, objectType);
                 case ObjectType.Bounty:
-                    return new Bounty(position, objectType);
+                    return new Bounty(position, imageLocation, objectType);
                 case ObjectType.Obstacle:
-                    return new Obstacle(position, objectType);
+                    return new Obstacle(position, imageLocation, objectType);
                 case ObjectType.Wall:
-                    return new Wall(position, objectType);
+                    return new Wall(position, imageLocation, objectType);
                 default:
                     throw new ArgumentException();
             }

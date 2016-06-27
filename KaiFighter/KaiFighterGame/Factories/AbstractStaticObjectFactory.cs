@@ -5,6 +5,6 @@
 
     public abstract class AbstractStaticObjectFactory
     {
-        public abstract StaticObject Create(Vector2 position, ObjectType objectType);
+        public abstract StaticObject Create(Vector2 position, string imageLocation, ObjectType objectType);
     }
 }

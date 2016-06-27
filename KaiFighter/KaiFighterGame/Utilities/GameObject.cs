@@ -9,10 +9,10 @@
     {
         private const string CollisionGroupString = "GameObject";
 
-        protected Vector2 position;
-        protected ObjectType objectType;
-        protected string[] resources; // this needs rethinking
-        protected Texture2D image; // Later this will be an animation
+        private Vector2 position;
+        private ObjectType objectType;
+        private Texture2D image;
+        private string imageFile;
 
         /// <summary>
         /// Creates a game object.
@@ -22,28 +22,44 @@
         /// <param name="resources">The resources of the object.</param>
         /// <param name="size">The size of the object.</param>
         /// <param name="image">The image of the object.</param>
-        protected GameObject(Vector2 position, ObjectType objectType, string[] resources = null)
+        protected GameObject(Vector2 position, string imageLocation, ObjectType objectType)
         {
-            this.Position = position;
+            this.PositionX = position.X;
             this.objectType = objectType;
-            this.resources = resources;
             this.IsDestroyed = false;
+            this.imageFile = imageLocation;
         }
 
         /// <summary>
-        /// Gets the position of the object.
+        /// Gets and sets the X position of the object.
         /// </summary>
-        public Vector2 Position
+        public float PositionX
         {
             get
             {
-                return new Vector2(this.position.X, this.position.Y);
+                return this.position.X;
             }
 
-            protected set
+            set
             {
-                this.position = value;
+                this.position.X = value;
             } 
+        }
+
+        /// <summary>
+        /// Gets and sets the Y position of the object.
+        /// </summary>
+        public float PositionY
+        {
+            get
+            {
+                return this.position.Y;
+            }
+
+            set
+            {
+                this.position.Y = value;
+            }
         }
 
         // Get the width of the object
@@ -70,19 +86,33 @@
         public bool IsDestroyed { get; protected set; }
 
         /// <summary>
-        /// Initializes the object.
-        /// </summary>
-        public abstract void LoadObject(Texture2D texture); // could later add more things (sounds, etc.)
-
-        /// <summary>
-        /// Updates the state of the object.
+        /// Updates the state of the object on the screen
         /// </summary>
         public abstract void Update(GameTime gameTime);
 
         /// <summary>
         /// Draws the object.
         /// </summary>
-        public abstract void Draw(SpriteBatch spriteBatch);
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(this.image, new Vector2(this.PositionX, this.PositionY), null, Color.White, 0f, Vector2.Zero, .5f, SpriteEffects.None, 0f);
+        }
+
+        /// <summary>
+        /// Loads the content used by the object.
+        /// </summary>
+        public virtual void LoadContent(Game theGame)
+        {
+            this.image = theGame.Content.Load<Texture2D>(this.imageFile);
+        }
+
+        /// <summary>
+        /// Disposes the content loaded by the object.
+        /// </summary>
+        public virtual void UnloadContent()
+        {
+            this.image.Dispose();
+        }
 
         public virtual Vector2 GetObjectPosition()
         {
@@ -92,16 +122,6 @@
         public virtual ObjectType GetObjectType()
         {
             return this.objectType;
-        }
-
-        public virtual string[] GetObjectResources()
-        {
-            return this.resources;
-        }
-
-        public virtual Texture2D GetObjectImage()
-        {
-            return this.image;
         }
 
         public virtual bool CanCollideWith(string otherCollisionGroupString)

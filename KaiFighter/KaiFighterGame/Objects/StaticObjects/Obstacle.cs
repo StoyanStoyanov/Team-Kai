@@ -9,8 +9,8 @@
     {
         private const string CollisionGroupString = "Obstacle";
 
-        public Obstacle(Vector2 position, ObjectType objectType, string[] resources = null)
-            : base(position, objectType, resources)
+        public Obstacle(Vector2 position, string imageLocation, ObjectType objectType)
+            : base(position, imageLocation, objectType)
         {
         }
 
@@ -19,7 +19,7 @@
             throw new NotImplementedException();
         }
 
-        public override void LoadObject(Texture2D texture)
+        public override void LoadContent(Game theGame)
         {
             throw new NotImplementedException();
         }
