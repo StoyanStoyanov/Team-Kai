@@ -5,8 +5,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
     using Utilities;
-
-    // MOST THINGS HERE WILL PROBABLY BE DONE BY A FACTORY OR SOME KIND OF SCENE MANAGER
+    using Factories;
 
     /// <summary>
     /// This is the main type for your game.
@@ -15,8 +14,6 @@
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-
-        private Player fighter;
 
         public KaiFighterGame()
         {
@@ -32,9 +29,11 @@
         /// </summary>
         protected override void Initialize()
         {
-            // initialize our kitty :)
-            Vector2 playerSpawnPoint = new Vector2(10, 10);
-            this.fighter = new Player(playerSpawnPoint, ObjectType.Player, 5f, 50);
+            DynamicObjectFactory factory = new DynamicObjectFactory();
+
+            // the next two lines should be performed by the factory
+            Player fighter = factory.Create(new Vector2(50, 50), "Images/PlayerTexture", ObjectType.Player, 1f, 50) as Player;
+            SceneManager.AddObject(fighter, this);
 
             base.Initialize();
         }
@@ -47,9 +46,6 @@
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // load our figher image :)
-            this.fighter.LoadObject(this.Content.Load<Texture2D>("Images\\PlayerTexture"));
         }
 
         /// <summary>
@@ -68,15 +64,13 @@
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            // This is only for testing purposes
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                this.Exit();
+                SceneManager.ClearScene();
             }
 
-            // update our fighter
-            this.fighter.Update(gameTime);
-
-            base.Update(gameTime);
+            SceneManager.Update(gameTime);
         }
 
         /// <summary>
@@ -89,11 +83,9 @@
 
             this.spriteBatch.Begin();
 
-            this.fighter.Draw(this.spriteBatch);
+            SceneManager.Draw(this.spriteBatch);
 
             this.spriteBatch.End();
-
-            base.Draw(gameTime);
         }
     }
 }

@@ -9,8 +9,8 @@
     {
         private const string CollisionGroupString = "Bullet";
 
-        public Bullet(Vector2 position, ObjectType objectType, float movementSpeed, int damage, string[] resources = null)
-            : base(position, objectType, movementSpeed, damage, resources)
+        public Bullet(Vector2 position, string imageLocation, ObjectType objectType, float movementSpeed, int damage)
+            : base(position, imageLocation, objectType, movementSpeed, damage)
         {
         }      
      
@@ -19,7 +19,7 @@
             throw new NotImplementedException();
         }
 
-        public override void LoadObject(Texture2D texture)
+        public override void LoadContent(Game theGame)
         {
             throw new NotImplementedException();
         }

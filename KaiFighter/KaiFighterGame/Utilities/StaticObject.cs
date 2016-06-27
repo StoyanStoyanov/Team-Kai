@@ -8,8 +8,8 @@
     /// </summary>
     public abstract class StaticObject : GameObject
     {
-        public StaticObject(Vector2 position, ObjectType objectType, string[] resources = null) 
-            : base(position, objectType, resources)
+        public StaticObject(Vector2 position, string imageLocation, ObjectType objectType) 
+            : base(position, imageLocation, objectType)
         {
         }
     }

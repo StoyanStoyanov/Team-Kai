@@ -20,26 +20,26 @@
             {
 
                 // The variable names will be chanched
-                var ax1 = myObjectList[i].Position.X;
-                var ax2 = myObjectList[i].Position.X + myObjectList[i].Width;
+                var ax1 = myObjectList[i].PositionX;
+                var ax2 = myObjectList[i].PositionX + myObjectList[i].Width;
                 var ax3 = ax1;
                 var ax4 = ax2;
 
-                var ay1 = myObjectList[i].Position.Y;
-                var ay2 = myObjectList[i].Position.Y + myObjectList[i].Height;
+                var ay1 = myObjectList[i].PositionY;
+                var ay2 = myObjectList[i].PositionY + myObjectList[i].Height;
                 var ay3 = ay1;
                 var ay4 = ay2;
 
 
                 for (int j = i + 1; j < myObjectList.Count; j++)
                 {
-                    var bx1 = myObjectList[j].Position.X;
-                    var bx2 = myObjectList[j].Position.X + myObjectList[i].Width;
+                    var bx1 = myObjectList[j].PositionX;
+                    var bx2 = myObjectList[j].PositionX + myObjectList[i].Width;
                     var bx3 = ax1;
                     var bx4 = ax2;
 
-                    var by1 = myObjectList[j].Position.Y;
-                    var by2 = myObjectList[j].Position.Y + myObjectList[i].Height;
+                    var by1 = myObjectList[j].PositionY;
+                    var by2 = myObjectList[j].PositionY + myObjectList[i].Height;
                     var by3 = ay1;
                     var by4 = ay2;
 
