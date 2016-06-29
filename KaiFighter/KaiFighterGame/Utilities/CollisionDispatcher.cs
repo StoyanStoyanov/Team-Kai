@@ -12,13 +12,11 @@
         /// This Method is invoked on every redraw of the Objects
         /// </summary>
         /// <param name="myObjectList"></param>
-
         public static void CheckCollision(List<GameObject> myObjectList)
         {
             var collidedList = new List<GameObject>();
             for (int i = 0; i < myObjectList.Count - 1; i++)
             {
-
                 // The variable names will be chanched
                 var ax1 = myObjectList[i].PositionX;
                 var ax2 = myObjectList[i].PositionX + myObjectList[i].Width;
@@ -29,7 +27,6 @@
                 var ay2 = myObjectList[i].PositionY + myObjectList[i].Height;
                 var ay3 = ay1;
                 var ay4 = ay2;
-
 
                 for (int j = i + 1; j < myObjectList.Count; j++)
                 {

@@ -11,18 +11,18 @@
         // Calls the update method of every object in the scene
         public static void Update(GameTime gameTime)
         {
-            foreach (var obj in objects)
+            for (int i = 0; i < objects.Count; i++)
             {
-                obj.Update(gameTime);
+                objects[i].Update(gameTime);
             }
         }
 
         // Calls the draw method of every object in the scene
         public static void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var obj in objects)
+            for (int i = 0; i < objects.Count; i++)
             {
-                obj.Draw(spriteBatch);
+                objects[i].Draw(spriteBatch);
             }
         }
 
@@ -31,21 +31,22 @@
         {
             objects.Add(obj);
 
+            obj.Initialize();
             obj.LoadContent(theGame);
         }
 
         // destroys an object from the scene
         public static void DestroyObject(GameObject obj)
         {
-            objects.Remove(obj);      
+            objects.Remove(obj);
         }
 
         // clears the scene. This should be performed after the end of each level
         public static void ClearScene()
         {
-            foreach (var obj in objects)
+            for (int i = 0; i < objects.Count; i++)
             {
-                obj.UnloadContent();
+                objects[i].UnloadContent();
             }
 
             objects.Clear();
