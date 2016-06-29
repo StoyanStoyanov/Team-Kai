@@ -10,6 +10,7 @@
         /// <summary>
         /// All IMovable objects must implement their own movement.
         /// </summary>
+
         void MoveUp();
 
         void MoveDown();
@@ -17,5 +18,9 @@
         void MoveRight();
 
         void MoveLeft();
+
+        void MoveTowards(Vector2 dest);
+
+        void MoveWithoutStop(Vector2 direction);
     }
 }

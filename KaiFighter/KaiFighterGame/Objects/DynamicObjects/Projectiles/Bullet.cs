@@ -1,47 +1,36 @@
 ﻿namespace KaiFighterGame.Objects.DynamicObjects.Projectiles
 {
-    using System;
-    using Utilities;
+    using Interfaces;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
+    using Utilities;
 
-    public class Bullet : DynamicObject, ICloneable
+    public class Bullet : DynamicObject, IKiller
     {
+        private Vector2 targetDir;
         private const string CollisionGroupString = "Bullet";
 
-        public Bullet(Vector2 position, string imageLocation, ObjectType objectType, float movementSpeed, int damage)
-            : base(position, imageLocation, objectType, movementSpeed, damage)
+        public Bullet(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, int damage, Vector2 targetDirection)
+            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)
         {
-        }      
-     
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
+            this.Damage = damage;
+            this.targetDir = targetDirection;
         }
 
-        public override void LoadContent(Game theGame)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            throw new NotImplementedException();
-        }
+        public int Damage { get; set; }
 
         public override string GetCollisionGroupString()
         {
             return CollisionGroupString;
         }
 
-        public override void RespondToCollision(GameObject gameObject)
+        public override void Initialize()
         {
-            this.IsDestroyed = true;
+            this.MoveWithoutStop(this.targetDir);
         }
 
-        public object Clone()
+        public override void RespondToCollision(GameObject gameObject)
         {
-            throw new NotImplementedException();
+            SceneManager.DestroyObject(this);
         }
     }
 }

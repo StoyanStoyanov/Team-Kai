@@ -1,5 +1,6 @@
 ﻿namespace KaiFighterGame.Utilities
 {
+    using System;
     using System.Collections.Generic;
     using Interfaces;
     using Microsoft.Xna.Framework;
@@ -13,6 +14,10 @@
         private ObjectType objectType;
         private Texture2D image;
         private string imageFile;
+        private Color? objectColor;
+        private float objectScale;
+        private float objectRotation;
+        private float objectLayerDepth;
 
         /// <summary>
         /// Creates a game object.
@@ -22,12 +27,18 @@
         /// <param name="resources">The resources of the object.</param>
         /// <param name="size">The size of the object.</param>
         /// <param name="image">The image of the object.</param>
-        protected GameObject(Vector2 position, string imageLocation, ObjectType objectType)
+        protected GameObject(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth)
         {
-            this.PositionX = position.X;
-            this.objectType = objectType;
             this.IsDestroyed = false;
+            this.ObjectColor = objColor;
+            this.PositionX = position.X;
+            this.PositionY = position.Y;
+
+            this.objectType = objectType;
             this.imageFile = imageLocation;
+            this.objectScale = scale;
+            this.objectRotation = rotation;
+            this.objectLayerDepth = layerDepth;
         }
 
         /// <summary>
@@ -62,7 +73,9 @@
             }
         }
 
-        // Get the width of the object
+        /// <summary>
+        /// Gets the width of the object.
+        /// </summary>
         public int Width
         {
             get
@@ -71,7 +84,9 @@
             }
         }
 
-        // Get the height of the object
+        /// <summary>
+        /// Gets the height of the object.
+        /// </summary>
         public int Height
         {
             get
@@ -85,6 +100,31 @@
         /// </summary>
         public bool IsDestroyed { get; protected set; }
 
+        public Color? ObjectColor
+        {
+            get
+            {
+                return this.objectColor;
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    this.objectColor = Color.White;
+                }
+                else
+                {
+                    this.objectColor = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Initializes the object
+        /// </summary>
+        public abstract void Initialize();
+
         /// <summary>
         /// Updates the state of the object on the screen
         /// </summary>
@@ -95,7 +135,9 @@
         /// </summary>
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.image, new Vector2(this.PositionX, this.PositionY), null, Color.White, 0f, Vector2.Zero, .5f, SpriteEffects.None, 0f);
+            var origin = new Vector2(this.Width / 2f, this.Height / 2f);
+            var rotation = this.objectRotation * (float)Math.PI / 180;
+            spriteBatch.Draw(this.image, this.position, null, null, origin, rotation, new Vector2(this.objectScale, this.objectScale), this.ObjectColor, SpriteEffects.None, this.objectLayerDepth);
         }
 
         /// <summary>

@@ -1,11 +1,11 @@
 ﻿namespace KaiFighterGame.Factories
 {
     using System;
-    using Utilities;
     using Microsoft.Xna.Framework;
     using Objects.DynamicObjects.Characters;
-    using Objects.DynamicObjects.Projectiles;
     using Objects.DynamicObjects.Characters.Enemies;
+    using Objects.DynamicObjects.Projectiles;
+    using Utilities;
 
     /// <summary>
     /// The Dynamic objects factory.
@@ -20,18 +20,30 @@
         /// <param name="movementSpeed">The movement speed of the Dynamic object.</param>
         /// <param name="damage">The damage of the Dynamic object</param>
         /// <returns></returns>
-        public override DynamicObject Create(Vector2 position, string imageLocation, ObjectType objectType, float movementSpeed, int damage = 0)
+        public override DynamicObject Create(Vector2 position, 
+            string imageLocation, 
+            ObjectType objectType, 
+            Color? objColor, 
+            float scale,
+            float rotation, 
+            float layerDepth, 
+            float movementSpeed,
+            int damage = 0,
+            int health = 0,
+            int cooldown = 0,
+            Game theGame = null,
+            Vector2 targetDir = default(Vector2))
         {
             switch (objectType)
             {
                 case ObjectType.Player:
-                    return new Player(position, imageLocation, objectType, movementSpeed, damage);
+                    return new Player(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health, cooldown, theGame);
                 case ObjectType.Archer:
-                    return new Archer(position, imageLocation, objectType, movementSpeed, damage);
+                    return new Archer(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health);
                 case ObjectType.Creep:
-                    return new Creep(position, imageLocation, objectType, movementSpeed, damage);
+                    return new Creep(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health);
                 case ObjectType.Bullet:
-                    return new Bullet(position, imageLocation, objectType, movementSpeed, damage);
+                    return new Bullet(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, targetDir);
                 default:
                     throw new ArgumentException();
             }

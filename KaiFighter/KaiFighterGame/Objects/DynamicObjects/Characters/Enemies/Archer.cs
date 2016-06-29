@@ -1,16 +1,16 @@
 ﻿namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
 {
     using System;
-    using Utilities;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using Utilities;
 
-    public class Archer : DynamicObject
+    public class Archer : Character
     {
         private const string CollisionGroupString = "Archer";
 
-        public Archer(Vector2 position, string imageLocation, ObjectType objectType, float movementSpeed, int damage)
-            : base(position, imageLocation, objectType, movementSpeed, damage)
+        public Archer(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, int damage, int health)
+            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health)
         {
         }
 
