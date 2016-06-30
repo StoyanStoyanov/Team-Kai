@@ -1,8 +1,6 @@
 ﻿namespace KaiFighterGame.Objects.StaticObjects
 {
-    using System;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
     using Utilities;
 
     public class Wall : StaticObject
@@ -14,21 +12,6 @@
         {
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void LoadContent(Game theGame)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            throw new NotImplementedException();
-        }
-
         public override string GetCollisionGroupString()
         {
             return CollisionGroupString;
@@ -36,7 +19,12 @@
 
         public override void Initialize()
         {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            // throw new NotImplementedException();
         }
     }
 }

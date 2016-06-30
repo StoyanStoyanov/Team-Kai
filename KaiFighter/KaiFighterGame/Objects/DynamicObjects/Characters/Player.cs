@@ -5,36 +5,22 @@
     using Microsoft.Xna.Framework.Input;
     using Projectiles;
     using Utilities;
-    using Factories;
-    using Interfaces;
 
-    public class Player : Character, IRanged
+    public class Player : Shooter
     {
         private const string CollisionGroupString = "Player";
 
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
-        private Game currentGame;
-        private DynamicObjectFactory bulletFactory;
-        private int shooterCooldown;
-        private int initialCooldown;
-        private Vector2 shootDirection;
-        private Random bulletRandomizer;
 
-        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, int damage, int health, int cooldown, Game theGame) 
-            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health)
+        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, int damage, int health, int cooldown, Game theGame) : 
+            base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown, theGame)
         {
-            this.currentGame = theGame;
-            this.bulletFactory = new DynamicObjectFactory();
-            this.shooterCooldown = cooldown;
-            this.initialCooldown = shooterCooldown;
-            this.shootDirection = new Vector2();
-            this.bulletRandomizer = new Random();
         }
 
         public override void Update(GameTime gameTime)
         {
-            // Handles the users input
+            // Handles the users inputw
             this.HandleInput(Keyboard.GetState());
 
             // update the dynamic object
@@ -134,42 +120,6 @@
             }
 
             this.previousKeyboardState = this.currentKeyboardState;
-        }
-
-        public void Shoot(Vector2 direction)
-        {
-            this.shootDirection = direction;
-
-            if (this.shooterCooldown > 0)
-            {
-                this.shooterCooldown -= 1;
-            }
-            else
-            {
-                string[] bulletImages =
-                {
-                    "Images/Projectiles/0",
-                    "Images/Projectiles/1"
-                };
-
-                Bullet someBullet = bulletFactory.Create(
-                new Vector2(this.PositionX, this.PositionY),
-                bulletImages[bulletRandomizer.Next(0, bulletImages.Length)],
-                ObjectType.Bullet,
-                Color.LimeGreen,
-                layerDepth: 1f,
-                rotation: 0f,
-                scale: .3f,
-                damage: 10,
-                cooldown: 8,
-                movementSpeed: 5,
-                theGame: this.currentGame,
-                targetDir: this.shootDirection) as Bullet;
-
-                SceneManager.AddObject(someBullet, this.currentGame);
-
-                this.shooterCooldown = this.initialCooldown;
-            }  
-        }
+        }   
     }
 }

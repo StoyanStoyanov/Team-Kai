@@ -5,7 +5,8 @@
 
     public abstract class AbstractDynamicObjectFactory
     {
-        public abstract DynamicObject Create(Vector2 position, 
+        public abstract DynamicObject Create(
+            Vector2 position, 
             string imageLocation, 
             ObjectType objectType, 
             Color? objColor, 

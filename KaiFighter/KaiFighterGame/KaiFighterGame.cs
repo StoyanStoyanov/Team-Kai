@@ -6,6 +6,7 @@
     using Microsoft.Xna.Framework.Input;
     using Objects.DynamicObjects.Characters;
     using Utilities;
+    using Objects.StaticObjects;
 
     /// <summary>
     /// This is the main type for your game.
@@ -28,8 +29,8 @@
             this.Content.RootDirectory = "Content";
 
             // set viewport scaling
-            ScalingViewportAdapter.VirtualHeight = graphics.PreferredBackBufferHeight;
-            ScalingViewportAdapter.VirtualWidth = graphics.PreferredBackBufferWidth;
+            ScalingViewportAdapter.VirtualHeight = this.graphics.PreferredBackBufferHeight;
+            ScalingViewportAdapter.VirtualWidth = this.graphics.PreferredBackBufferWidth;
         }
 
         /// <summary>
@@ -43,7 +44,8 @@
             DynamicObjectFactory factory = new DynamicObjectFactory();
 
             // the next two lines should be performed by the factory
-            Player firstFighter = factory.Create(new Vector2(200, 200), 
+            Player firstFighter = factory.Create(
+                new Vector2(200, 200), 
                 "Images/Textures/PlayerTexture", 
                 ObjectType.Player, 
                 Color.White, 
@@ -55,8 +57,24 @@
                 health: 100,
                 cooldown: 5,
                 theGame: this) as Player;
+
             // add the fighter to the scene
             SceneManager.AddObject(firstFighter, this);
+
+            StaticObjectFactory staticFactory = new StaticObjectFactory();
+
+            // create a wall for testing purposes
+            Wall testWall = staticFactory.Create(
+                new Vector2(100, 500),
+                "Images/Statics/line",
+                ObjectType.Wall,
+                Color.Red,
+                1f,
+                0f,
+                1f) as Wall;
+
+            // add the wall to the scene
+            SceneManager.AddObject(testWall, this);
 
             base.Initialize();
         }
