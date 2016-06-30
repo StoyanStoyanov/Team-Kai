@@ -10,7 +10,6 @@
         /// <summary>
         /// All IMovable objects must implement their own movement.
         /// </summary>
-
         void MoveUp();
 
         void MoveDown();

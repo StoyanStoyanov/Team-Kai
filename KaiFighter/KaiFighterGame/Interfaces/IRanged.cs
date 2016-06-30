@@ -10,7 +10,7 @@
         /// <summary>
         /// Returns whether the object is a range fighter.
         /// </summary>
-        // bool IsRanged { get; }
+        //// bool IsRanged { get; }
         void Shoot(Vector2 direction);
     }
 }

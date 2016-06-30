@@ -20,7 +20,8 @@
         /// <param name="movementSpeed">The movement speed of the Dynamic object.</param>
         /// <param name="damage">The damage of the Dynamic object</param>
         /// <returns></returns>
-        public override DynamicObject Create(Vector2 position, 
+        public override DynamicObject Create(
+            Vector2 position, 
             string imageLocation, 
             ObjectType objectType, 
             Color? objColor, 

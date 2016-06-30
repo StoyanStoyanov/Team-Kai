@@ -58,6 +58,7 @@
     <Compile Include="Interfaces\IUserInterface.cs" />
     <Compile Include="KaiFighterGame.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="Objects\DynamicObjects\Characters\Shooter.cs" />
     <Compile Include="Objects\StaticObjects\Bonus.cs" />
     <Compile Include="Objects\StaticObjects\Bounty.cs" />
     <Compile Include="Objects\StaticObjects\Obstacle.cs" />
