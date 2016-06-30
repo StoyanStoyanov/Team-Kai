@@ -6,8 +6,8 @@
 
     public class Bullet : DynamicObject, IKiller
     {
-        private Vector2 targetDir;
         private const string CollisionGroupString = "Bullet";
+        private Vector2 targetDir;
 
         public Bullet(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, int damage, Vector2 targetDirection)
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)

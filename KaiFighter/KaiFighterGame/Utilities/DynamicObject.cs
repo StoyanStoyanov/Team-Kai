@@ -82,7 +82,7 @@
             }
 
             // start moving towars destination
-            if (movingTowards == true)
+            if (this.movingTowards == true)
             {
                 Vector2 difference = this.destination - new Vector2(this.PositionX, this.PositionY);
                 difference.Normalize();
@@ -97,7 +97,7 @@
             }
 
             // start moving without stop (suitable for bullets)
-            if (movingWithoutStop == true)
+            if (this.movingWithoutStop == true)
             {
                 this.PositionY += this.objSpeed * this.objDirection.Y;
                 this.PositionX += this.objSpeed * this.objDirection.X;
