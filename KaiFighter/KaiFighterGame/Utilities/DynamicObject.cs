@@ -1,42 +1,28 @@
 ﻿namespace KaiFighterGame.Utilities
 {
-    using System;
     using Interfaces;
     using Microsoft.Xna.Framework;
-    using System.Diagnostics;
+
     /// <summary>
     /// Defines a dynamic/moving object in the game. All moving objects should inherit the DynamicObject class.
     /// </summary>
-    public abstract class DynamicObject : GameObject, IMovable, IDamageable
+    public abstract class DynamicObject : GameObject, IMovable
     {
         private Vector2 objDirection;
         private float objSpeed;
+        private bool movingTowards;
+        private bool movingWithoutStop;
+        private Vector2 destination;
+        private Vector2 start;
+        private float distance;
 
-        public DynamicObject(Vector2 position, string imageLocation, ObjectType objectType, float movementSpeed, int damage) 
-            : base(position, imageLocation, objectType)
+        public DynamicObject(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed) 
+            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth)
         {
-            this.Damage = damage;
             this.objSpeed = movementSpeed;
-            this.objDirection = Vector2.Zero;
-        }
-
-        public virtual int Health { get; protected set; }
-
-        public int Damage { get; protected set; }
-
-        public float Speed { get; protected set; }
-
-        public Vector2 Direction 
-        {
-            get
-            {
-                return this.objDirection;
-            }
-
-            set
-            {
-                this.objDirection = value;
-            }
+            this.objDirection = new Vector2(1, 1);
+            this.movingTowards = false;
+            this.movingWithoutStop = false;
         }
 
         public void MoveUp()
@@ -59,31 +45,65 @@
             this.objDirection.X = 1;
         }
 
+        public void MoveTowards(Vector2 dest)
+        {
+            this.movingTowards = true;
+            this.destination = dest;
+            this.start = new Vector2(this.PositionX, this.PositionY);
+            this.distance = Vector2.Distance(this.start, this.destination);
+        }
+
+        public void MoveWithoutStop(Vector2 direction)
+        {
+            this.movingWithoutStop = true;
+            this.objDirection = direction;
+        }
+
         public override void Update(GameTime gameTime)
         {
             if (this.objDirection.Y == -1)
             {
                 this.PositionY -= this.objSpeed;
             }
+
             if (this.objDirection.Y == 1)
             {
                 this.PositionY += this.objSpeed;
             }
+
             if (this.objDirection.X == -1)
             {
                 this.PositionX -= this.objSpeed;
             }
+
             if (this.objDirection.X == 1)
             {
                 this.PositionX += this.objSpeed;
             }
 
-            this.objDirection.Normalize();
-        }
+            // start moving towars destination
+            if (movingTowards == true)
+            {
+                Vector2 difference = this.destination - new Vector2(this.PositionX, this.PositionY);
+                difference.Normalize();
 
-        public virtual void TakeDamage()
-        {
-            throw new NotImplementedException();
+                this.PositionX += difference.X * this.objSpeed;
+                this.PositionY += difference.Y * this.objSpeed;
+
+                if (Vector2.Distance(this.start, new Vector2(this.PositionX, this.PositionY)) >= this.distance)
+                {
+                    this.movingTowards = false;
+                }
+            }
+
+            // start moving without stop (suitable for bullets)
+            if (movingWithoutStop == true)
+            {
+                this.PositionY += this.objSpeed * this.objDirection.Y;
+                this.PositionX += this.objSpeed * this.objDirection.X;
+            }
+
+            this.objDirection.Normalize();
         }
     }
 }

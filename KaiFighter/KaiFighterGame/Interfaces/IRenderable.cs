@@ -8,6 +8,8 @@
     /// </summary>
     public interface IRenderable
     {
+        Color? ObjectColor { get; set; }
+
         void Update(GameTime gameTime);
 
         void Draw(SpriteBatch spriteBatch);

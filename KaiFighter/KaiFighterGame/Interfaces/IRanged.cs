@@ -1,5 +1,7 @@
 ﻿namespace KaiFighterGame.Interfaces
 {
+    using Microsoft.Xna.Framework;
+
     /// <summary>
     /// All objects which are range fighters will implement this interface.
     /// </summary>
@@ -8,6 +10,7 @@
         /// <summary>
         /// Returns whether the object is a range fighter.
         /// </summary>
-        bool IsRanged { get; }
+        // bool IsRanged { get; }
+        void Shoot(Vector2 direction);
     }
 }

@@ -1,11 +1,11 @@
 ﻿namespace KaiFighterGame
 {
-    using Objects.DynamicObjects.Characters;
+    using Factories;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
+    using Objects.DynamicObjects.Characters;
     using Utilities;
-    using Factories;
 
     /// <summary>
     /// This is the main type for your game.
@@ -14,11 +14,22 @@
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private bool canToggleFullScreen = true;
 
         public KaiFighterGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+
+            // set resolution
+            this.graphics.PreferredBackBufferWidth = 1366;
+            this.graphics.PreferredBackBufferHeight = 768;
+            this.graphics.ApplyChanges();
+
+            this.Content.RootDirectory = "Content";
+
+            // set viewport scaling
+            ScalingViewportAdapter.VirtualHeight = graphics.PreferredBackBufferHeight;
+            ScalingViewportAdapter.VirtualWidth = graphics.PreferredBackBufferWidth;
         }
 
         /// <summary>
@@ -32,8 +43,20 @@
             DynamicObjectFactory factory = new DynamicObjectFactory();
 
             // the next two lines should be performed by the factory
-            Player fighter = factory.Create(new Vector2(50, 50), "Images/PlayerTexture", ObjectType.Player, 1f, 50) as Player;
-            SceneManager.AddObject(fighter, this);
+            Player firstFighter = factory.Create(new Vector2(200, 200), 
+                "Images/Textures/PlayerTexture", 
+                ObjectType.Player, 
+                Color.White, 
+                scale: 0.5f, 
+                rotation: 0, 
+                layerDepth: 1f, 
+                movementSpeed: 5f,
+                damage: 50, 
+                health: 100,
+                cooldown: 5,
+                theGame: this) as Player;
+            // add the fighter to the scene
+            SceneManager.AddObject(firstFighter, this);
 
             base.Initialize();
         }
@@ -64,10 +87,21 @@
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // This is only for testing purposes
+            // toggle between full screen and windowed
+            if (Keyboard.GetState().IsKeyDown(Keys.F) && this.canToggleFullScreen == true)
+            {
+                this.graphics.ToggleFullScreen();
+                this.canToggleFullScreen = false;
+            }
+
+            if (Keyboard.GetState().IsKeyUp(Keys.F) && this.canToggleFullScreen == false)
+            {
+                this.canToggleFullScreen = true;
+            }
+
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                SceneManager.ClearScene();
+                this.Exit();
             }
 
             SceneManager.Update(gameTime);
@@ -81,7 +115,7 @@
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            this.spriteBatch.Begin();
+            this.spriteBatch.Begin(SpriteSortMode.FrontToBack, transformMatrix: ScalingViewportAdapter.GetScaleMatrix(this.GraphicsDevice));
 
             SceneManager.Draw(this.spriteBatch);
 

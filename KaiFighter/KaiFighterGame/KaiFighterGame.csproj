@@ -44,6 +44,8 @@
     <Compile Include="Factories\DynamicObjectFactory.cs" />
     <Compile Include="Factories\StaticObjectFactory.cs" />
     <Compile Include="Interfaces\IDestructable.cs" />
+    <Compile Include="Interfaces\IKiller.cs" />
+    <Compile Include="Objects\DynamicObjects\Characters\Character.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Player.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IDamageable.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Utilities\DynamicObject.cs" />
     <Compile Include="Utilities\GameObject.cs" />
     <Compile Include="Utilities\ObjectType.cs" />
+    <Compile Include="Utilities\ScalingViewportAdapter.cs" />
     <Compile Include="Utilities\SceneManager.cs" />
     <Compile Include="Utilities\StaticObject.cs" />
   </ItemGroup>
