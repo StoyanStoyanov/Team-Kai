@@ -43,9 +43,11 @@
     <Compile Include="Factories\AbstractStaticObjectFactory.cs" />
     <Compile Include="Factories\DynamicObjectFactory.cs" />
     <Compile Include="Factories\StaticObjectFactory.cs" />
+    <Compile Include="Global Constants\ImageAddresses.cs" />
     <Compile Include="Interfaces\IDestructable.cs" />
     <Compile Include="Interfaces\IKiller.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Character.cs" />
+    <Compile Include="Objects\DynamicObjects\Characters\Enemies\Wizard.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Player.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IDamageable.cs" />

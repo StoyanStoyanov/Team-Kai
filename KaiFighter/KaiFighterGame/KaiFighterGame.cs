@@ -1,4 +1,7 @@
-﻿namespace KaiFighterGame
+﻿using KaiFighterGame.Global_Constants;
+using KaiFighterGame.Objects.DynamicObjects.Characters.Enemies;
+
+namespace KaiFighterGame
 {
     using Factories;
     using Microsoft.Xna.Framework;
@@ -45,21 +48,65 @@
 
             // the next two lines should be performed by the factory
             Player firstFighter = factory.Create(
-                new Vector2(200, 200), 
-                "Images/Textures/PlayerTexture", 
-                ObjectType.Player, 
-                Color.White, 
-                scale: 0.5f, 
-                rotation: 0, 
-                layerDepth: 1f, 
+                new Vector2(200, 200),
+                ImageAddresses.playerImage,
+                ObjectType.Player,
+                Color.White,
+                scale: 0.5f,
+                rotation: 0,
+                layerDepth: 1f,
                 movementSpeed: 5f,
-                damage: 50, 
+                damage: 50,
                 health: 100,
                 cooldown: 5,
                 theGame: this) as Player;
 
             // add the fighter to the scene
             SceneManager.AddObject(firstFighter, this);
+
+            //create first test creep and archer, maybe we should do array? Random cooldown, movement, speed ..... 
+
+            Creep testCreep = factory.Create(new Vector2(205, 555),
+                ImageAddresses.creepImage,
+                ObjectType.Creep,
+                Color.White,
+                scale: 0.5f,
+                rotation: 0,
+                layerDepth: 1f,
+                movementSpeed: 1f,
+                damage: 5,
+                health: 100) as Creep;
+
+            SceneManager.AddObject(testCreep, this);
+
+            Wizard testWizard = factory.Create(new Vector2(405, 305),
+                ImageAddresses.wizardImage,
+                ObjectType.Wizard,
+                Color.White,
+                scale: 0.5f,
+                rotation: 0,
+                layerDepth: 1f,
+                movementSpeed: 1f,
+                damage: 5,
+                health: 100) as Wizard;
+
+            SceneManager.AddObject(testWizard, this);
+
+            Archer testArcher = factory.Create(new Vector2(800, 500),
+                ImageAddresses.archerImage,
+                ObjectType.Archer,
+                Color.White,
+                scale: 0.5f,
+                rotation: 0,
+                layerDepth: 1f,
+                movementSpeed: 1f,
+                damage: 5,
+                health: 100,
+                cooldown: 50,
+                theGame: this) as Archer;
+
+            SceneManager.AddObject(testArcher, this);
+
 
             StaticObjectFactory staticFactory = new StaticObjectFactory();
 

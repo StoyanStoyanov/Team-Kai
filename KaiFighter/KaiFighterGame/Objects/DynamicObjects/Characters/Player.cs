@@ -56,7 +56,9 @@
             {
                 this.Health -= (gameObject as Bullet).Damage;
             }
-            else if (gameObject.GetCollisionGroupString() == "Archer" || gameObject.GetCollisionGroupString() == "Creep")
+            else if (gameObject.GetCollisionGroupString() == "Archer" || 
+                        gameObject.GetCollisionGroupString() == "Creep" || 
+                        gameObject.GetCollisionGroupString() == "Wizard")
             {
                 this.Health -= (gameObject as Character).Damage;
             }

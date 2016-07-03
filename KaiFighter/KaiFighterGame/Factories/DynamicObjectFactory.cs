@@ -40,9 +40,11 @@
                 case ObjectType.Player:
                     return new Player(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health, cooldown, theGame);
                 case ObjectType.Archer:
-                    return new Archer(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health);
+                    return new Archer(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health, cooldown, theGame);
                 case ObjectType.Creep:
                     return new Creep(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health);
+                case ObjectType.Wizard:
+                    return new Wizard(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health);
                 case ObjectType.Bullet:
                     return new Bullet(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, targetDir);
                 default:
