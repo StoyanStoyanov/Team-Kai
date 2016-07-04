@@ -2,11 +2,13 @@
 {
     class ImageAddresses
     {
-        public const string playerImage = "Images/Textures/PlayerTexture";
-        public const string creepImage = "Images/Textures/CukiTest";
-        public const string archerImage = "Images/Textures/CukiTest";
-        public const string wizardImage = "Images/Textures/Wizard";
-
+        public const string PlayerImage = "Images/Textures/PlayerTexture";
+        public const string CreepImage = "Images/Textures/CukiTest";
+        public const string ArcherImage = "Images/Textures/CukiTest";
+        public const string WizardImage = "Images/Textures/Wizard";
+        public const string WallImage =  "Images/Statics/line";
+        public const string Projectile0Image= "Images/Projectiles/0";
+        public const string Projectile1Image = "Images/Projectiles/1";
 
     }
 }

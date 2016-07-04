@@ -25,8 +25,8 @@ namespace KaiFighterGame
             this.graphics = new GraphicsDeviceManager(this);
 
             // set resolution
-            this.graphics.PreferredBackBufferWidth = 1366;
-            this.graphics.PreferredBackBufferHeight = 768;
+            this.graphics.PreferredBackBufferWidth = GameResolution.DefoultWidth;
+            this.graphics.PreferredBackBufferHeight = GameResolution.DefoultHeight;
             this.graphics.ApplyChanges();
 
             this.Content.RootDirectory = "Content";
@@ -49,7 +49,7 @@ namespace KaiFighterGame
             // the next two lines should be performed by the factory
             Player firstFighter = factory.Create(
                 new Vector2(200, 200),
-                ImageAddresses.playerImage,
+                ImageAddresses.PlayerImage,
                 ObjectType.Player,
                 Color.White,
                 scale: 0.5f,
@@ -67,7 +67,7 @@ namespace KaiFighterGame
             //create first test creep and archer, maybe we should do array? Random cooldown, movement, speed ..... 
 
             Creep testCreep = factory.Create(new Vector2(205, 555),
-                ImageAddresses.creepImage,
+                ImageAddresses.CreepImage,
                 ObjectType.Creep,
                 Color.White,
                 scale: 0.5f,
@@ -80,7 +80,7 @@ namespace KaiFighterGame
             SceneManager.AddObject(testCreep, this);
 
             Wizard testWizard = factory.Create(new Vector2(405, 305),
-                ImageAddresses.wizardImage,
+                ImageAddresses.WizardImage,
                 ObjectType.Wizard,
                 Color.White,
                 scale: 0.5f,
@@ -93,7 +93,7 @@ namespace KaiFighterGame
             SceneManager.AddObject(testWizard, this);
 
             Archer testArcher = factory.Create(new Vector2(800, 500),
-                ImageAddresses.archerImage,
+                ImageAddresses.ArcherImage,
                 ObjectType.Archer,
                 Color.White,
                 scale: 0.5f,
@@ -113,7 +113,7 @@ namespace KaiFighterGame
             // create a wall for testing purposes
             Wall testWall = staticFactory.Create(
                 new Vector2(100, 500),
-                "Images/Statics/line",
+                ImageAddresses.WallImage,
                 ObjectType.Wall,
                 Color.Red,
                 1f,

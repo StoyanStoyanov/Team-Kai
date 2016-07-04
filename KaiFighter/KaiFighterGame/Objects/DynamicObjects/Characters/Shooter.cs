@@ -1,4 +1,6 @@
-﻿namespace KaiFighterGame.Objects.DynamicObjects.Characters
+﻿using KaiFighterGame.Global_Constants;
+
+namespace KaiFighterGame.Objects.DynamicObjects.Characters
 {
     using System;
     using Factories;
@@ -40,8 +42,8 @@
             {
                 string[] bulletImages =
                 {
-                    "Images/Projectiles/0",
-                    "Images/Projectiles/1"
+                    ImageAddresses.Projectile0Image,
+                    ImageAddresses.Projectile1Image
                 };
 
                 Bullet someBullet = this.bulletFactory.Create(

@@ -44,6 +44,7 @@
     <Compile Include="Factories\DynamicObjectFactory.cs" />
     <Compile Include="Factories\StaticObjectFactory.cs" />
     <Compile Include="Global Constants\ImageAddresses.cs" />
+    <Compile Include="Global Constants\GameResolution.cs" />
     <Compile Include="Interfaces\IDestructable.cs" />
     <Compile Include="Interfaces\IKiller.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Character.cs" />
