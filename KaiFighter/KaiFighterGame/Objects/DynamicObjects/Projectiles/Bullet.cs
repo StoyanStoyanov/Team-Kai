@@ -30,7 +30,10 @@
 
         public override void RespondToCollision(GameObject gameObject)
         {
-            SceneManager.DestroyObject(this);
+            if (gameObject.ObjType == ObjectType.Wall)
+            {
+                SceneManager.DestroyObject(this);
+            }
         }
     }
 }

@@ -69,6 +69,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Archer.cs" />
     <Compile Include="Objects\DynamicObjects\Projectiles\Bullet.cs" />
+    <Compile Include="UI\Button.cs" />
+    <Compile Include="Utilities\UiButtonState.cs" />
     <Compile Include="Utilities\CollisionData.cs" />
     <Compile Include="Utilities\CollisionDispatcher.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Creep.cs" />

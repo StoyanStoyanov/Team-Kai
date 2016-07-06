@@ -11,6 +11,10 @@
         // Calls the update method of every object in the scene
         public static void Update(GameTime gameTime)
         {
+             CollisionDispatcher.CheckCollision(objects);
+
+            
+
             for (int i = 0; i < objects.Count; i++)
             {
                 objects[i].Update(gameTime);

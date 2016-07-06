@@ -11,8 +11,8 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
     {
         private const string CollisionGroupString = "Archer";
 
-        public Archer(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, int damage, int health, int cooldown, Game theGame)
-            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health, cooldown,theGame)
+        public Archer(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, int damage, int health, int cooldown)
+            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health, cooldown)
         {
         }
 

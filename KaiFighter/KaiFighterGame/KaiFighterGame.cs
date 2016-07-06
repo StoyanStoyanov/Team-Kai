@@ -10,12 +10,16 @@ namespace KaiFighterGame
     using Objects.DynamicObjects.Characters;
     using Utilities;
     using Objects.StaticObjects;
+    using System;
 
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class KaiFighterGame : Game
     {
+        private Player firstFighter;
+        private Wall someWall;
+        private Archer testArcher;
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private bool canToggleFullScreen = true;
@@ -23,10 +27,10 @@ namespace KaiFighterGame
         public KaiFighterGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
-
+            
             // set resolution
-            this.graphics.PreferredBackBufferWidth = GameResolution.DefoultWidth;
-            this.graphics.PreferredBackBufferHeight = GameResolution.DefoultHeight;
+            this.graphics.PreferredBackBufferWidth = GameResolution.DefaultWidth;
+            this.graphics.PreferredBackBufferHeight = GameResolution.DefaultHeight;
             this.graphics.ApplyChanges();
 
             this.Content.RootDirectory = "Content";
@@ -35,7 +39,7 @@ namespace KaiFighterGame
             ScalingViewportAdapter.VirtualHeight = this.graphics.PreferredBackBufferHeight;
             ScalingViewportAdapter.VirtualWidth = this.graphics.PreferredBackBufferWidth;
         }
-
+        
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -47,8 +51,8 @@ namespace KaiFighterGame
             DynamicObjectFactory factory = new DynamicObjectFactory();
 
             // the next two lines should be performed by the factory
-            Player firstFighter = factory.Create(
-                new Vector2(200, 200),
+            firstFighter = factory.Create(
+                new Vector2(500, 500),
                 ImageAddresses.PlayerImage,
                 ObjectType.Player,
                 Color.White,
@@ -58,8 +62,7 @@ namespace KaiFighterGame
                 movementSpeed: 5f,
                 damage: 50,
                 health: 100,
-                cooldown: 5,
-                theGame: this) as Player;
+                cooldown: 5) as Player;
 
             // add the fighter to the scene
             SceneManager.AddObject(firstFighter, this);
@@ -92,7 +95,7 @@ namespace KaiFighterGame
 
             SceneManager.AddObject(testWizard, this);
 
-            Archer testArcher = factory.Create(new Vector2(800, 500),
+            this.testArcher = factory.Create(new Vector2(800, 500),
                 ImageAddresses.ArcherImage,
                 ObjectType.Archer,
                 Color.White,
@@ -102,8 +105,7 @@ namespace KaiFighterGame
                 movementSpeed: 1f,
                 damage: 5,
                 health: 100,
-                cooldown: 50,
-                theGame: this) as Archer;
+                cooldown: 50) as Archer;
 
             SceneManager.AddObject(testArcher, this);
 
@@ -111,8 +113,8 @@ namespace KaiFighterGame
             StaticObjectFactory staticFactory = new StaticObjectFactory();
 
             // create a wall for testing purposes
-            Wall testWall = staticFactory.Create(
-                new Vector2(100, 500),
+            someWall = staticFactory.Create(
+                new Vector2(300, 300),
                 ImageAddresses.WallImage,
                 ObjectType.Wall,
                 Color.Red,
@@ -121,8 +123,8 @@ namespace KaiFighterGame
                 1f) as Wall;
 
             // add the wall to the scene
-            SceneManager.AddObject(testWall, this);
-
+            SceneManager.AddObject(someWall, this);
+           
             base.Initialize();
         }
 
@@ -152,6 +154,7 @@ namespace KaiFighterGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+          
             // toggle between full screen and windowed
             if (Keyboard.GetState().IsKeyDown(Keys.F) && this.canToggleFullScreen == true)
             {

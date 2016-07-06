@@ -17,7 +17,6 @@
             int damage = 0, 
             int health = 0, 
             int cooldown = 0,
-            Game theGame = null,
             Vector2 targetDir = default(Vector2));
     }
 }
