@@ -57,21 +57,6 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
             }
         }
 
-        public override void RespondToCollision(GameObject gameObject)
-        {
-
-            if (gameObject.ObjType == ObjectType.Wall)
-            {
-
-                this.PositionX = this.PreviousPositionX;
-                this.PositionY = this.PreviousPositionY;
-
-            }
-            else if (gameObject.GetCollisionGroupString() == "Bullet" && (gameObject as Bullet).IsPlayerFire)
-            {
-                this.Health -= (gameObject as Bullet).Damage;
-            }
-        }
 
         public override string GetCollisionGroupString()
         {
