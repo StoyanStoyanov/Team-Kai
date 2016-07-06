@@ -16,15 +16,7 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
         {
         }
 
-        /*public override void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void LoadContent(Game theGame)
-        {
-            throw new NotImplementedException();
-        }*/
+    
 
         public override void Update(GameTime gameTime)
         {
@@ -37,38 +29,14 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
 
             // update the dynamic object
             base.Update(gameTime);
-        }
 
-        public override void RespondToCollision(GameObject gameObject)
-        {
-            if (gameObject.GetCollisionGroupString() == "Wall")
+            if (this.Health <= 0)
             {
-                if ((this.PositionY + this.Height) >= (gameObject.PositionY))
-                {
-                    this.PositionY -= 10;
-                }
-
-                if (this.PositionY <= gameObject.Height)
-                {
-                    this.PositionY += 10;
-                }
-
-                if (this.PositionX <= gameObject.PositionX + gameObject.Width)
-                {
-                    this.PositionX += 10;
-                }
-
-                if (this.PositionX + this.Width >= gameObject.PositionX)
-                {
-                    this.PositionX -= 10;
-                }
-            }
-            else if (gameObject.GetCollisionGroupString() == "Bullet")
-            {
-                this.Health -= (gameObject as Bullet).Damage;
+                IsDestroyed = true;
             }
         }
 
+     
         public override string GetCollisionGroupString()
         {
             return CollisionGroupString;

@@ -57,7 +57,7 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters
                 movementSpeed: 5,
                 targetDir: this.shootDirection
                ) as Bullet;
-                someBullet.IsFriendlyFire = (this.GetObjectType() == ObjectType.Player ? true : false);
+                someBullet.IsPlayerFire = (this.GetObjectType() == ObjectType.Player ? true : false);
                 SceneManager.AddObject(someBullet, EntryPoint.TheGame);
 
                 this.shooterCooldown = this.initialCooldown;

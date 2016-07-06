@@ -8,7 +8,7 @@
     {
         private const string CollisionGroupString = "Bullet";
         private Vector2 targetDir;
-        private  bool isFriendlyFire;
+        private  bool isPlayerFire;
 
         public Bullet(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, int damage, Vector2 targetDirection)
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)
@@ -21,15 +21,15 @@
         public int Damage { get; set; }
 
         // TODO - Change that !!!
-        public bool IsFriendlyFire
+        public bool IsPlayerFire
         {
             get
             {
-                return this.isFriendlyFire;
+                return this.isPlayerFire;
             }
             set
             {
-                this.isFriendlyFire = value;
+                this.isPlayerFire = value;
             }
         }
 
@@ -45,7 +45,7 @@
 
         public override void RespondToCollision(GameObject gameObject)
         {
-            if (this.IsFriendlyFire == true)
+            if (this.IsPlayerFire == true)
             {
                 if (gameObject.ObjType != ObjectType.Player)
                 {
