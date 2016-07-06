@@ -51,11 +51,20 @@
                 {
                     this.IsDestroyed = true;
                 }
-            }else
+                if (gameObject.ObjType == ObjectType.Bonus)
+                {
+                    this.IsDestroyed = false;
+                }
+            }
+            else
             {
                 if (gameObject.ObjType != ObjectType.Archer)
                 {
                     this.IsDestroyed = true;
+                }
+                if (gameObject.ObjType == ObjectType.Bonus)
+                {
+                    this.IsDestroyed = false;
                 }
             }
            

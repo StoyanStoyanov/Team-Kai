@@ -1,5 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
+using KaiFighterGame.Factories;
+using KaiFighterGame.Global_Constants;
 using KaiFighterGame.Objects.DynamicObjects.Projectiles;
+using KaiFighterGame.Objects.StaticObjects;
 
 namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
 {
@@ -11,6 +14,7 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
     public class Wizard : Character
     {
         private const string CollisionGroupString = "Wizard";
+
 
         public Wizard(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, double health)
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health)
@@ -36,15 +40,16 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
             }
 
             ////TODO Hit like creep + magic 1/10000 updates 
-            
 
-            // update the dynamic object
-            base.Update(gameTime);
 
             if (this.Health <= 0)
             {
                 IsDestroyed = true;
+
             }
+
+            // update the dynamic object
+            base.Update(gameTime);
         }
 
         public override string GetCollisionGroupString()

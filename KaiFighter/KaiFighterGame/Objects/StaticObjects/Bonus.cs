@@ -14,19 +14,10 @@
         {
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void LoadContent(Game theGame)
-        {
-            throw new NotImplementedException();
-        }
     
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
         public override void RespondToCollision(GameObject gameObject)
@@ -41,7 +32,7 @@
 
         public override void Initialize()
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
     }
 }
