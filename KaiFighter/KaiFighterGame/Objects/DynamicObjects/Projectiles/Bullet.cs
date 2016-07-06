@@ -10,7 +10,7 @@
         private Vector2 targetDir;
         private  bool isPlayerFire;
 
-        public Bullet(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, int damage, Vector2 targetDirection)
+        public Bullet(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, Vector2 targetDirection)
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)
         {
             this.Damage = damage;
@@ -18,7 +18,7 @@
            
         }
 
-        public int Damage { get; set; }
+        public double Damage { get; set; }
 
         // TODO - Change that !!!
         public bool IsPlayerFire

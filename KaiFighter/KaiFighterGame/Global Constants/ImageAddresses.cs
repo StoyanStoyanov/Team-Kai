@@ -9,6 +9,8 @@
         public const string WallImage =  "Images/Statics/line";
         public const string Projectile0Image= "Images/Projectiles/0";
         public const string Projectile1Image = "Images/Projectiles/1";
+        public const string BonusImage = "Images/Textures/bonus";
+
 
     }
 }

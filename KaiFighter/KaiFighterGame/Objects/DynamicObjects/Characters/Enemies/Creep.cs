@@ -12,7 +12,7 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
     {
         private const string CollisionGroupString = "Creep";
 
-        public Creep(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, int damage, int health)
+        public Creep(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, double health)
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health)
         {
             
