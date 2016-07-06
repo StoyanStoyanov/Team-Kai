@@ -23,34 +23,19 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
             Vector2 test = new Vector2(150, 150);
             this.MoveTowards(test);
 
-            //TODO: decide how we will shoot - random direction or directly to the player ! 
-
-            this.Shoot(Vector2.Normalize(new Vector2(0, -1)));
-
-            // update the dynamic object
-            base.Update(gameTime);
+            this.Shoot(Vector2.Normalize(new Vector2(0, -1)));         
 
             if (this.Health <= 0)
             {
                 IsDestroyed = true;
+
             }
+
+            // update the dynamic object
+            base.Update(gameTime);
+
         }
 
-        public override void RespondToCollision(GameObject gameObject)
-        {
-
-            if (gameObject.ObjType == ObjectType.Wall)
-            {
-
-                this.PositionX = this.PreviousPositionX;
-                this.PositionY = this.PreviousPositionY;
-
-            }
-            else if (gameObject.GetCollisionGroupString() == "Bullet" && (gameObject as Bullet).IsPlayerFire)
-            {
-                this.Health -= (gameObject as Bullet).Damage;
-            }
-        }
 
         public override string GetCollisionGroupString()
         {
