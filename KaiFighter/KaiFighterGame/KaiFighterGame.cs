@@ -19,6 +19,7 @@ namespace KaiFighterGame
     {
         private Player firstFighter;
         private Wall someWall;
+        private Wall leftHorizontalWall;
         private Archer testArcher;
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -122,8 +123,19 @@ namespace KaiFighterGame
                 0f,
                 1f) as Wall;
 
+            // left horizontal wall
+            leftHorizontalWall = staticFactory.Create(
+                new Vector2(0, 768),
+                ImageAddresses.WallImage,
+                ObjectType.Wall,
+                Color.Green,
+                4f,
+                0f,
+                1f) as Wall;
+
             // add the wall to the scene
             SceneManager.AddObject(someWall, this);
+            SceneManager.AddObject(leftHorizontalWall, this);
            
             base.Initialize();
         }
