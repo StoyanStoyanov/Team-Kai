@@ -1,4 +1,6 @@
-﻿namespace KaiFighterGame.Objects.DynamicObjects.Characters
+﻿using KaiFighterGame.Global_Constants;
+
+namespace KaiFighterGame.Objects.DynamicObjects.Characters
 {
     using System;
     using Factories;
@@ -10,17 +12,15 @@
     // this is the base class for all ranged characters
     public class Shooter : Character, IRanged
     {
-        private Game currentGame;
         private DynamicObjectFactory bulletFactory;
         private int shooterCooldown;
         private int initialCooldown;
         private Vector2 shootDirection;
         private Random bulletRandomizer;
 
-        public Shooter(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, int damage, int health, int cooldown, Game theGame) 
+        public Shooter(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, int damage, int health, int cooldown) 
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health)
         {
-            this.currentGame = theGame;
             this.bulletFactory = new DynamicObjectFactory();
             this.shooterCooldown = cooldown;
             this.initialCooldown = this.shooterCooldown;
@@ -40,8 +40,8 @@
             {
                 string[] bulletImages =
                 {
-                    "Images/Projectiles/0",
-                    "Images/Projectiles/1"
+                    ImageAddresses.Projectile0Image,
+                    ImageAddresses.Projectile1Image
                 };
 
                 Bullet someBullet = this.bulletFactory.Create(
@@ -55,10 +55,9 @@
                 damage: 10,
                 cooldown: 8,
                 movementSpeed: 5,
-                theGame: this.currentGame,
                 targetDir: this.shootDirection) as Bullet;
 
-                SceneManager.AddObject(someBullet, this.currentGame);
+                SceneManager.AddObject(someBullet, EntryPoint.TheGame);
 
                 this.shooterCooldown = this.initialCooldown;
             }

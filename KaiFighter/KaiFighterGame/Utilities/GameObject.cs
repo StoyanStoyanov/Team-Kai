@@ -41,6 +41,26 @@
             this.objectLayerDepth = layerDepth;
         }
 
+        public ObjectType ObjType
+        {
+            get
+            {
+                return this.objectType;
+            }
+        }
+
+        public Rectangle BoundingBox
+        {
+            get
+            {
+                return new Rectangle(
+                    (int)(this.PositionX - this.Width / 2 * this.objectScale),
+                    (int)(this.PositionY - this.Height / 2 * this.objectScale), 
+                    (int)(this.Width * this.objectScale - 10),
+                    (int)(this.Height * this.objectScale - 10));
+            }
+        }
+
         /// <summary>
         /// Gets and sets the X position of the object.
         /// </summary>
@@ -54,7 +74,7 @@
             set
             {
                 this.position.X = value;
-            } 
+            }
         }
 
         /// <summary>

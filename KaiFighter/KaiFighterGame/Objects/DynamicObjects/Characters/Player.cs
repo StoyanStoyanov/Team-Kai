@@ -5,6 +5,7 @@
     using Microsoft.Xna.Framework.Input;
     using Projectiles;
     using Utilities;
+    using System.Diagnostics;
 
     public class Player : Shooter
     {
@@ -13,15 +14,15 @@
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
 
-        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, int damage, int health, int cooldown, Game theGame) : 
-            base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown, theGame)
+        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, int damage, int health, int cooldown) : 
+            base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
         {
         }
 
         public override void Update(GameTime gameTime)
         {
             // Handles the users inputw
-            this.HandleInput(Keyboard.GetState());
+            this.HandleInput(Keyboard.GetState());       
 
             // update the dynamic object
             base.Update(gameTime);
@@ -29,47 +30,37 @@
 
         public override void RespondToCollision(GameObject gameObject)
         {
-            if (gameObject.GetCollisionGroupString() == "Wall")
+
+            if (gameObject.ObjType == ObjectType.Wall)
             {
-                if ((this.PositionY + this.Height) >= (gameObject.PositionY))
-                {
-                    // shoud check the value, maybe make it const
-                    this.PositionY -= 10;
-                }
 
-                if (this.PositionY <= gameObject.Height)
-                {
-                    this.PositionY += 10;
-                }
-
-                if (this.PositionX <= gameObject.PositionX + gameObject.Width)
-                {
-                    this.PositionX += 10;
-                }
-
-                if (this.PositionX + this.Width >= gameObject.PositionX)
-                {
-                    this.PositionX -= 10;
-                }
+            this.PositionX = this.PreviousPositionX;
+            this.PositionY = this.PreviousPositionY;
+           
             }
+
             else if (gameObject.GetCollisionGroupString() == "Bullet")
             {
                 this.Health -= (gameObject as Bullet).Damage;
             }
-            else if (gameObject.GetCollisionGroupString() == "Archer" || gameObject.GetCollisionGroupString() == "Creep")
+            else if (gameObject.GetCollisionGroupString() == "Archer" || 
+                        gameObject.GetCollisionGroupString() == "Creep" || 
+                        gameObject.GetCollisionGroupString() == "Wizard")
             {
                 this.Health -= (gameObject as Character).Damage;
+                this.PositionX = this.PreviousPositionX;
+                this.PositionY = this.PreviousPositionY;
+                }
+                else if (gameObject.GetCollisionGroupString() == "BonusHealth")
+                {
+                    Random rnd = new Random();
+                    this.Health += rnd.Next(-5, 10);
+                }
+                else if (gameObject.GetCollisionGroupString() == "Door")
+                {
+                // TODO- NEXT LEVEL
+                }
             }
-            else if (gameObject.GetCollisionGroupString() == "BonusHealth")
-            {
-                Random rnd = new Random();
-                this.Health += rnd.Next(-5, 10);
-            }
-            else if (gameObject.GetCollisionGroupString() == "Door")
-            {
-                // TODO: Go to next level
-            }
-        }
 
         public override string GetCollisionGroupString()
         {

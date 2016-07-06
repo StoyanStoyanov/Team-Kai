@@ -1,4 +1,7 @@
-﻿namespace KaiFighterGame
+﻿using KaiFighterGame.Global_Constants;
+using KaiFighterGame.Objects.DynamicObjects.Characters.Enemies;
+
+namespace KaiFighterGame
 {
     using Factories;
     using Microsoft.Xna.Framework;
@@ -7,12 +10,16 @@
     using Objects.DynamicObjects.Characters;
     using Utilities;
     using Objects.StaticObjects;
+    using System;
 
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class KaiFighterGame : Game
     {
+        private Player firstFighter;
+        private Wall someWall;
+        private Archer testArcher;
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private bool canToggleFullScreen = true;
@@ -20,10 +27,10 @@
         public KaiFighterGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
-
+            
             // set resolution
-            this.graphics.PreferredBackBufferWidth = 1366;
-            this.graphics.PreferredBackBufferHeight = 768;
+            this.graphics.PreferredBackBufferWidth = GameResolution.DefaultWidth;
+            this.graphics.PreferredBackBufferHeight = GameResolution.DefaultHeight;
             this.graphics.ApplyChanges();
 
             this.Content.RootDirectory = "Content";
@@ -32,7 +39,7 @@
             ScalingViewportAdapter.VirtualHeight = this.graphics.PreferredBackBufferHeight;
             ScalingViewportAdapter.VirtualWidth = this.graphics.PreferredBackBufferWidth;
         }
-
+        
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -44,29 +51,71 @@
             DynamicObjectFactory factory = new DynamicObjectFactory();
 
             // the next two lines should be performed by the factory
-            Player firstFighter = factory.Create(
-                new Vector2(200, 200), 
-                "Images/Textures/PlayerTexture", 
-                ObjectType.Player, 
-                Color.White, 
-                scale: 0.5f, 
-                rotation: 0, 
-                layerDepth: 1f, 
+            firstFighter = factory.Create(
+                new Vector2(500, 500),
+                ImageAddresses.PlayerImage,
+                ObjectType.Player,
+                Color.White,
+                scale: 0.5f,
+                rotation: 0,
+                layerDepth: 1f,
                 movementSpeed: 5f,
-                damage: 50, 
+                damage: 50,
                 health: 100,
-                cooldown: 5,
-                theGame: this) as Player;
+                cooldown: 5) as Player;
 
             // add the fighter to the scene
             SceneManager.AddObject(firstFighter, this);
 
+            //create first test creep and archer, maybe we should do array? Random cooldown, movement, speed ..... 
+
+            Creep testCreep = factory.Create(new Vector2(205, 555),
+                ImageAddresses.CreepImage,
+                ObjectType.Creep,
+                Color.White,
+                scale: 0.5f,
+                rotation: 0,
+                layerDepth: 1f,
+                movementSpeed: 1f,
+                damage: 5,
+                health: 100) as Creep;
+
+            SceneManager.AddObject(testCreep, this);
+
+            Wizard testWizard = factory.Create(new Vector2(405, 305),
+                ImageAddresses.WizardImage,
+                ObjectType.Wizard,
+                Color.White,
+                scale: 0.5f,
+                rotation: 0,
+                layerDepth: 1f,
+                movementSpeed: 1f,
+                damage: 5,
+                health: 100) as Wizard;
+
+            SceneManager.AddObject(testWizard, this);
+
+            this.testArcher = factory.Create(new Vector2(800, 500),
+                ImageAddresses.ArcherImage,
+                ObjectType.Archer,
+                Color.White,
+                scale: 0.5f,
+                rotation: 0,
+                layerDepth: 1f,
+                movementSpeed: 1f,
+                damage: 5,
+                health: 100,
+                cooldown: 50) as Archer;
+
+            SceneManager.AddObject(testArcher, this);
+
+
             StaticObjectFactory staticFactory = new StaticObjectFactory();
 
             // create a wall for testing purposes
-            Wall testWall = staticFactory.Create(
-                new Vector2(100, 500),
-                "Images/Statics/line",
+            someWall = staticFactory.Create(
+                new Vector2(300, 300),
+                ImageAddresses.WallImage,
                 ObjectType.Wall,
                 Color.Red,
                 1f,
@@ -74,8 +123,8 @@
                 1f) as Wall;
 
             // add the wall to the scene
-            SceneManager.AddObject(testWall, this);
-
+            SceneManager.AddObject(someWall, this);
+           
             base.Initialize();
         }
 
@@ -105,6 +154,7 @@
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+          
             // toggle between full screen and windowed
             if (Keyboard.GetState().IsKeyDown(Keys.F) && this.canToggleFullScreen == true)
             {

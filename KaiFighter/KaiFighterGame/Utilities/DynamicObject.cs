@@ -14,7 +14,24 @@
         private bool movingWithoutStop;
         private Vector2 destination;
         private Vector2 start;
+        private Vector2 previousPosition;
         private float distance;
+
+        public float PreviousPositionX
+        {
+            get
+            {
+                return this.previousPosition.X;
+            }
+        }
+
+        public float PreviousPositionY
+        {
+            get
+            {
+                return this.previousPosition.Y;
+            }
+        }
 
         public DynamicObject(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed) 
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth)
@@ -61,6 +78,9 @@
 
         public override void Update(GameTime gameTime)
         {
+            this.previousPosition.X = this.PositionX;
+            this.previousPosition.Y = this.PositionY;
+
             if (this.objDirection.Y == -1)
             {
                 this.PositionY -= this.objSpeed;
