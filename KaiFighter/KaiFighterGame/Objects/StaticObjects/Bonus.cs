@@ -31,7 +31,12 @@
 
         public override void RespondToCollision(GameObject gameObject)
         {
-            this.IsDestroyed = true;
+
+            if (gameObject.GetObjectType() == ObjectType.Player)
+            {
+                this.IsDestroyed = true;
+            }
+          
         }
 
         public override void Initialize()

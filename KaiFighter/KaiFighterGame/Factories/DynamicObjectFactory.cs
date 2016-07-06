@@ -32,7 +32,8 @@
             int damage = 0,
             int health = 0,
             int cooldown = 0,
-            Vector2 targetDir = default(Vector2))
+            Vector2 targetDir = default(Vector2)
+            )
         {
             switch (objectType)
             {
@@ -45,7 +46,7 @@
                 case ObjectType.Wizard:
                     return new Wizard(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health);
                 case ObjectType.Bullet:
-                    return new Bullet(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, targetDir);
+                    return new Bullet(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, targetDir );
                 default:
                     throw new ArgumentException();
             }

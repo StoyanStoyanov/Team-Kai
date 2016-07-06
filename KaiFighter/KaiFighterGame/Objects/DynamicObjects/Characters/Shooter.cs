@@ -52,11 +52,12 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters
                 layerDepth: 1f,
                 rotation: 0f,
                 scale: .3f,
-                damage: 10,
+                damage: this.Damage,
                 cooldown: 8,
                 movementSpeed: 5,
-                targetDir: this.shootDirection) as Bullet;
-
+                targetDir: this.shootDirection
+               ) as Bullet;
+                someBullet.IsFriendlyFire = (this.GetObjectType() == ObjectType.Player ? true : false);
                 SceneManager.AddObject(someBullet, EntryPoint.TheGame);
 
                 this.shooterCooldown = this.initialCooldown;

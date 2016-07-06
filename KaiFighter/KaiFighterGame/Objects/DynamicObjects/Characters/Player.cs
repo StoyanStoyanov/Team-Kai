@@ -26,6 +26,12 @@
 
             // update the dynamic object
             base.Update(gameTime);
+
+
+            if (this.Health <= 0)
+            {
+                SceneManager.DestroyObject(this);
+            }
         }
 
         public override void RespondToCollision(GameObject gameObject)
@@ -39,24 +45,34 @@
            
             }
 
-            else if (gameObject.GetCollisionGroupString() == "Bullet")
+            else if (gameObject.GetCollisionGroupString() == "Bullet" && (gameObject as Bullet).IsFriendlyFire == false)
             {
+
+                Debug.Write(String.Format("Health: {0}, Colide with: {1} ", this.Health, gameObject.GetType()));
+               
                 this.Health -= (gameObject as Bullet).Damage;
+              //  SceneManager.DestroyObject(gameObject);
             }
             else if (gameObject.GetCollisionGroupString() == "Archer" || 
                         gameObject.GetCollisionGroupString() == "Creep" || 
                         gameObject.GetCollisionGroupString() == "Wizard")
             {
-                this.Health -= (gameObject as Character).Damage;
+               // Debug.Write(String.Format("Health: {0}, Colide with: {1} ", this.Health, gameObject.GetType()));
+               // this.Health -= (gameObject as Character).Damage;
                 this.PositionX = this.PreviousPositionX;
                 this.PositionY = this.PreviousPositionY;
+                if (this.Health <= 0)
+                {
+                    this.IsDestroyed = true;
                 }
-                else if (gameObject.GetCollisionGroupString() == "BonusHealth")
+                }
+                else if (gameObject.GetObjectType() == ObjectType.Bonus)
                 {
                     Random rnd = new Random();
                     this.Health += rnd.Next(-5, 10);
+               
                 }
-                else if (gameObject.GetCollisionGroupString() == "Door")
+                else if (gameObject.GetObjectType() == ObjectType.Door)
                 {
                 // TODO- NEXT LEVEL
                 }
