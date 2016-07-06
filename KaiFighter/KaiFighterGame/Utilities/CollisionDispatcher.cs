@@ -26,7 +26,8 @@
                     if (myObjectList[i].BoundingBox.Intersects(myObjectList[j].BoundingBox))
                     {
                         myObjectList[i].RespondToCollision(myObjectList[j]);
-                        myObjectList[j].RespondToCollision(myObjectList[i]);
+                      
+                            myObjectList[j].RespondToCollision(myObjectList[i]);
                     }
                 }
             }

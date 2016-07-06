@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System.Linq;
 
     public static class SceneManager
     {
@@ -11,14 +12,20 @@
         // Calls the update method of every object in the scene
         public static void Update(GameTime gameTime)
         {
-             CollisionDispatcher.CheckCollision(objects);
 
-            
+             CollisionDispatcher.CheckCollision(objects);
 
             for (int i = 0; i < objects.Count; i++)
             {
+
                 objects[i].Update(gameTime);
+                if (objects[i].IsDestroyed == true)
+                {
+                    SceneManager.DestroyObject(objects[i]);
+                }
+
             }
+           
         }
 
         // Calls the draw method of every object in the scene
