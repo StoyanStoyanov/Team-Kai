@@ -45,7 +45,7 @@
            
             }
 
-            else if (gameObject.GetCollisionGroupString() == "Bullet" && (gameObject as Bullet).IsFriendlyFire == false)
+            else if (gameObject.GetCollisionGroupString() == "Bullet" && (gameObject as Bullet).IsPlayerFire == false)
             {
 
                 Debug.Write(String.Format("Health: {0}, Colide with: {1} ", this.Health, gameObject.GetType()));
