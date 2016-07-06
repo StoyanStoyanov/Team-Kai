@@ -58,8 +58,7 @@
                 }
                 else if (gameObject.GetCollisionGroupString() == "Door")
                 {
-                //
-                    // TODO: Go to next level
+                // TODO- NEXT LEVEL
                 }
             }
 
