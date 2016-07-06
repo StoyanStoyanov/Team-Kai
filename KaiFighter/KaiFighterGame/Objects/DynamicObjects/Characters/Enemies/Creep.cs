@@ -57,6 +57,7 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
             }
         }
 
+
         public override string GetCollisionGroupString()
         {
             return CollisionGroupString;

@@ -29,41 +29,24 @@
 
         public override void RespondToCollision(GameObject gameObject)
         {
+
+
             if (gameObject is StaticObject)
             {
 
-                //TODO- Go back
-                if ((this.PositionY + this.Height) >= (gameObject.PositionY))
+                if (gameObject.ObjType == ObjectType.Wall)
                 {
-                    this.PositionY -= 10;
-                }
-
-                if (this.PositionY <= gameObject.Height)
-                {
-                    this.PositionY += 10;
-                }
-
-                if (this.PositionX <= gameObject.PositionX + gameObject.Width)
-                {
-                    this.PositionX += 10;
-                }
-
-                if (this.PositionX + this.Width >= gameObject.PositionX)
-                {
-                    this.PositionX -= 10;
+                    this.PositionX = this.PreviousPositionX;
+                    this.PositionY = this.PreviousPositionY;
                 }
             }
 
-            else if (gameObject.GetCollisionGroupString() == "Bullet" && (gameObject as Bullet).IsPlayerFire == true)
+            else if (gameObject.GetCollisionGroupString() == "Bullet" && (gameObject as Bullet).IsPlayerFire)
             {
                 this.Health -= (gameObject as Bullet).Damage;
-                Debug.Write(String.Format("Health: {0}, coldie with :{1}", this.Health, gameObject.GetObjectType()));
-
+                //Debug.Write(String.Format("Health: {0}, coldie with :{1}", this.Health, gameObject.GetObjectType()));
             }
-            else if (gameObject.GetObjectType() == ObjectType.Bonus)
-            {
-
-            }
+            
         }
 
         public override void Initialize()
