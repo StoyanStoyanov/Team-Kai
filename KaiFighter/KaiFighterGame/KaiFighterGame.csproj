@@ -41,12 +41,16 @@
   <ItemGroup>
     <Compile Include="Factories\AbstractDynamicObjectFactory.cs" />
     <Compile Include="Factories\AbstractStaticObjectFactory.cs" />
+    <Compile Include="Factories\AbstractUiFactory.cs" />
     <Compile Include="Factories\DynamicObjectFactory.cs" />
     <Compile Include="Factories\StaticObjectFactory.cs" />
+    <Compile Include="Factories\UiFactory.cs" />
     <Compile Include="Global Constants\ImageAddresses.cs" />
     <Compile Include="Global Constants\GameResolution.cs" />
+    <Compile Include="Global Constants\RenderLayers.cs" />
     <Compile Include="Interfaces\IDestructable.cs" />
     <Compile Include="Interfaces\IKiller.cs" />
+    <Compile Include="Interfaces\IScene.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Character.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Wizard.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Player.cs" />
@@ -69,6 +73,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Archer.cs" />
     <Compile Include="Objects\DynamicObjects\Projectiles\Bullet.cs" />
+    <Compile Include="Scenes\MainMenu.cs" />
+    <Compile Include="Scenes\NormalLevel.cs" />
+    <Compile Include="UI\Background.cs" />
     <Compile Include="UI\Button.cs" />
     <Compile Include="Utilities\UiButtonState.cs" />
     <Compile Include="Utilities\CollisionData.cs" />

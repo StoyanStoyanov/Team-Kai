@@ -18,7 +18,7 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters
         private Vector2 shootDirection;
         private Random bulletRandomizer;
 
-        public Shooter(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, double damage, double health, int cooldown) 
+        public Shooter(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, int damage, int health, int cooldown) 
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health)
         {
             this.bulletFactory = new DynamicObjectFactory();
@@ -58,7 +58,7 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters
                 targetDir: this.shootDirection
                ) as Bullet;
                 someBullet.IsPlayerFire = (this.ObjType == ObjectType.Player ? true : false);
-                SceneManager.AddObject(someBullet, EntryPoint.TheGame);
+                SceneManager.AddObject(someBullet);
 
                 this.shooterCooldown = this.initialCooldown;
             }
