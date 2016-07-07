@@ -18,7 +18,6 @@ namespace KaiFighterGame
     public class KaiFighterGame : Game
     {
         private Player firstFighter;
-        private Wall someWall;
         private Archer testArcher;
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -27,7 +26,7 @@ namespace KaiFighterGame
         public KaiFighterGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
-            
+
             // set resolution
             this.graphics.PreferredBackBufferWidth = GameResolution.DefaultWidth;
             this.graphics.PreferredBackBufferHeight = GameResolution.DefaultHeight;
@@ -39,7 +38,7 @@ namespace KaiFighterGame
             ScalingViewportAdapter.VirtualHeight = this.graphics.PreferredBackBufferHeight;
             ScalingViewportAdapter.VirtualWidth = this.graphics.PreferredBackBufferWidth;
         }
-        
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -109,22 +108,56 @@ namespace KaiFighterGame
 
             SceneManager.AddObject(testArcher, this);
 
-
             StaticObjectFactory staticFactory = new StaticObjectFactory();
 
-            // create a wall for testing purposes
-            someWall = staticFactory.Create(
-                new Vector2(300, 300),
-                ImageAddresses.WallImage,
+            // Adding all surronding walls
+            for (int i = 0, horizontalUpdater = 0, verticalUpdater = 0; i < 8; i++)
+            {
+                Wall rightSide1Wall = staticFactory.Create(
+                new Vector2(GameResolution.DefaultWidth, verticalUpdater),
+                ImageAddresses.VerticalWallImage,
                 ObjectType.Wall,
-                Color.Red,
+                Color.White,
                 1f,
                 0f,
                 1f) as Wall;
 
-            // add the wall to the scene
-            SceneManager.AddObject(someWall, this);
-           
+                Wall leftSide2Wall = staticFactory.Create(
+                new Vector2(0, verticalUpdater),
+                ImageAddresses.VerticalWallImage,
+                ObjectType.Wall,
+                Color.White,
+                1f,
+                0f,
+                1f) as Wall;
+
+                Wall upperWall = staticFactory.Create(
+                new Vector2(horizontalUpdater, 0),
+                ImageAddresses.HorizonwalWallImage,
+                ObjectType.Wall,
+                Color.White,
+                1f,
+                0f,
+                1f) as Wall;
+
+                Wall downWall = staticFactory.Create(
+                new Vector2(horizontalUpdater, GameResolution.DefaultHeight),
+                ImageAddresses.HorizonwalWallImage,
+                ObjectType.Wall,
+                Color.White,
+                1f,
+                0f,
+                1f) as Wall;
+
+                SceneManager.AddObject(rightSide1Wall, this);
+                SceneManager.AddObject(leftSide2Wall, this);
+                SceneManager.AddObject(upperWall, this);
+                SceneManager.AddObject(downWall, this);
+
+                horizontalUpdater += 180;
+                verticalUpdater += 90;
+            }
+
             base.Initialize();
         }
 
@@ -154,7 +187,7 @@ namespace KaiFighterGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-          
+
             // toggle between full screen and windowed
             if (Keyboard.GetState().IsKeyDown(Keys.F) && this.canToggleFullScreen == true)
             {
