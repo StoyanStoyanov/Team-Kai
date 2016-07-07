@@ -1,45 +1,25 @@
-﻿using System.Diagnostics;
-using KaiFighterGame.Factories;
-using KaiFighterGame.Global_Constants;
-using KaiFighterGame.Objects.StaticObjects;
-
-namespace KaiFighterGame.Utilities
+﻿namespace KaiFighterGame.Utilities
 {
     using System.Collections.Generic;
+    using Interfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using System.Linq;
 
     public static class SceneManager
     {
-        private static List<GameObject> objects = new List<GameObject>();
-        private static StaticObjectFactory factory = new StaticObjectFactory();
+        private static IScene currentScene;
+        private static List<IRenderable> objects = new List<IRenderable>();
+
         // Calls the update method of every object in the scene
         public static void Update(GameTime gameTime)
         {
-
-             CollisionDispatcher.CheckCollision(objects);
-
+            // CollisionDispatcher.CheckCollision(objects);
             for (int i = 0; i < objects.Count; i++)
             {
-
                 objects[i].Update(gameTime);
-                if (objects[i].IsDestroyed)
-                {
-                    Debug.Write(objects[i].ObjType);
-                    if (objects[i].ObjType != ObjectType.Bullet && objects[i].ObjType != ObjectType.Bonus)
-                    {
-                        Bonus someBonus =
-                            factory.Create(new Vector2(objects[i].PositionX, objects[i].PositionY),
-                                ImageAddresses.BonusImage, ObjectType.Bonus, Color.White, 1f, 0f, 1f) as Bonus;
-                        SceneManager.AddObject(someBonus, EntryPoint.TheGame);
-                    }
-                    SceneManager.DestroyObject(objects[i]);
-
-                }
-
             }
-           
+
+            currentScene.Update(gameTime);
         }
 
         // Calls the draw method of every object in the scene
@@ -52,12 +32,12 @@ namespace KaiFighterGame.Utilities
         }
 
         // adds object to the scene
-        public static void AddObject(GameObject obj, Game theGame)
+        public static void AddObject(IRenderable obj)
         {
             objects.Add(obj);
 
+            obj.LoadContent(EntryPoint.TheGame);
             obj.Initialize();
-            obj.LoadContent(theGame);
         }
 
         // destroys an object from the scene
@@ -66,8 +46,18 @@ namespace KaiFighterGame.Utilities
             objects.Remove(obj);
         }
 
+        // loads a specified scene
+        public static void LoadScene(IScene someScene)
+        {
+            ClearScene();
+
+            someScene.Load();
+
+            currentScene = someScene;
+        }
+
         // clears the scene. This should be performed after the end of each level
-        public static void ClearScene()
+        private static void ClearScene()
         {
             for (int i = 0; i < objects.Count; i++)
             {

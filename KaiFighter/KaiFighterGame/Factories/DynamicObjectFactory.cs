@@ -21,19 +21,18 @@
         /// <param name="damage">The damage of the Dynamic object</param>
         /// <returns></returns>
         public override DynamicObject Create(
-            Vector2 position, 
-            string imageLocation, 
-            ObjectType objectType, 
-            Color? objColor, 
+            Vector2 position,
+            string imageLocation,
+            ObjectType objectType,
+            Color? objColor,
             float scale,
-            float rotation, 
-            float layerDepth, 
+            float rotation,
+            float layerDepth,
             float movementSpeed,
-            double damage = 0,
-            double health = 0,
+            int damage = 0,
+            int health = 0,
             int cooldown = 0,
-            Vector2 targetDir = default(Vector2)
-            )
+            Vector2 targetDir = default(Vector2))
         {
             switch (objectType)
             {
@@ -46,7 +45,7 @@
                 case ObjectType.Wizard:
                     return new Wizard(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health);
                 case ObjectType.Bullet:
-                    return new Bullet(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, targetDir );
+                    return new Bullet(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, targetDir);
                 default:
                     throw new ArgumentException();
             }

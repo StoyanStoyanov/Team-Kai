@@ -6,16 +6,16 @@
     public abstract class AbstractDynamicObjectFactory
     {
         public abstract DynamicObject Create(
-            Vector2 position, 
-            string imageLocation, 
-            ObjectType objectType, 
-            Color? objColor, 
-            float scale, 
-            float rotation, 
-            float layerDepth, 
-            float movementSpeed, 
-            double damage = 0, 
-            double health = 0, 
+            Vector2 position,
+            string imageLocation,
+            ObjectType objectType,
+            Color? objColor,
+            float scale,
+            float rotation,
+            float layerDepth,
+            float movementSpeed,
+            int damage = 0,
+            int health = 0,
             int cooldown = 0,
             Vector2 targetDir = default(Vector2));
     }
