@@ -11,16 +11,16 @@
     // This is the parent class of the player and all enemies
     public class Character : DynamicObject, IDamageable, IKiller
     {
-        public Character(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, int damage, int health) :
+        public Character(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, double health) :
             base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)
         {
             this.Health = health;
             this.Damage = damage;
         }
 
-        public int Health { get; set; }
+        public double Health { get; set; }
 
-        public int Damage { get; set; }
+        public double Damage { get; set; }
 
         public void TakeDamage()
         {

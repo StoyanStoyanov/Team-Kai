@@ -1,5 +1,7 @@
 ﻿namespace KaiFighterGame
 {
+    using System;
+
     /// <summary>
     /// The main class.
     /// </summary>

@@ -8,7 +8,7 @@
         /// <summary>
         /// Determines the object health
         /// </summary>
-        int Health { get; set; }
+        double Health { get; set; }
 
         /// <summary>
         /// Determines how much damage the object will take when hit.
