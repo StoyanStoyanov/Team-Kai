@@ -45,7 +45,7 @@
            
             }
 
-            else if (gameObject.GetCollisionGroupString() == "Bullet" && (gameObject as Bullet).IsPlayerFire == false)
+            else if (gameObject.ObjType == ObjectType.Bullet && (gameObject as Bullet).IsPlayerFire == false)
             {
 
                 Debug.Write(String.Format("Health: {0}, Colide with: {1} ", this.Health, gameObject.GetType()));
@@ -53,9 +53,9 @@
                 this.Health -= (gameObject as Bullet).Damage;
               //  SceneManager.DestroyObject(gameObject);
             }
-            else if (gameObject.GetCollisionGroupString() == "Archer" || 
-                        gameObject.GetCollisionGroupString() == "Creep" || 
-                        gameObject.GetCollisionGroupString() == "Wizard")
+            else if (gameObject.ObjType == ObjectType.Archer ||
+                       gameObject.ObjType == ObjectType.Creep ||
+                       gameObject.ObjType == ObjectType.Wizard)
             {
                // Debug.Write(String.Format("Health: {0}, Colide with: {1} ", this.Health, gameObject.GetType()));
                 this.Health -= (gameObject as Character).Damage;
@@ -66,13 +66,13 @@
                     this.IsDestroyed = true;
                 }
                 }
-                else if (gameObject.GetObjectType() == ObjectType.Bonus)
+                else if (gameObject.ObjType == ObjectType.Bonus)
                 {
                     Random rnd = new Random();
                     this.Health += rnd.Next(-5, 10);
                
                 }
-                else if (gameObject.GetObjectType() == ObjectType.Door)
+                else if (gameObject.ObjType== ObjectType.Door)
                 {
                 // TODO- NEXT LEVEL
                 }

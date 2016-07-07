@@ -181,10 +181,7 @@
             return this.position;
         }
 
-        public virtual ObjectType GetObjectType()
-        {
-            return this.objectType;
-        }
+     
 
         public virtual bool CanCollideWith(string otherCollisionGroupString)
         {

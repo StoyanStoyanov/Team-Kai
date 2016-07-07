@@ -23,7 +23,7 @@
         public override void RespondToCollision(GameObject gameObject)
         {
 
-            if (gameObject.GetObjectType() == ObjectType.Player)
+            if (gameObject.ObjType == ObjectType.Player)
             {
                 this.IsDestroyed = true;
             }

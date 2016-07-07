@@ -27,7 +27,7 @@ namespace KaiFighterGame.Utilities
                 if (objects[i].IsDestroyed)
                 {
                     Debug.Write(objects[i].ObjType);
-                    if (objects[i].ObjType != ObjectType.Bullet)
+                    if (objects[i].ObjType != ObjectType.Bullet && objects[i].ObjType != ObjectType.Bonus)
                     {
                         Bonus someBonus =
                             factory.Create(new Vector2(objects[i].PositionX, objects[i].PositionY),
