@@ -41,7 +41,7 @@
                 }
             }
 
-            else if (gameObject.GetCollisionGroupString() == "Bullet" && (gameObject as Bullet).IsPlayerFire)
+            else if (gameObject.ObjType == ObjectType.Bullet && (gameObject as Bullet).IsPlayerFire)
             {
                 this.Health -= (gameObject as Bullet).Damage;
                 //Debug.Write(String.Format("Health: {0}, coldie with :{1}", this.Health, gameObject.GetObjectType()));

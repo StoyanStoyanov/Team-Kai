@@ -1,4 +1,9 @@
-﻿namespace KaiFighterGame.Utilities
+﻿using System.Diagnostics;
+using KaiFighterGame.Factories;
+using KaiFighterGame.Global_Constants;
+using KaiFighterGame.Objects.StaticObjects;
+
+namespace KaiFighterGame.Utilities
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
@@ -8,7 +13,7 @@
     public static class SceneManager
     {
         private static List<GameObject> objects = new List<GameObject>();
-
+        private static StaticObjectFactory factory = new StaticObjectFactory();
         // Calls the update method of every object in the scene
         public static void Update(GameTime gameTime)
         {
@@ -19,9 +24,18 @@
             {
 
                 objects[i].Update(gameTime);
-                if (objects[i].IsDestroyed == true)
+                if (objects[i].IsDestroyed)
                 {
+                    Debug.Write(objects[i].ObjType);
+                    if (objects[i].ObjType != ObjectType.Bullet && objects[i].ObjType != ObjectType.Bonus)
+                    {
+                        Bonus someBonus =
+                            factory.Create(new Vector2(objects[i].PositionX, objects[i].PositionY),
+                                ImageAddresses.BonusImage, ObjectType.Bonus, Color.White, 1f, 0f, 1f) as Bonus;
+                        SceneManager.AddObject(someBonus, EntryPoint.TheGame);
+                    }
                     SceneManager.DestroyObject(objects[i]);
+
                 }
 
             }
