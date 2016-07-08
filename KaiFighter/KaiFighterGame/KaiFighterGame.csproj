@@ -56,7 +56,6 @@
     <Compile Include="Objects\DynamicObjects\Characters\Player.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IDamageable.cs" />
-    <Compile Include="Interfaces\IMelee.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
     <Compile Include="Interfaces\IProducable.cs" />
     <Compile Include="Interfaces\IRanged.cs" />
