@@ -8,6 +8,7 @@
     using Microsoft.Xna.Framework.Input;
     using UI;
     using Utilities;
+    using Microsoft.Xna.Framework.Media;
 
     public class MainMenu : IScene
     {
@@ -19,6 +20,7 @@
         private Button startGameButton;
         private Button statsButton;
         private Button exitGameButton;
+        private Song menuSong;
 
         // scene initialization and object placement
         public void Load()
@@ -70,6 +72,9 @@
 
             this.startGameButton.OnPressed += this.LoadFirstLevel;
             this.exitGameButton.OnPressed += this.ExitGame;
+
+            this.menuSong = EntryPoint.TheGame.Content.Load<Song>("Audio/menuSong");
+            MediaPlayer.Play(this.menuSong);
         }
 
         public void Update(GameTime gameTime)
@@ -120,6 +125,9 @@
 
         private void LoadFirstLevel()
         {
+            MediaPlayer.Stop();
+            this.menuSong.Dispose();
+
             this.startGameButton.OnPressed -= this.LoadFirstLevel;
 
             SceneManager.LoadScene(new NormalLevel());
