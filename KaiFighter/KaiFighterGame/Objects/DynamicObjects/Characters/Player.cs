@@ -14,7 +14,7 @@
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
 
-        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, int damage, int health, int cooldown) :
+        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, double damage, double health, int cooldown) :
             base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
         {
         }
@@ -55,7 +55,7 @@
                        gameObject.ObjType == ObjectType.Wizard)
             {
                 // Debug.Write(String.Format("Health: {0}, Colide with: {1} ", this.Health, gameObject.GetType()));
-                this.Health -= (gameObject as Character).Damage;
+                this.Health -= (gameObject as Character).Damage ;
                 this.PositionX = this.PreviousPositionX;
                 this.PositionY = this.PreviousPositionY;
             }

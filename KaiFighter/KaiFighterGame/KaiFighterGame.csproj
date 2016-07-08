@@ -66,7 +66,6 @@
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Shooter.cs" />
     <Compile Include="Objects\StaticObjects\Bonus.cs" />
-    <Compile Include="Objects\StaticObjects\Bounty.cs" />
     <Compile Include="Objects\StaticObjects\Obstacle.cs" />
     <Compile Include="Objects\StaticObjects\Wall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

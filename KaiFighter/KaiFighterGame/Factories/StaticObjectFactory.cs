@@ -22,8 +22,6 @@
             {
                 case ObjectType.Bonus:
                     return new Bonus(position, imageLocation, objectType, objColor, scale, rotation, layerDepth);
-                case ObjectType.Bounty:
-                    return new Bounty(position, imageLocation, objectType, objColor, scale, rotation, layerDepth);
                 case ObjectType.Obstacle:
                     return new Obstacle(position, imageLocation, objectType, objColor, scale, rotation, layerDepth);
                 case ObjectType.Wall:

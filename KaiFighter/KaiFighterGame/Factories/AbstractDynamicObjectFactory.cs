@@ -14,8 +14,8 @@
             float rotation,
             float layerDepth,
             float movementSpeed,
-            int damage = 0,
-            int health = 0,
+            double damage = 0,
+            double health = 0,
             int cooldown = 0,
             Vector2 targetDir = default(Vector2));
     }
