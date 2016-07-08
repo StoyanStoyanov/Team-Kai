@@ -29,11 +29,8 @@
 
         public override void RespondToCollision(GameObject gameObject)
         {
-
-
             if (gameObject is StaticObject)
             {
-
                 if (gameObject.ObjType == ObjectType.Wall)
                 {
                     this.PositionX = this.PreviousPositionX;
@@ -47,6 +44,16 @@
                 //Debug.Write(String.Format("Health: {0}, coldie with :{1}", this.Health, gameObject.GetObjectType()));
             }
             
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (this.Health <= 0)
+            {
+                SceneManager.DestroyObject(this);
+            }
+
+            base.Update(gameTime);
         }
 
         public override void Initialize()

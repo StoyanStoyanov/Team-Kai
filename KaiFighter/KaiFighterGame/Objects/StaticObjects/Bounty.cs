@@ -31,7 +31,7 @@
 
         public override void RespondToCollision(GameObject gameObject)
         {
-            this.IsDestroyed = true;
+            SceneManager.DestroyObject(this);
         }
 
         public override void Initialize()

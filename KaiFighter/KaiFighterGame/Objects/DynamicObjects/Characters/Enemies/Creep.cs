@@ -1,7 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using KaiFighterGame.Objects.DynamicObjects.Projectiles;
-
-namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
+﻿namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
 {
     using System;
     using Microsoft.Xna.Framework;
@@ -53,7 +50,7 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
 
             if (this.Health <= 0)
             {
-                IsDestroyed = true;
+                SceneManager.DestroyObject(this);
             }
         }
 

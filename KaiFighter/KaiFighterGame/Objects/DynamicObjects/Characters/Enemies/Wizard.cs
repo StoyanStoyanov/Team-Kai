@@ -1,14 +1,7 @@
-﻿using System.Runtime.CompilerServices;
-using KaiFighterGame.Factories;
-using KaiFighterGame.Global_Constants;
-using KaiFighterGame.Objects.DynamicObjects.Projectiles;
-using KaiFighterGame.Objects.StaticObjects;
-
-namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
+﻿namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
 {
     using System;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
     using Utilities;
 
     public class Wizard : Character
@@ -40,13 +33,6 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
             }
 
             ////TODO Hit like creep + magic 1/10000 updates 
-
-
-            if (this.Health <= 0)
-            {
-                IsDestroyed = true;
-
-            }
 
             // update the dynamic object
             base.Update(gameTime);

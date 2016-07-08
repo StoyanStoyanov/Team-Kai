@@ -4,16 +4,21 @@
     using Interfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using Factories;
 
     public static class SceneManager
     {
         private static IScene currentScene;
         private static List<IRenderable> objects = new List<IRenderable>();
+        private static List<GameObject> collidableObjects = new List<GameObject>();
+
+        private static StaticObjectFactory factory = new StaticObjectFactory();
 
         // Calls the update method of every object in the scene
         public static void Update(GameTime gameTime)
         {
-            // CollisionDispatcher.CheckCollision(objects);
+            CollisionDispatcher.CheckCollision(collidableObjects);
+
             for (int i = 0; i < objects.Count; i++)
             {
                 objects[i].Update(gameTime);
@@ -36,14 +41,24 @@
         {
             objects.Add(obj);
 
+            if (obj is GameObject)
+            {
+                collidableObjects.Add(obj as GameObject);
+            }
+
             obj.LoadContent(EntryPoint.TheGame);
             obj.Initialize();
         }
 
         // destroys an object from the scene
-        public static void DestroyObject(GameObject obj)
+        public static void DestroyObject(IRenderable obj)
         {
             objects.Remove(obj);
+
+            if (obj is GameObject)
+            {
+                collidableObjects.Remove(obj as GameObject);
+            }
         }
 
         // loads a specified scene
@@ -65,6 +80,7 @@
             }
 
             objects.Clear();
+            collidableObjects.Clear();
         }
     }
 }

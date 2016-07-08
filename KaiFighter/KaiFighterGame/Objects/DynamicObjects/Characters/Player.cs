@@ -14,7 +14,7 @@
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
 
-        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, int damage, int health, int cooldown) : 
+        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, int damage, int health, int cooldown) :
             base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
         {
         }
@@ -22,7 +22,7 @@
         public override void Update(GameTime gameTime)
         {
             // Handles the users inputw
-            this.HandleInput(Keyboard.GetState());       
+            this.HandleInput(Keyboard.GetState());
 
             // update the dynamic object
             base.Update(gameTime);
@@ -39,44 +39,36 @@
 
             if (gameObject.ObjType == ObjectType.Wall)
             {
-
-            this.PositionX = this.PreviousPositionX;
-            this.PositionY = this.PreviousPositionY;
-           
+                this.PositionX = this.PreviousPositionX;
+                this.PositionY = this.PreviousPositionY;
             }
 
             else if (gameObject.ObjType == ObjectType.Bullet && (gameObject as Bullet).IsPlayerFire == false)
             {
 
                 Debug.Write(String.Format("Health: {0}, Colide with: {1} ", this.Health, gameObject.GetType()));
-               
+
                 this.Health -= (gameObject as Bullet).Damage;
-              //  SceneManager.DestroyObject(gameObject);
             }
             else if (gameObject.ObjType == ObjectType.Archer ||
                        gameObject.ObjType == ObjectType.Creep ||
                        gameObject.ObjType == ObjectType.Wizard)
             {
-               // Debug.Write(String.Format("Health: {0}, Colide with: {1} ", this.Health, gameObject.GetType()));
+                // Debug.Write(String.Format("Health: {0}, Colide with: {1} ", this.Health, gameObject.GetType()));
                 this.Health -= (gameObject as Character).Damage;
                 this.PositionX = this.PreviousPositionX;
                 this.PositionY = this.PreviousPositionY;
-                if (this.Health <= 0)
-                {
-                    this.IsDestroyed = true;
-                }
-                }
-                else if (gameObject.ObjType == ObjectType.Bonus)
-                {
-                    Random rnd = new Random();
-                    this.Health += rnd.Next(-5, 10);
-               
-                }
-                else if (gameObject.ObjType== ObjectType.Door)
-                {
-                // TODO- NEXT LEVEL
-                }
             }
+            else if (gameObject.ObjType == ObjectType.Bonus)
+            {
+                Random rnd = new Random();
+                this.Health += rnd.Next(-5, 10);
+            }
+            else if (gameObject.ObjType == ObjectType.Door)
+            {
+                // TODO- NEXT LEVEL
+            }
+        }
 
         public override string GetCollisionGroupString()
         {
@@ -127,6 +119,6 @@
             }
 
             this.previousKeyboardState = this.currentKeyboardState;
-        }   
+        }
     }
 }

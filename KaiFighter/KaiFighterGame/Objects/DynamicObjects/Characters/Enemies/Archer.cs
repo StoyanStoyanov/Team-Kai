@@ -1,10 +1,6 @@
-﻿using KaiFighterGame.Objects.DynamicObjects.Projectiles;
-
-namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
+﻿namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
 {
-    using System;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
     using Utilities;
 
     public class Archer : Shooter
@@ -16,26 +12,16 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
         {
         }
 
-    
-
         public override void Update(GameTime gameTime)
         {
             Vector2 test = new Vector2(150, 150);
             this.MoveTowards(test);
 
-            this.Shoot(Vector2.Normalize(new Vector2(0, -1)));         
+            this.Shoot(Vector2.Normalize(new Vector2(0, -1)));
 
-            if (this.Health <= 0)
-            {
-                IsDestroyed = true;
-
-            }
-
-            // update the dynamic object
+            // update the character object
             base.Update(gameTime);
-
         }
-
 
         public override string GetCollisionGroupString()
         {

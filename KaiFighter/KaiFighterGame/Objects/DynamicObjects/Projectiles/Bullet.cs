@@ -15,7 +15,6 @@
         {
             this.Damage = damage;
             this.targetDir = targetDirection;
-           
         }
 
         public int Damage { get; set; }
@@ -47,24 +46,16 @@
         {
             if (this.IsPlayerFire == true)
             {
-                if (gameObject.ObjType != ObjectType.Player)
+                if (gameObject.ObjType != ObjectType.Player && gameObject.ObjType != ObjectType.Bullet)
                 {
-                    this.IsDestroyed = true;
-                }
-                if (gameObject.ObjType == ObjectType.Bonus)
-                {
-                    this.IsDestroyed = false;
+                    SceneManager.DestroyObject(this);
                 }
             }
             else
             {
-                if (gameObject.ObjType != ObjectType.Archer)
+                if (gameObject.ObjType != ObjectType.Archer && gameObject.ObjType != ObjectType.Bullet)
                 {
-                    this.IsDestroyed = true;
-                }
-                if (gameObject.ObjType == ObjectType.Bonus)
-                {
-                    this.IsDestroyed = false;
+                    SceneManager.DestroyObject(this);
                 }
             }
         }
