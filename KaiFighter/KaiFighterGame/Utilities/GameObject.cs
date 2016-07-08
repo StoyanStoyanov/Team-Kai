@@ -29,7 +29,6 @@
         /// <param name="image">The image of the object.</param>
         protected GameObject(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth)
         {
-            this.IsDestroyed = false;
             this.ObjectColor = objColor;
             this.PositionX = position.X;
             this.PositionY = position.Y;
@@ -115,11 +114,6 @@
             }
         }
 
-        /// <summary>
-        /// Returns if the object is in state destroyed or not.
-        /// </summary>
-        public bool IsDestroyed { get; protected set; }
-
         public Color? ObjectColor
         {
             get
@@ -180,8 +174,6 @@
         {
             return this.position;
         }
-
-     
 
         public virtual bool CanCollideWith(string otherCollisionGroupString)
         {

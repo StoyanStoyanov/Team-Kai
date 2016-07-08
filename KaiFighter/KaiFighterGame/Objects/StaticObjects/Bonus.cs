@@ -25,7 +25,7 @@
 
             if (gameObject.ObjType == ObjectType.Player)
             {
-                this.IsDestroyed = true;
+                SceneManager.DestroyObject(this);
             }
           
         }

@@ -1,24 +1,17 @@
-﻿using KaiFighterGame.Global_Constants;
-using KaiFighterGame.Objects.DynamicObjects.Characters.Enemies;
-
-namespace KaiFighterGame
+﻿namespace KaiFighterGame
 {
-    using Factories;
+    using Global_Constants;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
-    using Objects.DynamicObjects.Characters;
+    using Scenes;
     using Utilities;
-    using Objects.StaticObjects;
-    using System;
 
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class KaiFighterGame : Game
     {
-        private Player firstFighter;
-        private Archer testArcher;
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private bool canToggleFullScreen = true;
@@ -47,116 +40,9 @@ namespace KaiFighterGame
         /// </summary>
         protected override void Initialize()
         {
-            DynamicObjectFactory factory = new DynamicObjectFactory();
+            SceneManager.LoadScene(new MainMenu());
 
-            // the next two lines should be performed by the factory
-            firstFighter = factory.Create(
-                new Vector2(500, 500),
-                ImageAddresses.PlayerImage,
-                ObjectType.Player,
-                Color.White,
-                scale: 0.5f,
-                rotation: 0,
-                layerDepth: 1f,
-                movementSpeed: 5f,
-                damage: 50,
-                health: 100,
-                cooldown: 5) as Player;
-
-            // add the fighter to the scene
-            SceneManager.AddObject(firstFighter, this);
-
-            //create first test creep and archer, maybe we should do array? Random cooldown, movement, speed ..... 
-
-            Creep testCreep = factory.Create(new Vector2(205, 555),
-                ImageAddresses.CreepImage,
-                ObjectType.Creep,
-                Color.White,
-                scale: 0.5f,
-                rotation: 0,
-                layerDepth: 1f,
-                movementSpeed: 1f,
-                damage: 5,
-                health: 100) as Creep;
-
-            SceneManager.AddObject(testCreep, this);
-
-            Wizard testWizard = factory.Create(new Vector2(405, 305),
-                ImageAddresses.WizardImage,
-                ObjectType.Wizard,
-                Color.White,
-                scale: 0.5f,
-                rotation: 0,
-                layerDepth: 1f,
-                movementSpeed: 1f,
-                damage: 5,
-                health: 100) as Wizard;
-
-            SceneManager.AddObject(testWizard, this);
-
-            this.testArcher = factory.Create(new Vector2(800, 500),
-                ImageAddresses.ArcherImage,
-                ObjectType.Archer,
-                Color.White,
-                scale: 0.5f,
-                rotation: 0,
-                layerDepth: 1f,
-                movementSpeed: 1f,
-                damage: 5,
-                health: 100,
-                cooldown: 50) as Archer;
-
-            SceneManager.AddObject(testArcher, this);
-
-            StaticObjectFactory staticFactory = new StaticObjectFactory();
-
-            // Adding all surronding walls
-            for (int i = 0, horizontalUpdater = 0, verticalUpdater = 0; i < 8; i++)
-            {
-                Wall rightSide1Wall = staticFactory.Create(
-                new Vector2(GameResolution.DefaultWidth, verticalUpdater),
-                ImageAddresses.VerticalWallImage,
-                ObjectType.Wall,
-                Color.White,
-                1f,
-                0f,
-                1f) as Wall;
-
-                Wall leftSide2Wall = staticFactory.Create(
-                new Vector2(0, verticalUpdater),
-                ImageAddresses.VerticalWallImage,
-                ObjectType.Wall,
-                Color.White,
-                1f,
-                0f,
-                1f) as Wall;
-
-                Wall upperWall = staticFactory.Create(
-                new Vector2(horizontalUpdater, 0),
-                ImageAddresses.HorizonwalWallImage,
-                ObjectType.Wall,
-                Color.White,
-                1f,
-                0f,
-                1f) as Wall;
-
-                Wall downWall = staticFactory.Create(
-                new Vector2(horizontalUpdater, GameResolution.DefaultHeight),
-                ImageAddresses.HorizonwalWallImage,
-                ObjectType.Wall,
-                Color.White,
-                1f,
-                0f,
-                1f) as Wall;
-
-                SceneManager.AddObject(rightSide1Wall, this);
-                SceneManager.AddObject(leftSide2Wall, this);
-                SceneManager.AddObject(upperWall, this);
-                SceneManager.AddObject(downWall, this);
-
-                horizontalUpdater += 180;
-                verticalUpdater += 90;
-            }
+            this.IsMouseVisible = true;
 
             base.Initialize();
         }
@@ -187,7 +73,6 @@ namespace KaiFighterGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-
             // toggle between full screen and windowed
             if (Keyboard.GetState().IsKeyDown(Keys.F) && this.canToggleFullScreen == true)
             {

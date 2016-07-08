@@ -1,7 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using KaiFighterGame.Objects.DynamicObjects.Projectiles;
-
-namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
+﻿namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
 {
     using System;
     using Microsoft.Xna.Framework;
@@ -12,7 +9,7 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
     {
         private const string CollisionGroupString = "Creep";
 
-        public Creep(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, double health)
+        public Creep(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, int damage, int health)
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health)
         {
             
@@ -53,7 +50,7 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
 
             if (this.Health <= 0)
             {
-                IsDestroyed = true;
+                SceneManager.DestroyObject(this);
             }
         }
 

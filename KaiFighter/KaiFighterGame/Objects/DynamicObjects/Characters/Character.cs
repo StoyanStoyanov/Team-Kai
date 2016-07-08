@@ -11,16 +11,16 @@
     // This is the parent class of the player and all enemies
     public class Character : DynamicObject, IDamageable, IKiller
     {
-        public Character(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, double health) :
+        public Character(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, int damage, int health) :
             base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)
         {
             this.Health = health;
             this.Damage = damage;
         }
 
-        public double Health { get; set; }
+        public int Health { get; set; }
 
-        public double Damage { get; set; }
+        public int Damage { get; set; }
 
         public void TakeDamage()
         {
@@ -29,11 +29,8 @@
 
         public override void RespondToCollision(GameObject gameObject)
         {
-
-
             if (gameObject is StaticObject)
             {
-
                 if (gameObject.ObjType == ObjectType.Wall)
                 {
                     this.PositionX = this.PreviousPositionX;
@@ -47,6 +44,16 @@
                 //Debug.Write(String.Format("Health: {0}, coldie with :{1}", this.Health, gameObject.GetObjectType()));
             }
             
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (this.Health <= 0)
+            {
+                SceneManager.DestroyObject(this);
+            }
+
+            base.Update(gameTime);
         }
 
         public override void Initialize()

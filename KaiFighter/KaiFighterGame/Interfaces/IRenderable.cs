@@ -10,12 +10,14 @@
     {
         Color? ObjectColor { get; set; }
 
+        void Initialize();
+
         void Update(GameTime gameTime);
 
         void Draw(SpriteBatch spriteBatch);
 
         void LoadContent(Game theGame);
 
-        void UnloadContent();    
+        void UnloadContent();
     }
 }
