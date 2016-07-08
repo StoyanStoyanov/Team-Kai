@@ -25,9 +25,7 @@
         // scene initialization and object placement
         public void Load()
         {
-            UiFactory uiFactory = new UiFactory();
-
-            this.startGameButton = uiFactory.Create(
+            this.startGameButton = UiFactory.Instance.Create(
                 Color.White,
                 new Vector2(50, 50),
                 ImageAddresses.NormalStartButton,
@@ -37,7 +35,7 @@
                 scale: .3f) as Button;
             SceneManager.AddObject(this.startGameButton);
 
-            this.statsButton = uiFactory.Create(
+            this.statsButton = UiFactory.Instance.Create(
                 Color.White,
                 new Vector2(50, 140),
                 ImageAddresses.NormalStatsButton,
@@ -47,7 +45,7 @@
                 scale: .3f) as Button;
             SceneManager.AddObject(this.statsButton);
 
-            this.exitGameButton = uiFactory.Create(
+            this.exitGameButton = UiFactory.Instance.Create(
                 Color.White,
                 new Vector2(50, 230),
                 ImageAddresses.NormalExitButton,
@@ -57,7 +55,7 @@
                 scale: .3f) as Button;
             SceneManager.AddObject(this.exitGameButton);
 
-            Background backgr = uiFactory.Create(
+            Background backgr = UiFactory.Instance.Create(
                 Color.White,
                 ImageAddresses.MenuBackgroundImage,
                 backgroundScale: .356f,

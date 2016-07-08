@@ -38,7 +38,11 @@
         /// Creates the Static objects in the game.
         /// </summary>
         /// <param name="position">The position of the object.</param>
-        /// <param name="objectType">The type of the game object.</param>
+        /// <param name="objectType">The type of the object.</param>
+        /// <param name="objColor">The color of the object.</param>
+        /// <param name="scale">The scale of the object.</param>
+        /// <param name="rotation">The rotation of the object.</param>
+        /// <param name="layerDepth">The layer depth of the object.</param>
         /// <returns>New StaticObject by given object type.</returns>
         public override StaticObject Create(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth)
         {

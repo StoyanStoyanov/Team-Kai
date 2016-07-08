@@ -3,6 +3,9 @@
     using Interfaces;
     using Microsoft.Xna.Framework;
 
+    /// <summary>
+    /// The abstract UI Renderable objects factory.
+    /// </summary>
     public abstract class AbstractUiFactory
     {
         public abstract IRenderable Create(
@@ -12,8 +15,14 @@
             string hoveredImage,
             string pressedImage,
             float renderLayer,
-            float scale);
+            float scale
+        );
 
-        public abstract IRenderable Create(Color? backgroundColor, string backgroundImageFile, float backgroundScale, float backgroundLayer);
+        public abstract IRenderable Create(
+            Color? backgroundColor, 
+            string backgroundImageFile, 
+            float backgroundScale, 
+            float backgroundLayer
+        );
     }
 }

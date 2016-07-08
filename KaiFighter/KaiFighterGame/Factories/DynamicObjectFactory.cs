@@ -40,9 +40,16 @@
         /// Creates the Dynamic objects in the game.
         /// </summary>
         /// <param name="position">The position of the object.</param>
-        /// <param name="objectType">The type of the game object.</param>
-        /// <param name="movementSpeed">The movement speed of the Dynamic object.</param>
-        /// <param name="damage">The damage of the Dynamic object</param>
+        /// <param name="objectType">The object type of the object.</param>
+        /// <param name="objColor">The color of the object.</param>
+        /// <param name="scale">The scale of the object.</param>
+        /// <param name="rotation">The rotation of the object.</param>
+        /// <param name="layerDepth">The layer depth of the object.</param>
+        /// <param name="movementSpeed">The movement speed of the object.</param>
+        /// <param name="damage">The damage of the object</param>
+        /// <param name="health">The health of the object.</param>
+        /// <param name="cooldown">The cooldown of the object.</param>
+        /// <param name="targetDir">The target direction the object moves into.</param>
         /// <returns>New DynamicObject by given object type.</returns>
         public override DynamicObject Create(
             Vector2 position,
