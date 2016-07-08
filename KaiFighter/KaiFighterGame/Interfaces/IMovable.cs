@@ -3,13 +3,10 @@
     using Microsoft.Xna.Framework;
 
     /// <summary>
-    /// All objects which can change their position will implement this interface.
+    /// All objects which can change their position must implement this interface.
     /// </summary>
     public interface IMovable
     {
-        /// <summary>
-        /// All IMovable objects must implement their own movement.
-        /// </summary>
         void MoveUp();
 
         void MoveDown();

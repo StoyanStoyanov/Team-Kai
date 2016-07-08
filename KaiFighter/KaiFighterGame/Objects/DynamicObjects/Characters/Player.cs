@@ -5,18 +5,15 @@
     using Microsoft.Xna.Framework.Input;
     using Projectiles;
     using Utilities;
-    using System.Diagnostics;
     using Interfaces;
 
     public class Player : Shooter
     {
-       
-
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
 
-        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, double damage, double health, int cooldown) :
-            base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
+        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, double damage, double health, int cooldown)
+            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
         {
         }
 
@@ -28,7 +25,6 @@
             // update the dynamic object
             base.Update(gameTime);
 
-
             if (this.Health <= 0)
             {
                 SceneManager.DestroyObject(this);
@@ -37,24 +33,21 @@
 
         public override void RespondToCollision(ICollidable gameObject)
         {
-
             if (gameObject.ObjType == ObjectType.Wall)
             {
                 this.PositionX = this.PreviousPositionX;
                 this.PositionY = this.PreviousPositionY;
             }
-
-            else if (gameObject.ObjType == ObjectType.Bullet && (gameObject as Bullet).IsPlayerFire == false)
+            else if (gameObject.ObjType == ObjectType.Bullet 
+                 && ((Bullet) gameObject).FriendlyFire == false)
             {
-
-
-                this.Health -= (gameObject as Bullet).Damage;
+                this.Health -= ((Bullet)gameObject).Damage;
             }
-            else if (gameObject.ObjType == ObjectType.Archer ||
-                       gameObject.ObjType == ObjectType.Creep ||
-                       gameObject.ObjType == ObjectType.Wizard)
+            else if (gameObject.ObjType == ObjectType.Archer
+                  || gameObject.ObjType == ObjectType.Creep
+                  || gameObject.ObjType == ObjectType.Wizard)
             {
-                this.Health -= (gameObject as Character).Damage ;
+                this.Health -= ((Character)gameObject).Damage ;
                 this.PositionX = this.PreviousPositionX;
                 this.PositionY = this.PreviousPositionY;
             }
@@ -69,7 +62,6 @@
                 // TODO- NEXT LEVEL
             }
         }
-
        
         private void HandleInput(KeyboardState keyState)
         {

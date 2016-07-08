@@ -4,9 +4,9 @@
     using Microsoft.Xna.Framework;
 
     /// <summary>
-    /// Defines a dynamic/moving object in the game. All moving objects should inherit the DynamicObject class.
+    /// Defines a dynamic object in the game. All moving objects should inherit the DynamicObject class.
     /// </summary>
-    public abstract class DynamicObject : ICOllidable, IMovable
+    public abstract class DynamicObject : GameObject, IMovable
     {
         private Vector2 objDirection;
         private float objSpeed;

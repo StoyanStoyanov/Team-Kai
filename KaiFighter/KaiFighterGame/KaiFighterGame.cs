@@ -1,6 +1,6 @@
 ﻿namespace KaiFighterGame
 {
-    using Global_Constants;
+    using GlobalConstants;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;

@@ -1,12 +1,12 @@
 ﻿namespace KaiFighterGame.Interfaces
 {
     /// <summary>
-    /// All objects which can take damage will implement this interface.
+    /// All objects which can take damage must implement this interface.
     /// </summary>
     public interface IDamageable
     {
         /// <summary>
-        /// Determines the object health
+        /// Determines the object's health.
         /// </summary>
         double Health { get; set; }
 

@@ -5,7 +5,7 @@
     /// </summary>
     public static class EntryPoint
     {
-        private static KaiFighterGame game = new KaiFighterGame();
+        private static readonly KaiFighterGame game = new KaiFighterGame();
 
         public static KaiFighterGame TheGame
         {

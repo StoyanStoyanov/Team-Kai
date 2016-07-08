@@ -1,4 +1,4 @@
-﻿namespace KaiFighterGame.Global_Constants
+﻿namespace KaiFighterGame.GlobalConstants
 {
     public class RenderLayers
     {

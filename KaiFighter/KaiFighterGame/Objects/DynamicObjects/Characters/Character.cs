@@ -1,17 +1,17 @@
 ﻿namespace KaiFighterGame.Objects.DynamicObjects.Characters
 {
-    using System;
     using Interfaces;
     using Microsoft.Xna.Framework;
     using Utilities;
     using Projectiles;
-    using System.Diagnostics;
-    using Global_Constants;
+    using GlobalConstants;
     using Factories;
     using StaticObjects;
 
 
-    // This is the parent class of the player and all enemies
+    /// <summary>
+    /// The parent class of the player and all enemies.
+    /// </summary>
     public class Character : DynamicObject, IDamageable, IKiller
     {
         public Character(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, double health)
@@ -41,9 +41,9 @@
                 }
             }
 
-            else if (gameObject.ObjType == ObjectType.Bullet && (gameObject as Bullet).IsPlayerFire)
+            else if (gameObject.ObjType == ObjectType.Bullet && ((Bullet) gameObject).FriendlyFire)
             {
-                this.Health -= (gameObject as Bullet).Damage;
+                this.Health -= ((Bullet)gameObject).Damage;
                 //Debug.Write(String.Format("Health: {0}, coldie with :{1}", this.Health, gameObject.GetObjectType()));
             }
         }
@@ -54,21 +54,20 @@
             {
                 SceneManager.DestroyObject(this);
 
-                var someBonus = StaticObjectFactory.Instance.Create(
-                   new Vector2(this.PositionX, this.PositionY),
+                var someBonus = (Bonus)StaticObjectFactory.Instance.Create(
+                    new Vector2(this.PositionX, this.PositionY),
                     ImageAddresses.BonusImage,
-                   ObjectType.Bonus,
-                   Color.Blue,
-                   scale: 1f,
-                   rotation: 0f,
-                   layerDepth: 1f
-                  ) as Bonus;
+                    ObjectType.Bonus,
+                    Color.Yellow,
+                    scale: 1f,
+                    rotation: 0f,
+                    layerDepth: 1f
+                );
                 SceneManager.AddObject(someBonus);
                 SceneManager.DestroyObject(this);
             }
 
             base.Update(gameTime);
-
         }
 
         public override void Initialize()

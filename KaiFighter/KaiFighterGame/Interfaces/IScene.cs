@@ -2,6 +2,9 @@
 {
     using Microsoft.Xna.Framework;
 
+    /// <summary>
+    /// Defines a game scene.
+    /// </summary>
     public interface IScene
     {
         void Load();

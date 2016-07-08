@@ -3,14 +3,13 @@
     using Microsoft.Xna.Framework;
 
     /// <summary>
-    /// All objects which are range fighters will implement this interface.
+    /// All ranged characters must implement this interface.
     /// </summary>
     public interface IRanged
     {
         /// <summary>
-        /// Returns whether the object is a range fighter.
+        /// All ranged characters must implement shooting.
         /// </summary>
-        //// bool IsRanged { get; }
         void Shoot(Vector2 direction);
     }
 }

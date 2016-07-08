@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
 
     /// <summary>
-    /// All objects which are going to be rendered on the screen will implement this interface.
+    /// All objects which are going to be rendered on the screen must implement this interface.
     /// </summary>
     public interface IRenderable
     {

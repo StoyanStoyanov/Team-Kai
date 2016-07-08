@@ -3,7 +3,9 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    // this makes the game work on all kings of screens
+    /// <summary>
+    /// Enables the game work on all kinds of screens
+    /// </summary>
     public static class ScalingViewportAdapter
     {
         private static int virtualWidth;

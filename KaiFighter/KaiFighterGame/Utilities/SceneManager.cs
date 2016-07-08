@@ -4,15 +4,17 @@
     using Interfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using Factories;
 
     public static class SceneManager
     {
         private static IScene currentScene;
-        private static List<IRenderable> objects = new List<IRenderable>();
-        private static List<ICollidable> collidableObjects = new List<ICollidable>();
+        private static readonly List<IRenderable> objects = new List<IRenderable>();
+        private static readonly List<ICollidable> collidableObjects = new List<ICollidable>();
 
-        // Calls the update method of every object in the scene
+        /// <summary>
+        /// Calls the update method of every object on the scene.
+        /// </summary>
+        /// <param name="gameTime">The game time object.</param>
         public static void Update(GameTime gameTime)
         {
             CollisionDispatcher.CheckCollision(collidableObjects);
@@ -25,7 +27,10 @@
             currentScene.Update(gameTime);
         }
 
-        // Calls the draw method of every object in the scene
+        /// <summary>
+        /// Calls the draw method of every object on the scene.
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public static void Draw(SpriteBatch spriteBatch)
         {
             for (int i = 0; i < objects.Count; i++)
@@ -34,32 +39,41 @@
             }
         }
 
-        // adds object to the scene
+        /// <summary>
+        /// Adds object to the scene.
+        /// </summary>
+        /// <param name="obj">The renderable object to add to the scene.</param>
         public static void AddObject(IRenderable obj)
         {
             objects.Add(obj);
 
             if (obj is ICollidable)
             {
-                collidableObjects.Add(obj as ICOllidable);
+                collidableObjects.Add((ICollidable)obj);
             }
 
             obj.LoadContent(EntryPoint.TheGame);
             obj.Initialize();
         }
 
-        // destroys an object from the scene
+        /// <summary>
+        /// Removes an object from the scene.
+        /// </summary>
+        /// <param name="obj">The object to remove.</param>
         public static void DestroyObject(IRenderable obj)
         {
             objects.Remove(obj);
 
-            if (obj is ICOllidable)
+            if (obj is GameObject)
             {
-                collidableObjects.Remove(obj as ICollidable);
+                collidableObjects.Remove((ICollidable)obj);
             }
         }
 
-        // loads a specified scene
+        /// <summary>
+        /// Loads a scene.
+        /// </summary>
+        /// <param name="someScene">The scene to load.</param>
         public static void LoadScene(IScene someScene)
         {
             ClearScene();
@@ -69,7 +83,9 @@
             currentScene = someScene;
         }
 
-        // clears the scene. This should be performed after the end of each level
+        /// <summary>
+        /// Clears the scene at the end of each level.
+        /// </summary>
         private static void ClearScene()
         {
             for (int i = 0; i < objects.Count; i++)

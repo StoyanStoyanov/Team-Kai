@@ -1,4 +1,4 @@
-﻿using KaiFighterGame.Global_Constants;
+﻿using KaiFighterGame.GlobalConstants;
 
 namespace KaiFighterGame.Objects.DynamicObjects.Characters
 {
@@ -42,20 +42,20 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters
                     ImageAddresses.Projectile1Image
                 };
 
-                Bullet someBullet = DynamicObjectFactory.Instance.Create(
-                new Vector2(this.PositionX, this.PositionY),
-                bulletImages[this.bulletRandomizer.Next(0, bulletImages.Length)],
-                ObjectType.Bullet,
-                Color.LimeGreen,
-                layerDepth: 1f,
-                rotation: 0f,
-                scale: .3f,
-                damage: this.Damage,
-                cooldown: 8,
-                movementSpeed: 5,
-                targetDir: this.shootDirection
-               ) as Bullet;
-                someBullet.IsPlayerFire = (this.ObjType == ObjectType.Player ? true : false);
+                Bullet someBullet = (Bullet) DynamicObjectFactory.Instance.Create(
+                    new Vector2(this.PositionX, this.PositionY),
+                    bulletImages[this.bulletRandomizer.Next(0, bulletImages.Length)],
+                    ObjectType.Bullet,
+                    Color.LimeGreen,
+                    layerDepth: 1f,
+                    rotation: 0f,
+                    scale: .3f,
+                    damage: this.Damage,
+                    cooldown: 8,
+                    movementSpeed: 5,
+                    targetDir: this.shootDirection
+                );
+                someBullet.FriendlyFire = (this.ObjType == ObjectType.Player);
                 SceneManager.AddObject(someBullet);
 
                 this.shooterCooldown = this.initialCooldown;

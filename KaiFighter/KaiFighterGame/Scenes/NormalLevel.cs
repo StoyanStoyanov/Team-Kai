@@ -1,7 +1,7 @@
 ﻿namespace KaiFighterGame.Scenes
 {
     using Factories;
-    using Global_Constants;
+    using GlobalConstants;
     using Interfaces;
     using Microsoft.Xna.Framework;
     using Objects.DynamicObjects.Characters;
@@ -13,8 +13,7 @@
     {
         public void Load()
         {
-            // the next two lines should be performed by the factory
-            Player fighter = DynamicObjectFactory.Instance.Create(
+            Player fighter = (Player) DynamicObjectFactory.Instance.Create(
                 new Vector2(500, 500),
                 ImageAddresses.PlayerImage,
                 ObjectType.Player,
@@ -25,13 +24,11 @@
                 movementSpeed: 5f,
                 damage: 50,
                 health: 100,
-                cooldown: 5) as Player;
-
-            // add the fighter to the scene
+                cooldown: 5
+            );
             SceneManager.AddObject(fighter);
 
-            // create first test creep and archer, maybe we should do array? Random cooldown, movement, speed ..... 
-            Creep testCreep = DynamicObjectFactory.Instance.Create(
+            Creep testCreep = (Creep) DynamicObjectFactory.Instance.Create(
                 new Vector2(205, 555),
                 ImageAddresses.CreepImage,
                 ObjectType.Creep,
@@ -41,11 +38,11 @@
                 layerDepth: 1f,
                 movementSpeed: 1f,
                 damage: 5,
-                health: 100) as Creep;
-
+                health: 100
+            );
             SceneManager.AddObject(testCreep);
 
-            Wizard testWizard = DynamicObjectFactory.Instance.Create(
+            Wizard testWizard = (Wizard) DynamicObjectFactory.Instance.Create(
                 new Vector2(405, 305),
                 ImageAddresses.WizardImage,
                 ObjectType.Wizard,
@@ -55,11 +52,11 @@
                 layerDepth: 1f,
                 movementSpeed: 1f,
                 damage: 5,
-                health: 100) as Wizard;
-
+                health: 100
+            );
             SceneManager.AddObject(testWizard);
 
-            Archer testArcher = DynamicObjectFactory.Instance.Create(
+            Archer testArcher = (Archer) DynamicObjectFactory.Instance.Create(
                 new Vector2(800, 500),
                 ImageAddresses.ArcherImage,
                 ObjectType.Archer,
@@ -70,56 +67,60 @@
                 movementSpeed: 1f,
                 damage: 5,
                 health: 100,
-                cooldown: 50) as Archer;
-
+                cooldown: 50
+            );
             SceneManager.AddObject(testArcher);
 
             // Adding all surronding walls
-            for (int i = 0, horizontalUpdater = 0, verticalUpdater = 0; i < 8; i++)
+            for (int i = 0, updateX = 0, updateY = 0; i < 8; i++)
             {
-                Wall rightSide1Wall = StaticObjectFactory.Instance.Create(
-                new Vector2(GameResolution.DefaultWidth, verticalUpdater),
-                ImageAddresses.VerticalWallImage,
-                ObjectType.Wall,
-                Color.White,
-                1f,
-                0f,
-                1f) as Wall;
+                Wall rightSideWall = (Wall)StaticObjectFactory.Instance.Create(
+                    new Vector2(GameResolution.DefaultWidth, updateY),
+                    ImageAddresses.VerticalWallImage,
+                    ObjectType.Wall,
+                    Color.White,
+                    1f,
+                    0f,
+                    1f
+                );
 
-                Wall leftSide2Wall = StaticObjectFactory.Instance.Create(
-                new Vector2(0, verticalUpdater),
-                ImageAddresses.VerticalWallImage,
-                ObjectType.Wall,
-                Color.White,
-                1f,
-                0f,
-                1f) as Wall;
+                Wall leftSideWall = (Wall)StaticObjectFactory.Instance.Create(
+                    new Vector2(0, updateY),
+                    ImageAddresses.VerticalWallImage,
+                    ObjectType.Wall,
+                    Color.White,
+                    1f,
+                    0f,
+                    1f
+                );
 
-                Wall upperWall = StaticObjectFactory.Instance.Create(
-                new Vector2(horizontalUpdater, 0),
-                ImageAddresses.HorizonwalWallImage,
-                ObjectType.Wall,
-                Color.White,
-                1f,
-                0f,
-                1f) as Wall;
+                Wall upperWall = (Wall) StaticObjectFactory.Instance.Create(
+                    new Vector2(updateX, 0),
+                    ImageAddresses.HorizontalWallImage,
+                    ObjectType.Wall,
+                    Color.White,
+                    1f,
+                    0f,
+                    1f
+                );
 
-                Wall downWall = StaticObjectFactory.Instance.Create(
-                new Vector2(horizontalUpdater, GameResolution.DefaultHeight),
-                ImageAddresses.HorizonwalWallImage,
-                ObjectType.Wall,
-                Color.White,
-                1f,
-                0f,
-                1f) as Wall;
+                Wall bottomWall = (Wall)StaticObjectFactory.Instance.Create(
+                    new Vector2(updateX, GameResolution.DefaultHeight),
+                    ImageAddresses.HorizontalWallImage,
+                    ObjectType.Wall,
+                    Color.White,
+                    1f,
+                    0f,
+                    1f
+                );
 
-                SceneManager.AddObject(rightSide1Wall);
-                SceneManager.AddObject(leftSide2Wall);
+                SceneManager.AddObject(rightSideWall);
+                SceneManager.AddObject(leftSideWall);
                 SceneManager.AddObject(upperWall);
-                SceneManager.AddObject(downWall);
+                SceneManager.AddObject(bottomWall);
 
-                horizontalUpdater += 180;
-                verticalUpdater += 90;
+                updateX += 180;
+                updateY += 90;
             }
         }
 

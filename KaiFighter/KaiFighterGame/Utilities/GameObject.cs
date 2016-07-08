@@ -6,10 +6,8 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public abstract class ICOllidable : IRenderable, ICollidable, IProducable<ICOllidable>
+    public abstract class GameObject : IRenderable, ICollidable, IProducable<GameObject>
     {
-        private const string CollisionGroupString = "GameObject";
-
         private Vector2 position;
         private ObjectType objectType;
         private Texture2D image;
@@ -22,12 +20,14 @@
         /// <summary>
         /// Creates a game object.
         /// </summary>
-        /// <param name="position">The position of the object.</param>
+        /// <param name="position">The position of the game object.</param>
+        /// <param name="imageLocation"></param>
         /// <param name="objectType">The type of the game object.</param>
-        /// <param name="resources">The resources of the object.</param>
-        /// <param name="size">The size of the object.</param>
-        /// <param name="image">The image of the object.</param>
-        protected ICOllidable(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth)
+        /// <param name="objColor">The color of the game object.</param>
+        /// <param name="scale">The scale of the game object.</param>
+        /// <param name="rotation">The rotation of the game object.</param>
+        /// <param name="layerDepth">The layer depth of the game object.</param>
+        protected GameObject(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth)
         {
             this.ObjectColor = objColor;
             this.PositionX = position.X;
@@ -40,6 +40,9 @@
             this.objectLayerDepth = layerDepth;
         }
 
+        /// <summary>
+        /// Gets the object type of the object.
+        /// </summary>
         public ObjectType ObjType
         {
             get
@@ -48,6 +51,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the rectagular bounding box of the object.
+        /// </summary>
         public Rectangle BoundingBox
         {
             get
@@ -114,6 +120,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets or sets the color of the object.
+        /// </summary>
         public Color? ObjectColor
         {
             get
@@ -140,7 +149,7 @@
         public abstract void Initialize();
 
         /// <summary>
-        /// Updates the state of the object on the screen
+        /// Updates the state of the object.
         /// </summary>
         public abstract void Update(GameTime gameTime);
 
@@ -170,15 +179,19 @@
             this.image.Dispose();
         }
 
+        /// <summary>
+        /// Gets the object's position.
+        /// </summary>
+        /// <returns>The position of the object.</returns>
         public virtual Vector2 GetObjectPosition()
         {
             return this.position;
         }
 
 
-        public virtual IEnumerable<ICOllidable> ProduceObjects()
+        public virtual IEnumerable<GameObject> ProduceObjects()
         {
-            return new List<ICOllidable>();
+            return new List<GameObject>();
         }
 
         public virtual void RespondToCollision(ICollidable gameObject)

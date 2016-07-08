@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using Factories;
-    using Global_Constants;
+    using GlobalConstants;
     using Interfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
@@ -13,7 +13,7 @@
     public class MainMenu : IScene
     {
         private Button currentSelectedButton;
-        private List<Button> buttons = new List<Button>();
+        private readonly List<Button> buttons = new List<Button>();
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
         private bool disableButtons = false;
@@ -22,44 +22,50 @@
         private Button exitGameButton;
         private Song menuSong;
 
-        // scene initialization and object placement
+        /// <summary>
+        /// Initializes the scene with objects.
+        /// </summary>
         public void Load()
         {
-            this.startGameButton = UiFactory.Instance.Create(
+            this.startGameButton = (Button) UiFactory.Instance.Create(
                 Color.White,
                 new Vector2(50, 50),
                 ImageAddresses.NormalStartButton,
                 ImageAddresses.HoveredStartButton,
                 ImageAddresses.InactiveStartButton,
                 RenderLayers.UiLayer,
-                scale: .3f) as Button;
+                scale: .3f
+            );
             SceneManager.AddObject(this.startGameButton);
 
-            this.statsButton = UiFactory.Instance.Create(
+            this.statsButton = (Button) UiFactory.Instance.Create(
                 Color.White,
                 new Vector2(50, 140),
                 ImageAddresses.NormalStatsButton,
                 ImageAddresses.HoveredStatsButton,
                 ImageAddresses.InactiveStatsButton,
                 RenderLayers.UiLayer,
-                scale: .3f) as Button;
+                scale: .3f
+            );
             SceneManager.AddObject(this.statsButton);
 
-            this.exitGameButton = UiFactory.Instance.Create(
+            this.exitGameButton = (Button) UiFactory.Instance.Create(
                 Color.White,
                 new Vector2(50, 230),
                 ImageAddresses.NormalExitButton,
                 ImageAddresses.HoveredExitButton,
                 ImageAddresses.InactiveExitButton,
                 RenderLayers.UiLayer,
-                scale: .3f) as Button;
+                scale: .3f
+            );
             SceneManager.AddObject(this.exitGameButton);
 
-            Background backgr = UiFactory.Instance.Create(
+            Background backgr = (Background) UiFactory.Instance.Create(
                 Color.White,
                 ImageAddresses.MenuBackgroundImage,
                 backgroundScale: .356f,
-                backgroundLayer: RenderLayers.BackgroundLayer) as Background;
+                backgroundLayer: RenderLayers.BackgroundLayer
+            );
             SceneManager.AddObject(backgr);
 
             this.currentSelectedButton = this.startGameButton;

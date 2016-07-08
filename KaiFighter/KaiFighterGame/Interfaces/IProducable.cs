@@ -3,7 +3,7 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// All objects which can produce other objects will implement this interface.
+    /// All objects which can produce other objects must implement this interface.
     /// </summary>
     public interface IProducable<T>
     {

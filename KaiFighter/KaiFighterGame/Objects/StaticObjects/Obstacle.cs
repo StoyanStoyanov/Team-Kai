@@ -7,8 +7,6 @@
 
     public class Obstacle : StaticObject
     {
-        private const string CollisionGroupString = "Obstacle";
-
         public Obstacle(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth)
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth)
         {
@@ -29,7 +27,6 @@
             throw new NotImplementedException();
         }
 
-      
         public override void Initialize()
         {
             throw new NotImplementedException();

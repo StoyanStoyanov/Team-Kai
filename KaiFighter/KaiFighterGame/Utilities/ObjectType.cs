@@ -5,7 +5,14 @@
     /// </summary>
     public enum ObjectType
     {
-        // TODO: Add more object types
-        Player, Archer, Creep, Bullet, Bonus, Obstacle, Wall, Wizard, Door
+        Player = 0,
+        Archer = 1,
+        Creep = 2,
+        Bullet = 3,
+        Bonus = 4,
+        Obstacle = 5,
+        Wall = 6,
+        Wizard = 7,
+        Door = 8
     }
 }

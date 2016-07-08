@@ -4,7 +4,7 @@
     using Utilities;
 
     /// <summary>
-    /// All objects which can collide will implement this interface.
+    /// All objects which can collide must implement this interface.
     /// </summary>
     public interface ICollidable
     {
@@ -12,8 +12,15 @@
         /// How the object responds to a collision.
         /// </summary>
         void RespondToCollision(ICollidable gameObject);
-        Rectangle BoundingBox { get; }
-        ObjectType ObjType { get; }
 
+        /// <summary>
+        /// The bounding box of every ICollidable object.
+        /// </summary>
+        Rectangle BoundingBox { get; }
+
+        /// <summary>
+        /// The object type of the object.
+        /// </summary>
+        ObjectType ObjType { get; }
     }
 }

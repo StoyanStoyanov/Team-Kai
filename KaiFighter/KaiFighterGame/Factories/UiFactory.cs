@@ -1,6 +1,6 @@
 ﻿namespace KaiFighterGame.Factories
 {
-    using Global_Constants;
+    using GlobalConstants;
     using Interfaces;
     using Microsoft.Xna.Framework;
     using System;
