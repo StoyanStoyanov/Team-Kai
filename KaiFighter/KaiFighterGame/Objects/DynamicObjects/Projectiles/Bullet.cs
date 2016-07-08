@@ -39,18 +39,27 @@
             this.MoveWithoutStop(this.targetDir);
         }
 
+        /// <summary>
+        /// If the bullet shound not react when colliding with other bullet and bonus
+        /// Also the shooter shoud not be affected
+        /// </summary>
+        /// <param name="gameObject"></param>
         public override void RespondToCollision(ICollidable gameObject)
         {
             if (this.IsPlayerFire == true)
             {
-                if (gameObject.ObjType != ObjectType.Player && gameObject.ObjType != ObjectType.Bullet)
+                if (gameObject.ObjType != ObjectType.Player 
+                    && gameObject.ObjType != ObjectType.Bullet
+                    && gameObject.ObjType != ObjectType.Bonus)
                 {
                     SceneManager.DestroyObject(this);
                 }
             }
             else
             {
-                if (gameObject.ObjType != ObjectType.Archer && gameObject.ObjType != ObjectType.Bullet)
+                if (gameObject.ObjType != ObjectType.Archer
+                    && gameObject.ObjType != ObjectType.Bullet
+                    && gameObject.ObjType != ObjectType.Bonus)
                 {
                     SceneManager.DestroyObject(this);
                 }
