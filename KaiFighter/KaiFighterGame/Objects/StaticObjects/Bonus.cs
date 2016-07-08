@@ -4,6 +4,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Utilities;
+    using Interfaces;
 
     public class Bonus : StaticObject
     {
@@ -20,7 +21,7 @@
            // throw new NotImplementedException();
         }
 
-        public override void RespondToCollision(GameObject gameObject)
+        public override void RespondToCollision(ICollidable gameObject)
         {
 
             if (gameObject.ObjType == ObjectType.Player)

@@ -6,7 +6,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public abstract class GameObject : IRenderable, ICollidable, IProducable<GameObject>
+    public abstract class ICOllidable : IRenderable, ICollidable, IProducable<ICOllidable>
     {
         private const string CollisionGroupString = "GameObject";
 
@@ -27,7 +27,7 @@
         /// <param name="resources">The resources of the object.</param>
         /// <param name="size">The size of the object.</param>
         /// <param name="image">The image of the object.</param>
-        protected GameObject(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth)
+        protected ICOllidable(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth)
         {
             this.ObjectColor = objColor;
             this.PositionX = position.X;
@@ -175,22 +175,13 @@
             return this.position;
         }
 
-        public virtual bool CanCollideWith(string otherCollisionGroupString)
+
+        public virtual IEnumerable<ICOllidable> ProduceObjects()
         {
-            return CollisionGroupString == otherCollisionGroupString;
+            return new List<ICOllidable>();
         }
 
-        public virtual string GetCollisionGroupString()
-        {
-            return CollisionGroupString;
-        }
-
-        public virtual IEnumerable<GameObject> ProduceObjects()
-        {
-            return new List<GameObject>();
-        }
-
-        public virtual void RespondToCollision(GameObject gameObject)
+        public virtual void RespondToCollision(ICollidable gameObject)
         {
             // Descendants will override and implement this method.
         }

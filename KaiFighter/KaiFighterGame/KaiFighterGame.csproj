@@ -75,7 +75,6 @@
     <Compile Include="Scenes\NormalLevel.cs" />
     <Compile Include="UI\Background.cs" />
     <Compile Include="UI\Button.cs" />
-    <Compile Include="Utilities\CollisionData.cs" />
     <Compile Include="Utilities\CollisionDispatcher.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Creep.cs" />
     <Compile Include="Utilities\DynamicObject.cs" />

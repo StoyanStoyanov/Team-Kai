@@ -32,17 +32,14 @@
             }
         }
 
-        public override string GetCollisionGroupString()
-        {
-            return CollisionGroupString;
-        }
+        
 
         public override void Initialize()
         {
             this.MoveWithoutStop(this.targetDir);
         }
 
-        public override void RespondToCollision(GameObject gameObject)
+        public override void RespondToCollision(ICollidable gameObject)
         {
             if (this.IsPlayerFire == true)
             {

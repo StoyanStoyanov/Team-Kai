@@ -30,7 +30,7 @@
             //throw new NotImplementedException();
         }
 
-        public override void RespondToCollision(GameObject gameObject)
+        public override void RespondToCollision(ICollidable gameObject)
         {
             if (gameObject is StaticObject)
             {

@@ -29,11 +29,7 @@
             throw new NotImplementedException();
         }
 
-        public override string GetCollisionGroupString()
-        {
-            return CollisionGroupString;
-        }
-
+      
         public override void Initialize()
         {
             throw new NotImplementedException();

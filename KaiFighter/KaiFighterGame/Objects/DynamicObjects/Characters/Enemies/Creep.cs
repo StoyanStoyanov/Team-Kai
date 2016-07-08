@@ -7,7 +7,6 @@
 
     public class Creep : Character
     {
-        private const string CollisionGroupString = "Creep";
 
         public Creep(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, double health)
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health)
@@ -15,16 +14,7 @@
             
         }
 
-       /*public override void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
-        }
-        
-        public override void LoadContent(Game theGame)
-        {
-            throw new NotImplementedException();
-        }*/
-
+       
       
         public override void Update(GameTime gameTime)
         {
@@ -55,9 +45,6 @@
         }
 
 
-        public override string GetCollisionGroupString()
-        {
-            return CollisionGroupString;
-        }
+       
     }
 }

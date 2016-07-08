@@ -6,10 +6,11 @@
     using Projectiles;
     using Utilities;
     using System.Diagnostics;
+    using Interfaces;
 
     public class Player : Shooter
     {
-        private const string CollisionGroupString = "Player";
+       
 
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
@@ -34,7 +35,7 @@
             }
         }
 
-        public override void RespondToCollision(GameObject gameObject)
+        public override void RespondToCollision(ICollidable gameObject)
         {
 
             if (gameObject.ObjType == ObjectType.Wall)
@@ -46,7 +47,6 @@
             else if (gameObject.ObjType == ObjectType.Bullet && (gameObject as Bullet).IsPlayerFire == false)
             {
 
-                Debug.Write(String.Format("Health: {0}, Colide with: {1} ", this.Health, gameObject.GetType()));
 
                 this.Health -= (gameObject as Bullet).Damage;
             }
@@ -54,7 +54,6 @@
                        gameObject.ObjType == ObjectType.Creep ||
                        gameObject.ObjType == ObjectType.Wizard)
             {
-                // Debug.Write(String.Format("Health: {0}, Colide with: {1} ", this.Health, gameObject.GetType()));
                 this.Health -= (gameObject as Character).Damage ;
                 this.PositionX = this.PreviousPositionX;
                 this.PositionY = this.PreviousPositionY;
@@ -63,6 +62,7 @@
             {
                 Random rnd = new Random();
                 this.Health += rnd.Next(-5, 10);
+                this.Damage += rnd.Next(2, 10);
             }
             else if (gameObject.ObjType == ObjectType.Door)
             {
@@ -70,11 +70,7 @@
             }
         }
 
-        public override string GetCollisionGroupString()
-        {
-            return CollisionGroupString;
-        }
-
+       
         private void HandleInput(KeyboardState keyState)
         {
             this.currentKeyboardState = Keyboard.GetState();

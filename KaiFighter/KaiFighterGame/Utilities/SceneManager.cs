@@ -10,7 +10,7 @@
     {
         private static IScene currentScene;
         private static List<IRenderable> objects = new List<IRenderable>();
-        private static List<GameObject> collidableObjects = new List<GameObject>();
+        private static List<ICollidable> collidableObjects = new List<ICollidable>();
 
         // Calls the update method of every object in the scene
         public static void Update(GameTime gameTime)
@@ -39,9 +39,9 @@
         {
             objects.Add(obj);
 
-            if (obj is GameObject)
+            if (obj is ICollidable)
             {
-                collidableObjects.Add(obj as GameObject);
+                collidableObjects.Add(obj as ICOllidable);
             }
 
             obj.LoadContent(EntryPoint.TheGame);
@@ -53,9 +53,9 @@
         {
             objects.Remove(obj);
 
-            if (obj is GameObject)
+            if (obj is ICOllidable)
             {
-                collidableObjects.Remove(obj as GameObject);
+                collidableObjects.Remove(obj as ICollidable);
             }
         }
 

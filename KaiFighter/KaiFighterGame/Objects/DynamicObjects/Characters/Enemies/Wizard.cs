@@ -38,9 +38,6 @@
             base.Update(gameTime);
         }
 
-        public override string GetCollisionGroupString()
-        {
-            return CollisionGroupString;
-        }
+       
     }
 }

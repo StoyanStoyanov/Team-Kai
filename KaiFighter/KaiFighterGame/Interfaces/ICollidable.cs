@@ -1,5 +1,6 @@
 ﻿namespace KaiFighterGame.Interfaces
 {
+    using Microsoft.Xna.Framework;
     using Utilities;
 
     /// <summary>
@@ -10,11 +11,9 @@
         /// <summary>
         /// How the object responds to a collision.
         /// </summary>
-        void RespondToCollision(GameObject gameObject);
+        void RespondToCollision(ICollidable gameObject);
+        Rectangle BoundingBox { get; }
+        ObjectType ObjType { get; }
 
-        /// <summary>
-        /// Returns the collision group string of the object.
-        /// </summary>
-        string GetCollisionGroupString();
     }
 }
