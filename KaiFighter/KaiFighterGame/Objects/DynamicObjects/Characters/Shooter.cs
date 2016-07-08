@@ -12,7 +12,6 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters
     // this is the base class for all ranged characters
     public class Shooter : Character, IRanged
     {
-        private DynamicObjectFactory bulletFactory;
         private int shooterCooldown;
         private int initialCooldown;
         private Vector2 shootDirection;
@@ -21,7 +20,6 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters
         public Shooter(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float speed, double damage, double health, int cooldown) 
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health)
         {
-            this.bulletFactory = new DynamicObjectFactory();
             this.shooterCooldown = cooldown;
             this.initialCooldown = this.shooterCooldown;
             this.shootDirection = new Vector2();
@@ -44,7 +42,7 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters
                     ImageAddresses.Projectile1Image
                 };
 
-                Bullet someBullet = this.bulletFactory.Create(
+                Bullet someBullet = DynamicObjectFactory.Instance.Create(
                 new Vector2(this.PositionX, this.PositionY),
                 bulletImages[this.bulletRandomizer.Next(0, bulletImages.Length)],
                 ObjectType.Bullet,

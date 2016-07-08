@@ -13,10 +13,8 @@
     {
         public void Load()
         {
-            DynamicObjectFactory factory = new DynamicObjectFactory();
-
             // the next two lines should be performed by the factory
-            Player fighter = factory.Create(
+            Player fighter = DynamicObjectFactory.Instance.Create(
                 new Vector2(500, 500),
                 ImageAddresses.PlayerImage,
                 ObjectType.Player,
@@ -33,7 +31,7 @@
             SceneManager.AddObject(fighter);
 
             // create first test creep and archer, maybe we should do array? Random cooldown, movement, speed ..... 
-            Creep testCreep = factory.Create(
+            Creep testCreep = DynamicObjectFactory.Instance.Create(
                 new Vector2(205, 555),
                 ImageAddresses.CreepImage,
                 ObjectType.Creep,
@@ -47,7 +45,7 @@
 
             SceneManager.AddObject(testCreep);
 
-            Wizard testWizard = factory.Create(
+            Wizard testWizard = DynamicObjectFactory.Instance.Create(
                 new Vector2(405, 305),
                 ImageAddresses.WizardImage,
                 ObjectType.Wizard,
@@ -61,7 +59,7 @@
 
             SceneManager.AddObject(testWizard);
 
-            Archer testArcher = factory.Create(
+            Archer testArcher = DynamicObjectFactory.Instance.Create(
                 new Vector2(800, 500),
                 ImageAddresses.ArcherImage,
                 ObjectType.Archer,
@@ -76,12 +74,10 @@
 
             SceneManager.AddObject(testArcher);
 
-            StaticObjectFactory staticFactory = new StaticObjectFactory();
-
             // Adding all surronding walls
             for (int i = 0, horizontalUpdater = 0, verticalUpdater = 0; i < 8; i++)
             {
-                Wall rightSide1Wall = staticFactory.Create(
+                Wall rightSide1Wall = StaticObjectFactory.Instance.Create(
                 new Vector2(GameResolution.DefaultWidth, verticalUpdater),
                 ImageAddresses.VerticalWallImage,
                 ObjectType.Wall,
@@ -90,7 +86,7 @@
                 0f,
                 1f) as Wall;
 
-                Wall leftSide2Wall = staticFactory.Create(
+                Wall leftSide2Wall = StaticObjectFactory.Instance.Create(
                 new Vector2(0, verticalUpdater),
                 ImageAddresses.VerticalWallImage,
                 ObjectType.Wall,
@@ -99,7 +95,7 @@
                 0f,
                 1f) as Wall;
 
-                Wall upperWall = staticFactory.Create(
+                Wall upperWall = StaticObjectFactory.Instance.Create(
                 new Vector2(horizontalUpdater, 0),
                 ImageAddresses.HorizonwalWallImage,
                 ObjectType.Wall,
@@ -108,7 +104,7 @@
                 0f,
                 1f) as Wall;
 
-                Wall downWall = staticFactory.Create(
+                Wall downWall = StaticObjectFactory.Instance.Create(
                 new Vector2(horizontalUpdater, GameResolution.DefaultHeight),
                 ImageAddresses.HorizonwalWallImage,
                 ObjectType.Wall,

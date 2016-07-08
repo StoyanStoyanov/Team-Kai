@@ -14,10 +14,8 @@
     // This is the parent class of the player and all enemies
     public class Character : DynamicObject, IDamageable, IKiller
     {
-        private StaticObjectFactory factory = new StaticObjectFactory();
-
-        public Character(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, double health) :
-            base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)
+        public Character(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, double health)
+            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)
         {
             this.Health = health;
             this.Damage = damage;
@@ -48,7 +46,6 @@
                 this.Health -= (gameObject as Bullet).Damage;
                 //Debug.Write(String.Format("Health: {0}, coldie with :{1}", this.Health, gameObject.GetObjectType()));
             }
-            
         }
 
         public override void Update(GameTime gameTime)
@@ -57,7 +54,7 @@
             {
                 SceneManager.DestroyObject(this);
 
-                var someBonus = factory.Create(
+                var someBonus = StaticObjectFactory.Instance.Create(
                    new Vector2(this.PositionX, this.PositionY),
                     ImageAddresses.BonusImage,
                    ObjectType.Bonus,

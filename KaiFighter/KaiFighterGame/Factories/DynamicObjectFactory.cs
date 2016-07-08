@@ -8,10 +8,34 @@
     using Utilities;
 
     /// <summary>
-    /// The Dynamic objects factory.
+    /// A thread-safe, lazy initialization Singleton implementation of the Dynamic objects factory.
     /// </summary>
-    public class DynamicObjectFactory : AbstractDynamicObjectFactory
+    public sealed class DynamicObjectFactory : AbstractDynamicObjectFactory
     {
+        /// <summary>
+        /// Initializes an instance of the DynamicObjectFactory class the first time
+        /// an instance is required, and holds this instance ever since.
+        /// </summary>
+        private static readonly Lazy<DynamicObjectFactory> holder =
+            new Lazy<DynamicObjectFactory>(
+                () => new DynamicObjectFactory());
+
+        /// <summary>
+        /// Private constructor, ensures restricted access.
+        /// </summary>
+        private DynamicObjectFactory() { }
+
+        /// <summary>
+        /// Provides access to the only instance of the DynamicObjectFactory class.
+        /// </summary>
+        public static DynamicObjectFactory Instance
+        {
+            get
+            {
+                return holder.Value;
+            }
+        }
+
         /// <summary>
         /// Creates the Dynamic objects in the game.
         /// </summary>
@@ -19,7 +43,7 @@
         /// <param name="objectType">The type of the game object.</param>
         /// <param name="movementSpeed">The movement speed of the Dynamic object.</param>
         /// <param name="damage">The damage of the Dynamic object</param>
-        /// <returns></returns>
+        /// <returns>New DynamicObject by given object type.</returns>
         public override DynamicObject Create(
             Vector2 position,
             string imageLocation,

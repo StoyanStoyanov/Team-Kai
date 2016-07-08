@@ -12,8 +12,6 @@
         private static List<IRenderable> objects = new List<IRenderable>();
         private static List<GameObject> collidableObjects = new List<GameObject>();
 
-        private static StaticObjectFactory factory = new StaticObjectFactory();
-
         // Calls the update method of every object in the scene
         public static void Update(GameTime gameTime)
         {
