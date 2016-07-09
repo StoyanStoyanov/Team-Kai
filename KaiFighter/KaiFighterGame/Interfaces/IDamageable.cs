@@ -10,9 +10,6 @@
         /// </summary>
         double Health { get; set; }
 
-        /// <summary>
-        /// Determines how much damage the object will take when hit.
-        /// </summary>
-        void TakeDamage();
+       
     }
 }

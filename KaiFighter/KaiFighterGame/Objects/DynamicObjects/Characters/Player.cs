@@ -62,7 +62,7 @@
                   || gameObject.ObjType == ObjectType.Creep
                   || gameObject.ObjType == ObjectType.Wizard)
             {
-                this.Health -= ((Character)gameObject).Damage ;
+                this.Health -= ((Character)gameObject).Damage / 10 ;
                 this.PositionX = this.PreviousPositionX;
                 this.PositionY = this.PreviousPositionY;
             }
@@ -71,6 +71,8 @@
                 Random rnd = new Random();
                 this.Health += rnd.Next(-5, 10);
                 this.Damage += rnd.Next(2, 10);
+                this.Score += rnd.Next(10, 20);
+                
             }
             else if (gameObject.ObjType == ObjectType.Door)
             {
