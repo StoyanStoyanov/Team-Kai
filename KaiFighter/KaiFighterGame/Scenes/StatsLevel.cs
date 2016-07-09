@@ -17,7 +17,7 @@
         public void Load()
         {
             // used to draw the stats on the screen
-            this.font = EntryPoint.TheGame.Content.Load<SpriteFont>(FontAdresses.HudFont);
+            this.font = EntryPoint.TheGame.Content.Load<SpriteFont>(FontAddresses.HudFont);
 
             Background backgr = (Background)UiFactory.Instance.Create(
                 Color.White,

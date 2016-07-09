@@ -1,7 +1,7 @@
 ﻿namespace KaiFighterGame.UI
 {
-    using GlobalConstants;
     using Interfaces;
+    using GlobalConstants;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 

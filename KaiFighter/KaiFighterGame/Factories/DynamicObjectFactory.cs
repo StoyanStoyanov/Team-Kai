@@ -1,22 +1,23 @@
 ﻿namespace KaiFighterGame.Factories
 {
     using System;
+    using Utilities;
+    using Interfaces;
     using Microsoft.Xna.Framework;
     using Objects.DynamicObjects.Characters;
     using Objects.DynamicObjects.Characters.Enemies;
     using Objects.DynamicObjects.Projectiles;
-    using Utilities;
 
     /// <summary>
     /// A thread-safe, lazy initialization Singleton implementation of the Dynamic objects factory.
     /// </summary>
-    public sealed class DynamicObjectFactory : AbstractDynamicObjectFactory
+    public sealed class DynamicObjectFactory : IDynamicObjectFactory
     {
         /// <summary>
         /// Initializes an instance of the DynamicObjectFactory class the first time
         /// an instance is required, and holds this instance ever since.
         /// </summary>
-        private static readonly Lazy<DynamicObjectFactory> holder =
+        private static readonly Lazy<DynamicObjectFactory> holder = 
             new Lazy<DynamicObjectFactory>(
                 () => new DynamicObjectFactory());
 
@@ -26,7 +27,7 @@
         private DynamicObjectFactory() { }
 
         /// <summary>
-        /// Provides access to the only instance of the DynamicObjectFactory class.
+        /// Provides access to the single instance of the DynamicObjectFactory class.
         /// </summary>
         public static DynamicObjectFactory Instance
         {
@@ -51,7 +52,7 @@
         /// <param name="cooldown">The cooldown of the object.</param>
         /// <param name="targetDir">The target direction the object moves into.</param>
         /// <returns>New DynamicObject by given object type.</returns>
-        public override DynamicObject Create(
+        public DynamicObject Create(
             Vector2 position,
             string imageLocation,
             ObjectType objectType,

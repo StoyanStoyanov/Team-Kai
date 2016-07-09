@@ -1,24 +1,22 @@
 ﻿namespace KaiFighterGame.Factories
 {
-    using GlobalConstants;
     using Interfaces;
-    using Microsoft.Xna.Framework;
     using System;
-    using UI;
+    using GlobalConstants;
+    using Microsoft.Xna.Framework;
     using Objects.DynamicObjects.Characters;
+    using UI;
 
     /// <summary>
     /// A thread-safe, lazy initialization Singleton implementation of the UI Renderable objects factory.
     /// </summary>
-    public sealed class UiFactory : AbstractUiFactory
+    public sealed class UiFactory : IUiFactory
     {
         /// <summary>
         /// Initializes an instance of the UiFactory class the first time
         /// an instance is required, and holds this instance ever since.
         /// </summary>
-        private static readonly Lazy<UiFactory> holder =
-            new Lazy<UiFactory>(
-                () => new UiFactory());
+        private static readonly Lazy<UiFactory> holder = new Lazy<UiFactory>(() => new UiFactory());
 
         /// <summary>
         /// Private constructor, ensures restricted access.
@@ -26,7 +24,7 @@
         private UiFactory() { }
 
         /// <summary>
-        /// Provides access to the only instance of the UiFactory class.
+        /// Provides access to the single instance of the UiFactory class.
         /// </summary>
         public static UiFactory Instance
         {
@@ -47,7 +45,14 @@
         /// <param name="renderLayer"></param>
         /// <param name="scale"></param>
         /// <returns></returns>
-        public override IRenderable Create(Color renderColor, Vector2 position, string normalImage, string hoveredImage, string pressedImage, float renderLayer = RenderLayers.UiLayer, float scale = 1f)
+        public IRenderable Create(
+            Color renderColor, 
+            Vector2 position, 
+            string normalImage, 
+            string hoveredImage, 
+            string pressedImage, 
+            float renderLayer = RenderLayers.UiLayer, 
+            float scale = 1f)
         {
             return new Button(renderColor, position, normalImage, hoveredImage, pressedImage, renderLayer, scale);
         }
@@ -60,7 +65,7 @@
         /// <param name="backgroundScale"></param>
         /// <param name="backgroundLayer"></param>
         /// <returns></returns>
-        public override IRenderable Create(Color backgroundColor, string backgroundImageFile, float backgroundScale, float backgroundLayer)
+        public IRenderable Create(Color backgroundColor, string backgroundImageFile, float backgroundScale, float backgroundLayer)
         {
             return new Background(backgroundColor, backgroundImageFile, backgroundScale, backgroundLayer);
         }
@@ -72,9 +77,9 @@
         /// <param name="player"></param>
         /// <param name="renderLayer"></param>
         /// <returns></returns>
-        public override IRenderable Create(Color hudColor, Player player, float renderLayer)
+        public IRenderable Create(Color hudColor, Player player, float renderLayer)
         {
-            return new PlayerHUD(hudColor, player, renderLayer);
+            return new PlayerHud(hudColor, player, renderLayer);
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿namespace KaiFighterGame.GlobalConstants
 {
-    public class ImageAddresses
+    /// <summary>
+    /// Holds the paths to all images.
+    /// </summary>
+    public struct ImageAddresses
     {
         public const string PlayerImage = "Images/Textures/PlayerTexture";
         public const string CreepImage = "Images/Textures/CukiTest";

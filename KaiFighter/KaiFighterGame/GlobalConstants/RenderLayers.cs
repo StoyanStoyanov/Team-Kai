@@ -1,6 +1,6 @@
 ﻿namespace KaiFighterGame.GlobalConstants
 {
-    public class RenderLayers
+    public struct RenderLayers
     {
         public const float BackgroundLayer = 0f;
         public const float UiLayer = 1f;

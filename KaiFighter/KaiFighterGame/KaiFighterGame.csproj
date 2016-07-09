@@ -39,14 +39,14 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Factories\AbstractDynamicObjectFactory.cs" />
-    <Compile Include="Factories\AbstractStaticObjectFactory.cs" />
-    <Compile Include="Factories\AbstractUiFactory.cs" />
+    <Compile Include="Interfaces\IDynamicObjectFactory.cs" />
+    <Compile Include="Interfaces\IStaticObjectFactory.cs" />
+    <Compile Include="Interfaces\IUiFactory.cs" />
     <Compile Include="Factories\DynamicObjectFactory.cs" />
     <Compile Include="Factories\StaticObjectFactory.cs" />
     <Compile Include="Factories\UiFactory.cs" />
-    <Compile Include="GlobalConstants\AudioAdresses.cs" />
-    <Compile Include="GlobalConstants\FontAdresses.cs" />
+    <Compile Include="GlobalConstants\AudioAddresses.cs" />
+    <Compile Include="GlobalConstants\FontAddresses.cs" />
     <Compile Include="GlobalConstants\ImageAddresses.cs" />
     <Compile Include="GlobalConstants\GameResolution.cs" />
     <Compile Include="GlobalConstants\RenderLayers.cs" />
@@ -76,7 +76,7 @@
     <Compile Include="UI\Background.cs" />
     <Compile Include="UI\Button.cs" />
     <Compile Include="UI\ButtonController.cs" />
-    <Compile Include="UI\PlayerHUD.cs" />
+    <Compile Include="UI\PlayerHud.cs" />
     <Compile Include="Utilities\CollisionDispatcher.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Creep.cs" />
     <Compile Include="Utilities\DynamicObject.cs" />

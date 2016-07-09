@@ -45,7 +45,7 @@
                 ImageAddresses.HoveredExitButton,
                 ImageAddresses.InactiveExitButton,
                 RenderLayers.UiLayer,
-                scale: .3f) as Button;
+                scale: .3f);
             SceneManager.AddObject(this.exitGameButton);
 
             Background backgr = (Background) UiFactory.Instance.Create(
@@ -65,7 +65,7 @@
             this.exitGameButton.OnPressed += this.ExitGame;
             this.statsButton.OnPressed += this.LoadStatsLevel;
 
-            this.menuSong = EntryPoint.TheGame.Content.Load<Song>(AudioAdresses.MenuSong);
+            this.menuSong = EntryPoint.TheGame.Content.Load<Song>(AudioAddresses.MenuSong);
 
             MediaPlayer.IsRepeating = true;
 

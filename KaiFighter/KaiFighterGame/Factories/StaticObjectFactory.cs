@@ -1,14 +1,15 @@
 ﻿namespace KaiFighterGame.Factories
 {
     using System;
+    using Interfaces;
+    using Utilities;
     using Microsoft.Xna.Framework;
     using Objects.StaticObjects;
-    using Utilities;
 
     /// <summary>
     /// A thread-safe, lazy initialization Singleton implementation of the Static objects factory.
     /// </summary>
-    public sealed class StaticObjectFactory : AbstractStaticObjectFactory
+    public sealed class StaticObjectFactory : IStaticObjectFactory
     {
         /// <summary>
         /// Initializes an instance of the StaticObjectFactory class the first time
@@ -44,7 +45,14 @@
         /// <param name="rotation">The rotation of the object.</param>
         /// <param name="layerDepth">The layer depth of the object.</param>
         /// <returns>New StaticObject by given object type.</returns>
-        public override StaticObject Create(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth)
+        public StaticObject Create(
+            Vector2 position, 
+            string imageLocation, 
+            ObjectType objectType, 
+            Color objColor, 
+            float scale, 
+            float rotation, 
+            float layerDepth)
         {
             switch (objectType)
             {

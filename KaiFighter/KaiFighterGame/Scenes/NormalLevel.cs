@@ -74,7 +74,7 @@
             SceneManager.AddObject(testArcher);
 
             // Add player HUD
-            PlayerHUD hud = (PlayerHUD)UiFactory.Instance.Create(
+            PlayerHud hud = (PlayerHud)UiFactory.Instance.Create(
                 Color.Black,
                 fighter,
                 RenderLayers.UiLayer);
