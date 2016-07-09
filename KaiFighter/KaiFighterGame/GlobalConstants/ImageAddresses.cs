@@ -24,6 +24,14 @@
         public const string HoveredStatsButton = "UI/Buttons/StatsButtons/hoveredStatsButton";
         public const string InactiveStatsButton = "UI/Buttons/StatsButtons/inactiveStatsButton";
 
+        public const string NormalBackButton = "UI/Buttons/BackButtons/backNormal";
+        public const string HoveredBackButton = "UI/Buttons/BackButtons/backHovered";
+        public const string InactiveBackButton = "UI/Buttons/BackButtons/backInactive";
+
+        public const string NormalClearStatsButton = "UI/Buttons/ClearStatsButtons/clearStatsNormal";
+        public const string HoveredClearStatsButton = "UI/Buttons/ClearStatsButtons/clearStatsHovered";
+        public const string InactiveClearStatsButton = "UI/Buttons/ClearStatsButtons/clearStatsInactive";
+
         public const string MenuBackgroundImage = "Images/Backgrounds/menuBackground";
     }
 }

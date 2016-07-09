@@ -85,11 +85,6 @@
                 this.canToggleFullScreen = true;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-            {
-                this.Exit();
-            }
-
             SceneManager.Update(gameTime);
         }
 

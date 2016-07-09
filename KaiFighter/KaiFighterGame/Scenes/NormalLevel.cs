@@ -4,6 +4,7 @@
     using GlobalConstants;
     using Interfaces;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Input;
     using Objects.DynamicObjects.Characters;
     using Objects.DynamicObjects.Characters.Enemies;
     using Objects.StaticObjects;
@@ -126,7 +127,10 @@
 
         public void Update(GameTime gameTime)
         {
-            // throw new NotImplementedException();
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                EntryPoint.TheGame.Exit();
+            }
         }
     }
 }

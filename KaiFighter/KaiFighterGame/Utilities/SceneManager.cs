@@ -93,6 +93,8 @@
                 objects[i].UnloadContent();
             }
 
+            EntryPoint.TheGame.Content.Unload();
+
             objects.Clear();
             collidableObjects.Clear();
         }
