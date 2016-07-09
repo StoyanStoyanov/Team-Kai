@@ -8,6 +8,7 @@
     using Objects.DynamicObjects.Characters;
     using Objects.DynamicObjects.Characters.Enemies;
     using Objects.StaticObjects;
+    using UI;
     using Utilities;
 
     public class NormalLevel : IScene
@@ -71,6 +72,13 @@
                 cooldown: 50
             );
             SceneManager.AddObject(testArcher);
+
+            // Add player HUD
+            PlayerHUD hud = (PlayerHUD)UiFactory.Instance.Create(
+                Color.Black,
+                fighter,
+                RenderLayers.UiLayer);
+            SceneManager.AddObject(hud);
 
             // Adding all surronding walls
             for (int i = 0, updateX = 0, updateY = 0; i < 8; i++)

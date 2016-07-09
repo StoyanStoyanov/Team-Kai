@@ -33,7 +33,7 @@
             }
         }
 
-        public DynamicObject(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed) 
+        public DynamicObject(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth, float movementSpeed) 
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth)
         {
             this.objSpeed = movementSpeed;

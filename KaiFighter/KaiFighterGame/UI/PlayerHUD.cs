@@ -9,18 +9,18 @@
     public class PlayerHUD : IRenderable
     {
         private SpriteFont font;
-        private Color? hudColor;
+        private Color hudColor;
         private Player playerInScene;
         private float layer;
 
-        public PlayerHUD(Color? hudColor, Player player, float renderLayer)
+        public PlayerHUD(Color hudColor, Player player, float renderLayer)
         {
             this.hudColor = hudColor;
             this.layer = renderLayer;
             this.playerInScene = player;
         }
 
-        public Color? ObjectColor
+        public Color ObjectColor
         {
             get
             {

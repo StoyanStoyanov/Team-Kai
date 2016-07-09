@@ -12,7 +12,7 @@
         private ObjectType objectType;
         private Texture2D image;
         private string imageFile;
-        private Color? objectColor;
+        private Color objectColor;
         private float objectScale;
         private float objectRotation;
         private float objectLayerDepth;
@@ -27,7 +27,7 @@
         /// <param name="scale">The scale of the game object.</param>
         /// <param name="rotation">The rotation of the game object.</param>
         /// <param name="layerDepth">The layer depth of the game object.</param>
-        protected GameObject(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth)
+        protected GameObject(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth)
         {
             this.ObjectColor = objColor;
             this.PositionX = position.X;
@@ -123,7 +123,7 @@
         /// <summary>
         /// Gets or sets the color of the object.
         /// </summary>
-        public Color? ObjectColor
+        public Color ObjectColor
         {
             get
             {

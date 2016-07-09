@@ -67,6 +67,8 @@
 
             this.menuSong = EntryPoint.TheGame.Content.Load<Song>(AudioAdresses.MenuSong);
 
+            MediaPlayer.IsRepeating = true;
+
             if (MediaPlayer.State == MediaState.Stopped)
             {
                 MediaPlayer.Play(this.menuSong);

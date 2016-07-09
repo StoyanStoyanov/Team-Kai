@@ -6,14 +6,14 @@
 
     public class Background : IRenderable
     {
-        private Color? color;
+        private Color color;
         private float scale;
         private float layer;
         private Texture2D backgroundImage;
         private string backgroundImageFile;
         private Rectangle backgroundRect;
 
-        public Background(Color? backgroundColor, string backgroundImageFile, float backgroundScale, float backgroundLayer)
+        public Background(Color backgroundColor, string backgroundImageFile, float backgroundScale, float backgroundLayer)
         {
             this.color = backgroundColor;
             this.backgroundImageFile = backgroundImageFile;
@@ -21,7 +21,7 @@
             this.layer = backgroundLayer;
         }
 
-        public Color? ObjectColor
+        public Color ObjectColor
         {
             get
             {

@@ -5,7 +5,7 @@
 
     public class Wall : StaticObject
     {
-        public Wall(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth)
+        public Wall(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth)
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth)
         {
         }

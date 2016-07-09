@@ -44,7 +44,7 @@
         /// <param name="rotation">The rotation of the object.</param>
         /// <param name="layerDepth">The layer depth of the object.</param>
         /// <returns>New StaticObject by given object type.</returns>
-        public override StaticObject Create(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth)
+        public override StaticObject Create(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth)
         {
             switch (objectType)
             {

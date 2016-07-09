@@ -8,7 +8,7 @@
     {
         private Vector2 targetDir;
 
-        public Bullet(Vector2 position, string imageLocation, ObjectType objectType, Color? objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, Vector2 targetDirection)
+        public Bullet(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, Vector2 targetDirection)
             : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)
         {
             this.Damage = damage;

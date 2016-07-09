@@ -5,6 +5,7 @@
     using Microsoft.Xna.Framework;
     using System;
     using UI;
+    using Objects.DynamicObjects.Characters;
 
     /// <summary>
     /// A thread-safe, lazy initialization Singleton implementation of the UI Renderable objects factory.
@@ -46,7 +47,7 @@
         /// <param name="renderLayer"></param>
         /// <param name="scale"></param>
         /// <returns></returns>
-        public override IRenderable Create(Color? renderColor, Vector2 position, string normalImage, string hoveredImage, string pressedImage, float renderLayer = RenderLayers.UiLayer, float scale = 1f)
+        public override IRenderable Create(Color renderColor, Vector2 position, string normalImage, string hoveredImage, string pressedImage, float renderLayer = RenderLayers.UiLayer, float scale = 1f)
         {
             return new Button(renderColor, position, normalImage, hoveredImage, pressedImage, renderLayer, scale);
         }
@@ -59,9 +60,21 @@
         /// <param name="backgroundScale"></param>
         /// <param name="backgroundLayer"></param>
         /// <returns></returns>
-        public override IRenderable Create(Color? backgroundColor, string backgroundImageFile, float backgroundScale, float backgroundLayer)
+        public override IRenderable Create(Color backgroundColor, string backgroundImageFile, float backgroundScale, float backgroundLayer)
         {
             return new Background(backgroundColor, backgroundImageFile, backgroundScale, backgroundLayer);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hudColor"></param>
+        /// <param name="player"></param>
+        /// <param name="renderLayer"></param>
+        /// <returns></returns>
+        public override IRenderable Create(Color hudColor, Player player, float renderLayer)
+        {
+            return new PlayerHUD(hudColor, player, renderLayer);
         }
     }
 }

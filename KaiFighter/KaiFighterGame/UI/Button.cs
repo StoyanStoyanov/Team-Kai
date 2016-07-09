@@ -7,7 +7,7 @@
 
     public class Button : IRenderable
     {
-        private Color? renderColor;
+        private Color renderColor;
         private Texture2D currentButtonTexture;
         private Texture2D normalButtonTexture;
         private Texture2D hoveredButtonTexture;
@@ -23,7 +23,7 @@
         private float scale;
 
         public Button(
-            Color? renderColor,
+            Color renderColor,
             Vector2 position,
             string normalImage,
             string hoveredImage,
@@ -44,7 +44,7 @@
 
         public event PressAction OnPressed;
 
-        public Color? ObjectColor
+        public Color ObjectColor
         {
             get
             {

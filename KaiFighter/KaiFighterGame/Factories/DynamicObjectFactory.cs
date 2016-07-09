@@ -55,7 +55,7 @@
             Vector2 position,
             string imageLocation,
             ObjectType objectType,
-            Color? objColor,
+            Color objColor,
             float scale,
             float rotation,
             float layerDepth,

@@ -8,7 +8,7 @@
     /// </summary>
     public interface IRenderable
     {
-        Color? ObjectColor { get; set; }
+        Color ObjectColor { get; set; }
 
         void Initialize();
 
