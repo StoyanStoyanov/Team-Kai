@@ -1,8 +1,8 @@
 ﻿namespace KaiFighterGame.UI
 {
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
-    using System.Collections.Generic;
 
     public abstract class ButtonController
     {
@@ -84,6 +84,7 @@
                 {
                     this.disabledButtons = true;
                     this.CurrentSelectedButton.PressButton();
+                    this.disabledButtons = false;
                 }
             }
         }

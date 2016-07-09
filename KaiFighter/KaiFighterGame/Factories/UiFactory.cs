@@ -73,13 +73,28 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="hudColor"></param>
-        /// <param name="player"></param>
+        /// <param name="fontFile"></param>
+        /// <param name="fontColor"></param>
+        /// <param name="somePlayer"></param>
         /// <param name="renderLayer"></param>
         /// <returns></returns>
-        public IRenderable Create(Color hudColor, Player player, float renderLayer)
+        public IRenderable Create(string fontFile, Color fontColor, Player somePlayer, float renderLayer)
         {
-            return new PlayerHud(hudColor, player, renderLayer);
+            return new PlayerHUD(fontFile, fontColor, somePlayer, renderLayer);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fontFile"></param>
+        /// <param name="text"></param>
+        /// <param name="fontColor"></param>
+        /// <param name="position"></param>
+        /// <param name="renderLayer"></param>
+        /// <returns></returns>
+        public IRenderable Create(string fontFile, string text, Color fontColor, Vector2 position, float renderLayer)
+        {
+            return new TextField(fontFile, text, fontColor, position, renderLayer);
         }
     }
 }

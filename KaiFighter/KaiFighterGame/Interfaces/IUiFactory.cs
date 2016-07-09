@@ -20,6 +20,8 @@
 
         IRenderable Create(Color backgroundColor, string backgroundImageFile, float backgroundScale, float backgroundLayer);
 
-        IRenderable Create(Color hudColor, Player player, float renderLayer);
+        IRenderable Create(string fontFile, Color fontColor, Player somePlayer, float renderLayer);
+
+        IRenderable Create(string fontFile, string text, Color fontColor, Vector2 position, float renderLayer);
     }
 }

@@ -76,7 +76,9 @@
     <Compile Include="UI\Background.cs" />
     <Compile Include="UI\Button.cs" />
     <Compile Include="UI\ButtonController.cs" />
-    <Compile Include="UI\PlayerHud.cs" />
+    <Compile Include="UI\PlayerHUD.cs" />
+    <Compile Include="UI\TextField.cs" />
+    <Compile Include="UI\UiObject.cs" />
     <Compile Include="Utilities\CollisionDispatcher.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Creep.cs" />
     <Compile Include="Utilities\DynamicObject.cs" />

@@ -313,3 +313,9 @@
 /processorParam:TextureFormat=Compressed
 /build:UI/Text/HUD.spritefont
 
+#begin UI/Text/StatsFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:UI/Text/StatsFont.spritefont
+

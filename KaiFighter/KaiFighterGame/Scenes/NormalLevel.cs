@@ -15,7 +15,7 @@
     {
         public void Load()
         {
-            Player fighter = (Player) DynamicObjectFactory.Instance.Create(
+            Player fighter = (Player)DynamicObjectFactory.Instance.Create(
                 new Vector2(500, 500),
                 ImageAddresses.PlayerImage,
                 ObjectType.Player,
@@ -30,7 +30,7 @@
             );
             SceneManager.AddObject(fighter);
 
-            Creep testCreep = (Creep) DynamicObjectFactory.Instance.Create(
+            Creep testCreep = (Creep)DynamicObjectFactory.Instance.Create(
                 new Vector2(205, 555),
                 ImageAddresses.CreepImage,
                 ObjectType.Creep,
@@ -44,7 +44,7 @@
             );
             SceneManager.AddObject(testCreep);
 
-            Wizard testWizard = (Wizard) DynamicObjectFactory.Instance.Create(
+            Wizard testWizard = (Wizard)DynamicObjectFactory.Instance.Create(
                 new Vector2(405, 305),
                 ImageAddresses.WizardImage,
                 ObjectType.Wizard,
@@ -58,7 +58,7 @@
             );
             SceneManager.AddObject(testWizard);
 
-            Archer testArcher = (Archer) DynamicObjectFactory.Instance.Create(
+            Archer testArcher = (Archer)DynamicObjectFactory.Instance.Create(
                 new Vector2(800, 500),
                 ImageAddresses.ArcherImage,
                 ObjectType.Archer,
@@ -74,7 +74,8 @@
             SceneManager.AddObject(testArcher);
 
             // Add player HUD
-            PlayerHud hud = (PlayerHud)UiFactory.Instance.Create(
+            PlayerHUD hud = (PlayerHUD)UiFactory.Instance.Create(
+                FontAddresses.HudFont,
                 Color.Black,
                 fighter,
                 RenderLayers.UiLayer);
@@ -103,7 +104,7 @@
                     1f
                 );
 
-                Wall upperWall = (Wall) StaticObjectFactory.Instance.Create(
+                Wall upperWall = (Wall)StaticObjectFactory.Instance.Create(
                     new Vector2(updateX, 0),
                     ImageAddresses.HorizontalWallImage,
                     ObjectType.Wall,

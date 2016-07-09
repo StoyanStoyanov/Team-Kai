@@ -1,60 +1,62 @@
 ﻿namespace KaiFighterGame.UI
 {
-    using Interfaces;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-    using Objects.DynamicObjects.Characters;
+    using Factories;
     using GlobalConstants;
+    using Microsoft.Xna.Framework;
+    using Objects.DynamicObjects.Characters;
+    using Utilities;
 
-    public class PlayerHud : IRenderable
+    public class PlayerHUD : UiObject
     {
-        private SpriteFont font;
-        private Color hudColor;
         private Player playerInScene;
-        private float layer;
+        private TextField health;
+        private TextField score;
+        private TextField damage;
+        private string healthTitle;
+        private string scoreTitle;
+        private string damageTitle;
 
-        public PlayerHud(Color hudColor, Player player, float renderLayer)
+        public PlayerHUD(string fontFile, Color fontColor, Player somePlayer, float renderLayer) : base(fontColor, renderLayer)
         {
-            this.hudColor = hudColor;
-            this.layer = renderLayer;
-            this.playerInScene = player;
+            this.ObjectColor = fontColor;
+            this.playerInScene = somePlayer;
+            this.healthTitle = "HP: ";
+            this.scoreTitle = "Score: ";
+            this.damageTitle = "Damage: ";
         }
 
-        public Color ObjectColor
+        public override void Initialize()
         {
-            get
-            {
-                return this.hudColor;
-            }
+            this.health = (TextField)UiFactory.Instance.Create(
+                FontAddresses.HudFont,
+                this.healthTitle,
+                this.ObjectColor,
+                new Vector2(1120, 40),
+                this.RenderLayer);
+            SceneManager.AddObject(this.health);
 
-            set
-            {
-                this.hudColor = value;
-            }
+            this.score = (TextField)UiFactory.Instance.Create(
+                FontAddresses.HudFont,
+                this.scoreTitle,
+                this.ObjectColor,
+                new Vector2(600, 40),
+                this.RenderLayer);
+            SceneManager.AddObject(this.score);
+
+            this.damage = (TextField)UiFactory.Instance.Create(
+                FontAddresses.HudFont,
+                this.damageTitle,
+                this.ObjectColor,
+                new Vector2(40, 40),
+                this.RenderLayer);
+            SceneManager.AddObject(this.damage);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Update(GameTime gameTime)
         {
-            spriteBatch.DrawString(this.font, "HP: " + this.playerInScene.Health, new Vector2(1120, 40), this.hudColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, this.layer);
-            spriteBatch.DrawString(this.font, "Score: " + this.playerInScene.Score, new Vector2(600, 40), this.hudColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, this.layer);
-            spriteBatch.DrawString(this.font, "Damage: " + this.playerInScene.Damage, new Vector2(40, 40), this.hudColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, this.layer);
-        }
-
-        public virtual void Initialize()
-        {
-        }
-
-        public void LoadContent(Game theGame)
-        {
-            this.font = theGame.Content.Load<SpriteFont>(FontAddresses.HudFont);
-        }
-
-        public virtual void UnloadContent()
-        {
-        }
-
-        public virtual void Update(GameTime gameTime)
-        {
+            this.health.Text = string.Format("HP: {0}", this.playerInScene.Health);
+            this.score.Text = string.Format("Score: {0}", this.playerInScene.Score);
+            this.damage.Text = string.Format("Damage: {0}", this.playerInScene.Damage);
         }
     }
 }

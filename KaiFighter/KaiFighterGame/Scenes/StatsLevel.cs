@@ -4,7 +4,6 @@
     using GlobalConstants;
     using Interfaces;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
     using UI;
     using Utilities;
 
@@ -12,12 +11,13 @@
     {
         private Button backButton;
         private Button clearStatsButton;
-        private SpriteFont font;
+        private int deaths;
+        private int maxScore;
+        private int killsCount;
 
         public void Load()
         {
-            // used to draw the stats on the screen
-            this.font = EntryPoint.TheGame.Content.Load<SpriteFont>(FontAddresses.HudFont);
+            this.LoadStats();
 
             Background backgr = (Background)UiFactory.Instance.Create(
                 Color.White,
@@ -46,6 +46,30 @@
                 scale: .8f);
             SceneManager.AddObject(this.clearStatsButton);
 
+            TextField deaths = (TextField)UiFactory.Instance.Create(
+                FontAddresses.StatsFont,
+                "Number of deaths: " + this.deaths,
+                Color.Red,
+                new Vector2(50, 250),
+                RenderLayers.UiLayer);
+            SceneManager.AddObject(deaths);
+
+            TextField kills = (TextField)UiFactory.Instance.Create(
+                FontAddresses.StatsFont,
+                "Number of kills: " + this.killsCount,
+                Color.Red,
+                new Vector2(50, 350),
+                RenderLayers.UiLayer);
+            SceneManager.AddObject(kills);
+
+            TextField score = (TextField)UiFactory.Instance.Create(
+                FontAddresses.StatsFont,
+                "Max score: " + this.maxScore,
+                Color.Red,
+                new Vector2(50, 450),
+                RenderLayers.UiLayer);
+            SceneManager.AddObject(score);
+
             this.CurrentSelectedButton = this.backButton;
 
             this.Buttons.Add(this.backButton);
@@ -62,8 +86,7 @@
 
         private void ClearStats()
         {
-            this.backButton.OnPressed -= this.LoadMenu;
-            this.clearStatsButton.OnPressed -= this.ClearStats;
+            // TODO: clear the stats somehow
         }
 
         private void LoadMenu()
@@ -72,6 +95,15 @@
             this.clearStatsButton.OnPressed -= this.ClearStats;
 
             SceneManager.LoadScene(new MainMenu());
+        }
+
+        private void LoadStats()
+        {
+            // TODO: Load the stats from file
+
+            this.deaths = 100;
+            this.killsCount = 200;
+            this.maxScore = 300;
         }
     }
 }

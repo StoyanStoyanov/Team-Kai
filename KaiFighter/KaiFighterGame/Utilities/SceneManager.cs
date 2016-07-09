@@ -7,9 +7,9 @@
 
     public static class SceneManager
     {
+        private static readonly List<IRenderable> Objects = new List<IRenderable>();
+        private static readonly List<ICollidable> CollidableObjects = new List<ICollidable>();
         private static IScene currentScene;
-        private static readonly List<IRenderable> objects = new List<IRenderable>();
-        private static readonly List<ICollidable> collidableObjects = new List<ICollidable>();
 
         /// <summary>
         /// Calls the update method of every object on the scene.
@@ -17,11 +17,11 @@
         /// <param name="gameTime">The game time object.</param>
         public static void Update(GameTime gameTime)
         {
-            CollisionDispatcher.CheckCollision(collidableObjects);
+            CollisionDispatcher.CheckCollision(CollidableObjects);
 
-            for (int i = 0; i < objects.Count; i++)
+            for (int i = 0; i < Objects.Count; i++)
             {
-                objects[i].Update(gameTime);
+                Objects[i].Update(gameTime);
             }
 
             currentScene.Update(gameTime);
@@ -33,9 +33,9 @@
         /// <param name="spriteBatch"></param>
         public static void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < objects.Count; i++)
+            for (int i = 0; i < Objects.Count; i++)
             {
-                objects[i].Draw(spriteBatch);
+                Objects[i].Draw(spriteBatch);
             }
         }
 
@@ -45,11 +45,11 @@
         /// <param name="obj">The renderable object to add to the scene.</param>
         public static void AddObject(IRenderable obj)
         {
-            objects.Add(obj);
+            Objects.Add(obj);
 
             if (obj is ICollidable)
             {
-                collidableObjects.Add((ICollidable)obj);
+                CollidableObjects.Add((ICollidable)obj);
             }
 
             obj.LoadContent(EntryPoint.TheGame);
@@ -62,11 +62,11 @@
         /// <param name="obj">The object to remove.</param>
         public static void DestroyObject(IRenderable obj)
         {
-            objects.Remove(obj);
+            Objects.Remove(obj);
 
             if (obj is GameObject)
             {
-                collidableObjects.Remove((ICollidable)obj);
+                CollidableObjects.Remove((ICollidable)obj);
             }
         }
 
@@ -88,15 +88,15 @@
         /// </summary>
         private static void ClearScene()
         {
-            for (int i = 0; i < objects.Count; i++)
+            for (int i = 0; i < Objects.Count; i++)
             {
-                objects[i].UnloadContent();
+                Objects[i].UnloadContent();
             }
 
             EntryPoint.TheGame.Content.Unload();
 
-            objects.Clear();
-            collidableObjects.Clear();
+            Objects.Clear();
+            CollidableObjects.Clear();
         }
     }
 }

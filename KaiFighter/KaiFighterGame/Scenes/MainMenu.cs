@@ -4,9 +4,9 @@
     using GlobalConstants;
     using Interfaces;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Media;
     using UI;
     using Utilities;
-    using Microsoft.Xna.Framework.Media;
 
     public class MainMenu : ButtonController, IScene
     {
@@ -18,7 +18,7 @@
         // scene initialization and object placement
         public void Load()
         {
-            this.startGameButton = (Button) UiFactory.Instance.Create(
+            this.startGameButton = (Button)UiFactory.Instance.Create(
                 Color.White,
                 new Vector2(50, 50),
                 ImageAddresses.NormalStartButton,
@@ -28,7 +28,7 @@
                 scale: .3f);
             SceneManager.AddObject(this.startGameButton);
 
-            this.statsButton = (Button) UiFactory.Instance.Create(
+            this.statsButton = (Button)UiFactory.Instance.Create(
                 Color.White,
                 new Vector2(50, 140),
                 ImageAddresses.NormalStatsButton,
@@ -38,17 +38,17 @@
                 scale: .3f);
             SceneManager.AddObject(this.statsButton);
 
-            this.exitGameButton = (Button) UiFactory.Instance.Create(
+            this.exitGameButton = (Button)UiFactory.Instance.Create(
                 Color.White,
                 new Vector2(50, 230),
                 ImageAddresses.NormalExitButton,
                 ImageAddresses.HoveredExitButton,
                 ImageAddresses.InactiveExitButton,
                 RenderLayers.UiLayer,
-                scale: .3f);
+                scale: .3f) as Button;
             SceneManager.AddObject(this.exitGameButton);
 
-            Background backgr = (Background) UiFactory.Instance.Create(
+            Background backgr = (Background)UiFactory.Instance.Create(
                 Color.White,
                 ImageAddresses.MenuBackgroundImage,
                 backgroundScale: .356f,
