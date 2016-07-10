@@ -43,10 +43,13 @@
             else
             {
                 if (gameObject.ObjType != ObjectType.Archer
+                 && gameObject.ObjType != ObjectType.Creep          //bullet can move over enemies  
+                 && gameObject.ObjType != ObjectType.Wizard
+                 && gameObject.ObjType != ObjectType.Boss
                  && gameObject.ObjType != ObjectType.Bullet
                  && gameObject.ObjType != ObjectType.Bonus)
                 {
-                    SceneManager.DestroyObject(this);
+                   SceneManager.DestroyObject(this);
                 }
             }
         }

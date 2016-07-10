@@ -36,7 +36,7 @@
             SceneManager.AddObject(backgr);
 
             Player fighter = (Player)DynamicObjectFactory.Instance.Create(
-                new Vector2(500, 500),
+                new Vector2(100, 500),
                 ImageAddresses.PlayerImage,
                 ObjectType.Player,
                 Color.White,
@@ -77,6 +77,20 @@
                 health: 100
             );
             SceneManager.AddObject(testWizard);
+
+            Boss testBoss = (Boss)DynamicObjectFactory.Instance.Create(
+               new Vector2(505, 505),
+               ImageAddresses.BossImage,
+               ObjectType.Boss,
+               Color.White,
+               scale: 1.5f,
+               rotation: 0,
+               layerDepth: RenderLayers.CharacterLayer,
+               movementSpeed: 1f,
+               damage: 10,
+               health: 300
+);
+            SceneManager.AddObject(testBoss);
 
             Archer testArcher = (Archer)DynamicObjectFactory.Instance.Create(
                 new Vector2(800, 500),
