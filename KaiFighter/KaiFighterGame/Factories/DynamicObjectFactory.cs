@@ -76,6 +76,8 @@
                     return new Creep(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health);
                 case ObjectType.Wizard:
                     return new Wizard(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health);
+                case ObjectType.Boss:
+                    return new Boss(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, health);
                 case ObjectType.Bullet:
                     return new Bullet(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed, damage, targetDir);
                 default:

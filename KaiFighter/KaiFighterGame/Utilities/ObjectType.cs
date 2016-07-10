@@ -13,6 +13,7 @@
         Obstacle = 5,
         Wall = 6,
         Wizard = 7,
-        Door = 8
+        Door = 8,
+        Boss = 9
     }
 }

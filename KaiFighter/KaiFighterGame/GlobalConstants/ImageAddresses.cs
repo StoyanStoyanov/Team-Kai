@@ -9,6 +9,7 @@
         public const string CreepImage = "Images/Textures/CukiTest";
         public const string ArcherImage = "Images/Textures/CukiTest";
         public const string WizardImage = "Images/Textures/Wizard";
+        public const string BossImage = "Images/Textures/CukiTest";
         public const string VerticalWall = "Images/Statics/verticalWall";
         public const string HorizontalWall = "Images/Statics/horizontalWall";
         public const string Projectile0Image = "Images/Projectiles/0";
