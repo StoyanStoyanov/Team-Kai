@@ -4,6 +4,8 @@
     using GlobalConstants;
     using Interfaces;
     using Microsoft.Xna.Framework;
+    using System;
+    using System.IO;
     using UI;
     using Utilities;
 
@@ -101,9 +103,14 @@
         {
             // TODO: Load the stats from file
 
+            TextReader tr = new StreamReader("SavedGame.txt");
+            // read lines of text
+            string score = tr.ReadLine();
+            this.maxScore = Convert.ToInt32(score);
+            tr.Close();
             this.deaths = 100;
-            this.killsCount = 200;
-            this.maxScore = 300;
+           this.killsCount = 200;
+ 
         }
     }
 }

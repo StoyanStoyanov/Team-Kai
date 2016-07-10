@@ -6,6 +6,7 @@
     using Projectiles;
     using Utilities;
     using Interfaces;
+    using System.IO;
 
     public class Player : Shooter
     {
@@ -42,6 +43,24 @@
 
             if (this.Health <= 0)
             {
+                bool isBigger = false;
+                TextReader tr = new StreamReader("SavedGame.txt");
+
+                int myScore = int.Parse(tr.ReadLine());
+            
+                if (myScore < this.Score)
+                {
+                    isBigger = true;
+                }
+                // close the stream
+                tr.Close();
+                if (isBigger == true)
+                {
+                    TextWriter tw = new StreamWriter("SavedGame.txt");
+                    tw.WriteLine(this.Score);
+                    // close the stream     
+                    tw.Close();
+                }
                 SceneManager.DestroyObject(this);
             }
         }
