@@ -21,8 +21,7 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
         public override void Update(GameTime gameTime)
         {
 
-            // TODO: player position
-            this.Shoot(Vector2.Normalize(new Vector2(0, -1)));
+            this.Shoot(Vector2.Normalize(new Vector2(-1, 0)));
 
             base.Update(gameTime);
         }

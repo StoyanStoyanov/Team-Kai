@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KaiFighterGame.GlobalConstants;
-using KaiFighterGame.Utilities;
-using Microsoft.Xna.Framework;
-
-namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
+﻿namespace KaiFighterGame.Objects.DynamicObjects.Characters.Enemies
 {
+
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using GlobalConstants;
+    using Utilities;
+    using Microsoft.Xna.Framework;
+
+
     public abstract class Enemie : Shooter
     {
-        private static Random rnd = new Random(7);
+        private static Random rnd = new Random();
         private int movetox;
         private int movetoy;
         private Vector2 moveto;
