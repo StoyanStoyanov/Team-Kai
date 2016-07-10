@@ -89,7 +89,7 @@
                movementSpeed: 1f,
                damage: 10,
                health: 300
-);
+            );
             SceneManager.AddObject(testBoss);
 
             Archer testArcher = (Archer)DynamicObjectFactory.Instance.Create(

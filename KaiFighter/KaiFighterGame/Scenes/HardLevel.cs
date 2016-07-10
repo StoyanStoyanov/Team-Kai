@@ -60,6 +60,20 @@
             );
             SceneManager.AddObject(hud);
 
+            Boss testBoss = (Boss)DynamicObjectFactory.Instance.Create(
+                 new Vector2(505, 505),
+                 ImageAddresses.BossImage,
+                 ObjectType.Boss,
+                 Color.White,
+                 scale: 1.5f,
+                 rotation: 0,
+                 layerDepth: RenderLayers.CharacterLayer,
+                 movementSpeed: 1f,
+                 damage: 10,
+                 health: 300
+            );
+            SceneManager.AddObject(testBoss);
+
             Wall topWall = (Wall) StaticObjectFactory.Instance.Create(
                 new Vector2(GameResolution.DefaultWidth / 2, 0),
                 ImageAddresses.HorizontalWall,
