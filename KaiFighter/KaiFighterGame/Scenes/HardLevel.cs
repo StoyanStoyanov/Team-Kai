@@ -1,0 +1,178 @@
+﻿namespace KaiFighterGame.Scenes
+{
+    using System;
+    using Factories;
+    using GlobalConstants;
+    using Interfaces;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Input;
+    using Microsoft.Xna.Framework.Media;
+    using Objects.DynamicObjects.Characters;
+    using Objects.DynamicObjects.Characters.Enemies;
+    using Objects.StaticObjects;
+    using UI;
+    using Utilities;
+
+    public class HardLevel : IScene
+    {
+        private Song fightMusic;
+
+        private readonly Random rand = new Random();
+
+        public void Load()
+        {
+            this.fightMusic = EntryPoint.TheGame.Content.Load<Song>(AudioAddresses.FightSong);
+
+            MediaPlayer.IsRepeating = true;
+
+            if (MediaPlayer.State == MediaState.Stopped)
+            {
+                MediaPlayer.Play(this.fightMusic);
+            }
+
+            Background backgr = (Background) UiFactory.Instance.Create(
+                Color.White,
+                ImageAddresses.HardLevelBackgroundImage,
+                3f,
+                RenderLayers.BackgroundLayer);
+            SceneManager.AddObject(backgr);
+
+            Player fighter = (Player) DynamicObjectFactory.Instance.Create(
+                new Vector2(GameResolution.DefaultWidth - 200, GameResolution.DefaultHeight / 2),
+                ImageAddresses.PlayerImage,
+                ObjectType.Player,
+                Color.White,
+                scale: 0.6f,
+                rotation: 0,
+                layerDepth: RenderLayers.CharacterLayer,
+                movementSpeed: 5f,
+                damage: 50,
+                health: 100,
+                cooldown: 5
+            );
+            SceneManager.AddObject(fighter);
+
+            PlayerHUD hud = (PlayerHUD) UiFactory.Instance.Create(
+                FontAddresses.HudFont,
+                Color.White,
+                fighter,
+                RenderLayers.UiLayer
+            );
+            SceneManager.AddObject(hud);
+
+            Wall topWall = (Wall) StaticObjectFactory.Instance.Create(
+                new Vector2(GameResolution.DefaultWidth / 2, 0),
+                ImageAddresses.HorizontalWall,
+                ObjectType.Wall,
+                Color.Black,
+                1f,
+                0f,
+                1f
+            );
+            SceneManager.AddObject(topWall);
+
+            Wall bottomWall = (Wall) StaticObjectFactory.Instance.Create(
+                new Vector2(GameResolution.DefaultWidth / 2, GameResolution.DefaultHeight),
+                ImageAddresses.HorizontalWall,
+                ObjectType.Wall,
+                Color.Black,
+                1f,
+                0f,
+                1f
+            );
+            SceneManager.AddObject(bottomWall);
+
+            Wall rightWall = (Wall) StaticObjectFactory.Instance.Create(
+                new Vector2(0, GameResolution.DefaultHeight),
+                ImageAddresses.VerticalWall,
+                ObjectType.Wall,
+                Color.Black,
+                1f,
+                0f,
+                1f
+            );
+            SceneManager.AddObject(rightWall);
+
+            Wall leftWall = (Wall) StaticObjectFactory.Instance.Create(
+                new Vector2(GameResolution.DefaultWidth, GameResolution.DefaultHeight),
+                ImageAddresses.VerticalWall,
+                ObjectType.Wall,
+                Color.Black,
+                1f,
+                0f,
+                1f
+            );
+            SceneManager.AddObject(leftWall);
+
+            this.GenerateEnemiesAtRandomPositions();
+        }
+
+        public void GenerateEnemiesAtRandomPositions()
+        {
+            const int spawnStartWidth = 150;
+            const int spawnEndHeight = GameResolution.DefaultHeight - 150;
+            const int spawnStartHeigth = 150;
+
+            var spawnEndWidth = GameResolution.DefaultWidth - 300;
+
+            for (int i = 0; i < 5; i++, spawnEndWidth -= 100)
+            {
+                SceneManager.AddObject((Creep) DynamicObjectFactory.Instance.Create(
+                    new Vector2(rand.Next(spawnStartWidth, spawnEndWidth), rand.Next(spawnStartHeigth, spawnEndHeight)),
+                    ImageAddresses.CreepImage,
+                    ObjectType.Creep,
+                    Color.White,
+                    scale: 0.5f,
+                    rotation: 0,
+                    layerDepth: RenderLayers.CharacterLayer,
+                    movementSpeed: 1f,
+                    damage: 5,
+                    health: 100
+                    )
+                );
+
+                SceneManager.AddObject((Wizard) DynamicObjectFactory.Instance.Create(
+                    new Vector2(rand.Next(spawnStartWidth, spawnEndWidth), rand.Next(spawnStartHeigth, spawnEndHeight)),
+                    ImageAddresses.WizardImage,
+                    ObjectType.Wizard,
+                    Color.White,
+                    scale: 0.5f,
+                    rotation: 0,
+                    layerDepth: RenderLayers.CharacterLayer,
+                    movementSpeed: 1f,
+                    damage: 5,
+                    health: 100
+                    )
+                );
+
+                SceneManager.AddObject((Archer) DynamicObjectFactory.Instance.Create(
+                    new Vector2(rand.Next(spawnStartWidth, spawnEndWidth), rand.Next(spawnStartHeigth, spawnEndHeight)),
+                    ImageAddresses.ArcherImage,
+                    ObjectType.Archer,
+                    Color.White,
+                    scale: 0.5f,
+                    rotation: 0,
+                    layerDepth: RenderLayers.CharacterLayer,
+                    movementSpeed: 1f,
+                    damage: 5,
+                    health: 100,
+                    cooldown: 50
+                    )
+                );
+            }
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                EntryPoint.TheGame.Exit();
+            }
+
+            if (rand.Next(1, 1000) == 42)
+            {
+                this.GenerateEnemiesAtRandomPositions();
+            }
+        }
+    }
+}

@@ -94,11 +94,11 @@
             SceneManager.AddObject(testArcher);
 
             // Add player HUD
-            PlayerHUD hud = (PlayerHUD)UiFactory.Instance.Create(
-                FontAddresses.HudFont,
-                Color.White,
-                fighter,
-                RenderLayers.UiLayer);
+           PlayerHUD hud = (PlayerHUD) UiFactory.Instance.Create(
+               FontAddresses.HudFont,
+               Color.White,
+               fighter,
+               RenderLayers.UiLayer);
             SceneManager.AddObject(hud);
 
             Wall topWall = (Wall)StaticObjectFactory.Instance.Create(
@@ -144,6 +144,17 @@
                    1f
                );
             SceneManager.AddObject(leftWall);
+
+            Door doorToNextLevel = (Door)StaticObjectFactory.Instance.Create(
+               new Vector2(25, GameResolution.DefaultHeight / 2),
+               ImageAddresses.DoorToNextLevelImage,
+               ObjectType.Door,
+               Color.DarkGray,
+               1f,
+               0f,
+               1f
+            );
+            SceneManager.AddObject(doorToNextLevel);
         }
 
         public void Update(GameTime gameTime)

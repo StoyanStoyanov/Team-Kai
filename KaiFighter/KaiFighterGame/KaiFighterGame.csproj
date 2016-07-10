@@ -65,11 +65,13 @@
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Shooter.cs" />
     <Compile Include="Objects\StaticObjects\Bonus.cs" />
+    <Compile Include="Objects\StaticObjects\Door.cs" />
     <Compile Include="Objects\StaticObjects\Obstacle.cs" />
     <Compile Include="Objects\StaticObjects\Wall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Archer.cs" />
     <Compile Include="Objects\DynamicObjects\Projectiles\Bullet.cs" />
+    <Compile Include="Scenes\HardLevel.cs" />
     <Compile Include="Scenes\MainMenu.cs" />
     <Compile Include="Scenes\NormalLevel.cs" />
     <Compile Include="Scenes\StatsLevel.cs" />

@@ -62,6 +62,8 @@
                     return new Obstacle(position, imageLocation, objectType, objColor, scale, rotation, layerDepth);
                 case ObjectType.Wall:
                     return new Wall(position, imageLocation, objectType, objColor, scale, rotation, layerDepth);
+                case ObjectType.Door:
+                    return new Door(position, imageLocation, objectType, objColor, scale, rotation, layerDepth);
                 default:
                     throw new ArgumentException();
             }
