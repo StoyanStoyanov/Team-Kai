@@ -20,7 +20,7 @@
         {
             this.startGameButton = (Button)UiFactory.Instance.Create(
                 Color.White,
-                new Vector2(50, 50),
+                new Vector2(50, 420),
                 ImageAddresses.NormalStartButton,
                 ImageAddresses.HoveredStartButton,
                 ImageAddresses.InactiveStartButton,
@@ -30,7 +30,7 @@
 
             this.statsButton = (Button)UiFactory.Instance.Create(
                 Color.White,
-                new Vector2(50, 140),
+                new Vector2(50, 510),
                 ImageAddresses.NormalStatsButton,
                 ImageAddresses.HoveredStatsButton,
                 ImageAddresses.InactiveStatsButton,
@@ -40,7 +40,7 @@
 
             this.exitGameButton = (Button)UiFactory.Instance.Create(
                 Color.White,
-                new Vector2(50, 230),
+                new Vector2(50, 600),
                 ImageAddresses.NormalExitButton,
                 ImageAddresses.HoveredExitButton,
                 ImageAddresses.InactiveExitButton,
@@ -51,7 +51,7 @@
             Background backgr = (Background)UiFactory.Instance.Create(
                 Color.White,
                 ImageAddresses.MenuBackgroundImage,
-                backgroundScale: .356f,
+                backgroundScale: .72f,
                 backgroundLayer: RenderLayers.BackgroundLayer);
             SceneManager.AddObject(backgr);
 

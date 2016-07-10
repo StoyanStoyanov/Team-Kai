@@ -9,8 +9,8 @@
         public const string CreepImage = "Images/Textures/CukiTest";
         public const string ArcherImage = "Images/Textures/CukiTest";
         public const string WizardImage = "Images/Textures/Wizard";
-        public const string VerticalWallImage = "Images/Statics/vertical-wall";
-        public const string HorizontalWallImage = "Images/Statics/horizontal-wall";
+        public const string VerticalWall = "Images/Statics/verticalWall";
+        public const string HorizontalWall = "Images/Statics/horizontalWall";
         public const string Projectile0Image = "Images/Projectiles/0";
         public const string Projectile1Image = "Images/Projectiles/1";
         public const string BonusImage = "Images/Textures/bonus";
@@ -36,5 +36,7 @@
         public const string InactiveClearStatsButton = "UI/Buttons/ClearStatsButtons/clearStatsInactive";
 
         public const string MenuBackgroundImage = "Images/Backgrounds/menuBackground";
+        public const string StatsBackgroundImage = "Images/Backgrounds/statsBackground";
+        public const string LevelBackgroundImage = "Images/Backgrounds/levelBackground";
     }
 }

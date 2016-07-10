@@ -61,8 +61,8 @@
                 return new Rectangle(
                     (int)(this.PositionX - this.Width / 2 * this.objectScale),
                     (int)(this.PositionY - this.Height / 2 * this.objectScale), 
-                    (int)(this.Width * this.objectScale - 10),
-                    (int)(this.Height * this.objectScale - 10));
+                    (int)(this.Width * this.objectScale),
+                    (int)(this.Height * this.objectScale));
             }
         }
 

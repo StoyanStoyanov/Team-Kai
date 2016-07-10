@@ -42,8 +42,6 @@
         {
             SceneManager.LoadScene(new MainMenu());
 
-            this.IsMouseVisible = true;
-
             base.Initialize();
         }
 

@@ -54,8 +54,8 @@
                     new Vector2(this.PositionX, this.PositionY),
                     ImageAddresses.BonusImage,
                     ObjectType.Bonus,
-                    Color.Yellow,
-                    scale: 1f,
+                    Color.Red,
+                    scale: .2f,
                     rotation: 0f,
                     layerDepth: 1f
                 );

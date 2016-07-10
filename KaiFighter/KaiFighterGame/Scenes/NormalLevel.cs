@@ -5,6 +5,7 @@
     using Interfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
+    using Microsoft.Xna.Framework.Media;
     using Objects.DynamicObjects.Characters;
     using Objects.DynamicObjects.Characters.Enemies;
     using Objects.StaticObjects;
@@ -13,16 +14,35 @@
 
     public class NormalLevel : IScene
     {
+        private Song fightMusic;
+
         public void Load()
         {
+            this.fightMusic = EntryPoint.TheGame.Content.Load<Song>(AudioAddresses.FightSong);
+
+            MediaPlayer.IsRepeating = true;
+
+            if (MediaPlayer.State == MediaState.Stopped)
+            {
+                MediaPlayer.Play(this.fightMusic);
+            }
+
+            // add background
+            Background backgr = (Background)UiFactory.Instance.Create(
+                Color.White,
+                ImageAddresses.LevelBackgroundImage,
+                .72f,
+                RenderLayers.BackgroundLayer);
+            SceneManager.AddObject(backgr);
+
             Player fighter = (Player)DynamicObjectFactory.Instance.Create(
                 new Vector2(500, 500),
                 ImageAddresses.PlayerImage,
                 ObjectType.Player,
                 Color.White,
-                scale: 0.5f,
+                scale: 0.6f,
                 rotation: 0,
-                layerDepth: 1f,
+                layerDepth: RenderLayers.CharacterLayer,
                 movementSpeed: 5f,
                 damage: 50,
                 health: 100,
@@ -37,7 +57,7 @@
                 Color.White,
                 scale: 0.5f,
                 rotation: 0,
-                layerDepth: 1f,
+                layerDepth: RenderLayers.CharacterLayer,
                 movementSpeed: 1f,
                 damage: 5,
                 health: 100
@@ -51,7 +71,7 @@
                 Color.White,
                 scale: 0.5f,
                 rotation: 0,
-                layerDepth: 1f,
+                layerDepth: RenderLayers.CharacterLayer,
                 movementSpeed: 1f,
                 damage: 5,
                 health: 100
@@ -65,7 +85,7 @@
                 Color.White,
                 scale: 0.5f,
                 rotation: 0,
-                layerDepth: 1f,
+                layerDepth: RenderLayers.CharacterLayer,
                 movementSpeed: 1f,
                 damage: 5,
                 health: 100,
@@ -76,62 +96,54 @@
             // Add player HUD
             PlayerHUD hud = (PlayerHUD)UiFactory.Instance.Create(
                 FontAddresses.HudFont,
-                Color.Black,
+                Color.White,
                 fighter,
                 RenderLayers.UiLayer);
             SceneManager.AddObject(hud);
 
-            // Adding all surronding walls
-            for (int i = 0, updateX = 0, updateY = 0; i < 8; i++)
-            {
-                Wall rightSideWall = (Wall)StaticObjectFactory.Instance.Create(
-                    new Vector2(GameResolution.DefaultWidth, updateY),
-                    ImageAddresses.VerticalWallImage,
+            Wall topWall = (Wall)StaticObjectFactory.Instance.Create(
+                    new Vector2(GameResolution.DefaultWidth / 2, 0),
+                    ImageAddresses.HorizontalWall,
                     ObjectType.Wall,
-                    Color.White,
+                    Color.DarkCyan,
                     1f,
                     0f,
                     1f
                 );
+            SceneManager.AddObject(topWall);
 
-                Wall leftSideWall = (Wall)StaticObjectFactory.Instance.Create(
-                    new Vector2(0, updateY),
-                    ImageAddresses.VerticalWallImage,
+            Wall bottomWall = (Wall)StaticObjectFactory.Instance.Create(
+                    new Vector2(GameResolution.DefaultWidth / 2, GameResolution.DefaultHeight),
+                    ImageAddresses.HorizontalWall,
                     ObjectType.Wall,
-                    Color.White,
+                    Color.DarkCyan,
                     1f,
                     0f,
                     1f
                 );
+            SceneManager.AddObject(bottomWall);
 
-                Wall upperWall = (Wall)StaticObjectFactory.Instance.Create(
-                    new Vector2(updateX, 0),
-                    ImageAddresses.HorizontalWallImage,
+            Wall rightWall = (Wall)StaticObjectFactory.Instance.Create(
+                    new Vector2(0, GameResolution.DefaultHeight),
+                    ImageAddresses.VerticalWall,
                     ObjectType.Wall,
-                    Color.White,
+                    Color.DarkCyan,
                     1f,
                     0f,
                     1f
                 );
+            SceneManager.AddObject(rightWall);
 
-                Wall bottomWall = (Wall)StaticObjectFactory.Instance.Create(
-                    new Vector2(updateX, GameResolution.DefaultHeight),
-                    ImageAddresses.HorizontalWallImage,
-                    ObjectType.Wall,
-                    Color.White,
-                    1f,
-                    0f,
-                    1f
-                );
-
-                SceneManager.AddObject(rightSideWall);
-                SceneManager.AddObject(leftSideWall);
-                SceneManager.AddObject(upperWall);
-                SceneManager.AddObject(bottomWall);
-
-                updateX += 180;
-                updateY += 90;
-            }
+            Wall leftWall = (Wall)StaticObjectFactory.Instance.Create(
+                   new Vector2(GameResolution.DefaultWidth, GameResolution.DefaultHeight),
+                   ImageAddresses.VerticalWall,
+                   ObjectType.Wall,
+                   Color.DarkCyan,
+                   1f,
+                   0f,
+                   1f
+               );
+            SceneManager.AddObject(leftWall);
         }
 
         public void Update(GameTime gameTime)

@@ -21,8 +21,8 @@
 
             Background backgr = (Background)UiFactory.Instance.Create(
                 Color.White,
-                ImageAddresses.MenuBackgroundImage,
-                backgroundScale: .356f,
+                ImageAddresses.StatsBackgroundImage,
+                backgroundScale: .72f,
                 backgroundLayer: RenderLayers.BackgroundLayer);
             SceneManager.AddObject(backgr);
 

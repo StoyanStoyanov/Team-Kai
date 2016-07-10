@@ -5,6 +5,7 @@
     /// </summary>
     public struct AudioAddresses
     {
-        public const string MenuSong = "Audio/menuSong";
+        public const string MenuSong = "Audio/menu";
+        public const string FightSong = "Audio/fight";
     }
 }
