@@ -108,6 +108,7 @@
             string score = tr.ReadLine();
             this.maxScore = Convert.ToInt32(score);
             tr.Close();
+
             this.deaths = 100;
            this.killsCount = 200;
  

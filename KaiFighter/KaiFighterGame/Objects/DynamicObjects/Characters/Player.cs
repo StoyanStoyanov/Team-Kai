@@ -43,16 +43,22 @@
 
             if (this.Health <= 0)
             {
-                bool isBigger = false;
-                TextReader tr = new StreamReader("SavedGame.txt");
 
-                int myScore = int.Parse(tr.ReadLine());
-            
-                if (myScore < this.Score)
+                bool isBigger = false;
+
+                TextReader tr = new StreamReader("SavedGame.txt");
+                if (tr.Peek() == null)
                 {
                     isBigger = true;
                 }
-                // close the stream
+                else 
+                {
+                    int myScore = int.Parse(tr.ReadLine());
+                    if (myScore < this.Score)
+                    {
+                        isBigger = true;
+                    }
+                }
                 tr.Close();
                 if (isBigger == true)
                 {
