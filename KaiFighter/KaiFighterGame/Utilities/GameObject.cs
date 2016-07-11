@@ -146,7 +146,10 @@
         /// <summary>
         /// Initializes the object
         /// </summary>
-        public abstract void Initialize();
+        public virtual void Initialize()
+        {
+            
+        }
 
         /// <summary>
         /// Updates the state of the object.

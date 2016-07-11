@@ -14,8 +14,9 @@
         private KeyboardState previousKeyboardState;
         private int score;
 
-        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth, float speed, double damage, double health, int cooldown)
-            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
+        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale,
+                        float rotation, float layerDepth, float speed, double damage, double health, int cooldown)
+                        : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
         {
             this.Score = 0;
         }
@@ -64,7 +65,6 @@
                 {
                     TextWriter tw = new StreamWriter("SavedGame.txt");
                     tw.WriteLine(this.Score);
-                    // close the stream     
                     tw.Close();
                 }
                 SceneManager.DestroyObject(this);
@@ -98,10 +98,6 @@
                 this.Damage += rnd.Next(2, 10);
                 this.Score += rnd.Next(10, 20);
                 
-            }
-            else if (gameObject.ObjType == ObjectType.Door)
-            {
-                // TODO- NEXT LEVEL
             }
         }
        

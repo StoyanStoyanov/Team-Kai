@@ -10,11 +10,15 @@
         public const string ArcherImage = "Images/Textures/CukiTest";
         public const string WizardImage = "Images/Textures/Wizard";
         public const string BossImage = "Images/Textures/CukiTest";
+
         public const string VerticalWall = "Images/Statics/verticalWall";
         public const string HorizontalWall = "Images/Statics/horizontalWall";
+
         public const string DoorToNextLevelImage = "Images/Statics/doorImage";
+
         public const string Projectile0Image = "Images/Projectiles/0";
         public const string Projectile1Image = "Images/Projectiles/1";
+
         public const string BonusImage = "Images/Textures/bonus";
 
         public const string NormalStartButton = "UI/Buttons/StartGameButtons/normalStartButton";

@@ -54,7 +54,7 @@
     <Compile Include="Interfaces\IScene.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Character.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Boss.cs" />
-    <Compile Include="Objects\DynamicObjects\Characters\Enemies\Enemie.cs" />
+    <Compile Include="Objects\DynamicObjects\Characters\Enemies\Enemy.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Wizard.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Player.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />

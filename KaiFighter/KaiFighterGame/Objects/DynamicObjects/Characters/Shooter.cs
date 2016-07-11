@@ -1,6 +1,4 @@
-﻿using KaiFighterGame.GlobalConstants;
-
-namespace KaiFighterGame.Objects.DynamicObjects.Characters
+﻿namespace KaiFighterGame.Objects.DynamicObjects.Characters
 {
     using System;
     using Factories;
@@ -8,8 +6,8 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters
     using Microsoft.Xna.Framework;
     using Projectiles;
     using Utilities;
+    using GlobalConstants;
 
-    // this is the base class for all ranged characters
     public class Shooter : Character, IRanged
     {
         private int shooterCooldown;
@@ -17,8 +15,9 @@ namespace KaiFighterGame.Objects.DynamicObjects.Characters
         private Vector2 shootDirection;
         private Random bulletRandomizer;
 
-        public Shooter(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth, float speed, double damage, double health, int cooldown) 
-            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health)
+        public Shooter(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, 
+                        float rotation, float layerDepth, float speed, double damage, double health, int cooldown) 
+                        : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health)
         {
             this.shooterCooldown = cooldown;
             this.initialCooldown = this.shooterCooldown;
