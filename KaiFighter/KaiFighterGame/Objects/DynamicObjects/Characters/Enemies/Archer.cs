@@ -18,6 +18,7 @@
         {
 
             this.Shoot(Vector2.Normalize(new Vector2(-1, 0)));
+            this.Shoot(Vector2.Normalize(new Vector2(1, 0)));
 
             base.Update(gameTime);
         }
