@@ -88,7 +88,15 @@
 
         private void ClearStats()
         {
-            // TODO: clear the stats somehow
+            using (var tw = new StreamWriter(File.Open("../../SavedGame.txt", FileMode.OpenOrCreate)))
+            {
+                tw.WriteLine("0");
+                tw.WriteLine("0");
+                tw.WriteLine("0");
+
+                tw.Close();
+            }
+            SceneManager.LoadScene(new StatsLevel());
         }
 
         private void LoadMenu()
