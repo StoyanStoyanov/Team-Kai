@@ -39,6 +39,7 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\BadInputException.cs" />
     <Compile Include="Interfaces\IDynamicObjectFactory.cs" />
     <Compile Include="Interfaces\IStaticObjectFactory.cs" />
     <Compile Include="Interfaces\IUiFactory.cs" />

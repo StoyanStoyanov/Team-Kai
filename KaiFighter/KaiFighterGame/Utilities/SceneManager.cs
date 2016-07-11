@@ -10,6 +10,7 @@
         private static readonly List<IRenderable> Objects = new List<IRenderable>();
         private static readonly List<ICollidable> CollidableObjects = new List<ICollidable>();
         private static IScene currentScene;
+        private static bool paused = false;
 
         /// <summary>
         /// Calls the update method of every object on the scene.
@@ -17,6 +18,11 @@
         /// <param name="gameTime">The game time object.</param>
         public static void Update(GameTime gameTime)
         {
+            if (paused == true)
+            {
+                return;
+            }
+
             CollisionDispatcher.CheckCollision(CollidableObjects);
 
             for (int i = 0; i < Objects.Count; i++)
@@ -81,6 +87,16 @@
             someScene.Load();
 
             currentScene = someScene;
+        }
+
+        public static void PauseScene()
+        {
+            paused = true;
+        }
+
+        public static void UnpauseScene()
+        {
+            paused = false;
         }
 
         /// <summary>

@@ -7,6 +7,7 @@
     using Utilities;
     using Interfaces;
     using System.IO;
+    using Exceptions;
 
     public class Player : Shooter
     {
@@ -36,8 +37,15 @@
 
         public override void Update(GameTime gameTime)
         {
-            // Handles the users inputw
-            this.HandleInput(Keyboard.GetState());
+            try
+            {
+                // Handles the users inputw
+                this.HandleInput(Keyboard.GetState());
+            }
+            catch (BadInputException exc)
+            {
+                exc.ActivateError();
+            }
 
             // update the dynamic object
             base.Update(gameTime);
@@ -136,7 +144,22 @@
 
         private void HandleInput(KeyboardState keyState)
         {
+            this.previousKeyboardState = this.currentKeyboardState;
             this.currentKeyboardState = Keyboard.GetState();
+
+            Keys[] currentPressedKeys = this.currentKeyboardState.GetPressedKeys();
+
+            if ((Array.IndexOf(currentPressedKeys, Keys.W) > -1 &&
+                Array.IndexOf(currentPressedKeys, Keys.A) > -1 &&
+                Array.IndexOf(currentPressedKeys, Keys.S) > -1 &&
+                Array.IndexOf(currentPressedKeys, Keys.D) > -1) ||
+                (Array.IndexOf(currentPressedKeys, Keys.Up) > -1 &&
+                Array.IndexOf(currentPressedKeys, Keys.Down) > -1 &&
+                Array.IndexOf(currentPressedKeys, Keys.Left) > -1 &&
+                Array.IndexOf(currentPressedKeys, Keys.Right) > -1))
+            {
+                throw new BadInputException();
+            }
 
             // movement input
             if (this.currentKeyboardState.IsKeyDown(Keys.A))
@@ -176,8 +199,6 @@
             {
                 this.Shoot(Vector2.Normalize(new Vector2(1, 0)));
             }
-
-            this.previousKeyboardState = this.currentKeyboardState;
         }
     }
 }
