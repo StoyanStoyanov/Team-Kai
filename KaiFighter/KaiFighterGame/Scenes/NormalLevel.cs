@@ -36,7 +36,7 @@
             SceneManager.AddObject(backgr);
 
             Player fighter = (Player)DynamicObjectFactory.Instance.Create(
-                new Vector2(800, 500),
+                new Vector2(100, 600),
                 ImageAddresses.PlayerImage,
                 ObjectType.Player,
                 Color.White,

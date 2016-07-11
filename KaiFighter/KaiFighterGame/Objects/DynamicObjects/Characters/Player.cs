@@ -111,7 +111,8 @@
                 this.PositionX = this.PreviousPositionX;
                 this.PositionY = this.PreviousPositionY;
             }
-                 && ((Bullet) gameObject).FriendlyFire == false)
+            else if (gameObject.ObjType == ObjectType.Bullet
+                && ((Bullet) gameObject).FriendlyFire == false)
             {
                 this.Health -= ((Bullet)gameObject).Damage;
             }
