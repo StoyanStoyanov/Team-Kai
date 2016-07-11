@@ -103,14 +103,48 @@
         {
             // TODO: Load the stats from file
 
-            TextReader tr = new StreamReader("SavedGame.txt");
+            //  StreamReader tr = new StreamReader("../../SavedGame.txt");
             // read lines of text
-            string score = tr.ReadLine();
-            this.maxScore = Convert.ToInt32(score);
-            tr.Close();
+           
+            using (var tr = new StreamReader(File.Open("../../SavedGame.txt", FileMode.OpenOrCreate))) 
+            {
+              
+                
+                string deaths = tr.ReadLine();
+                if (String.IsNullOrEmpty(deaths))
+                {
+                    this.deaths = 0;
+                }
+                else
+                {
+                    this.deaths = int.Parse(deaths);
+                }
 
-            this.deaths = 100;
-           this.killsCount = 200;
+                string score = tr.ReadLine();
+                if (String.IsNullOrEmpty(score))
+                {
+                    this.maxScore = 0;
+                }
+                else
+                {
+                    this.maxScore = Convert.ToInt32(score);
+                }
+
+                string killsCount = tr.ReadLine();
+                if (String.IsNullOrEmpty(killsCount))
+                {
+                    this.killsCount = 0;
+                }
+                else
+                {
+                    this.killsCount = int.Parse(killsCount);
+                }
+                tr.Close();
+            }
+          
+
+          //  this.deaths = 100;
+           //this.killsCount = 200;
  
         }
     }
