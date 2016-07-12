@@ -14,7 +14,7 @@ A horrible virus has infected the minds of the trainers team of Telerik Academy.
 * [_Stoyan Stoyanov_ aka **thewayofthesamurai**](http://telerikacademy.com/Users/thewayofthesamurai)
 
 Sorry for the long post, here is a KaiFighter cat to brighten up your day!  
-![](../kaifightercat.jpg)
+![](kaifightercat.jpg)
 
 For more juicy stuff: [Git Repo](https://github.com/StoyanStoyanov/Team-Kai)  
 
