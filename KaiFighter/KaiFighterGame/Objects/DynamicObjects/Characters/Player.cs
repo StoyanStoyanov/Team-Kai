@@ -63,34 +63,32 @@
             bool isBigger = false;
             int deathsCount = 0;
             int fileScore = 0;
+            int killsCount = 0;
 
-         
             using (var tr = new StreamReader(File.Open("../../SavedGame.txt", FileMode.OpenOrCreate)))
             {
+                string deaths = tr.ReadLine();
+                if (!String.IsNullOrEmpty(deaths))
+                {
+                    deathsCount = int.Parse(deaths);
+                }
 
-                //if (tr.Peek() == null)
-                //{
-                //    isBigger = true;
-                //}
-                //else
-                
-                    string deaths = tr.ReadLine();
-                    if (!String.IsNullOrEmpty(deaths))
-                    {
-                        deathsCount = int.Parse(deaths);
-                    }
+                string score = tr.ReadLine();
+                if (!String.IsNullOrEmpty(score))
+                {
+                    fileScore = int.Parse(score);
+                }
 
-                    string score = tr.ReadLine();
-                    if (!String.IsNullOrEmpty(score))
-                    {
-                        fileScore = int.Parse(score);
-                    }
+                if (fileScore < this.Score)
+                {
+                    isBigger = true;
+                }
+                string kills = tr.ReadLine();
+                if (!String.IsNullOrEmpty(kills))
+                {
+                    killsCount = int.Parse(kills);
+                }
 
-                    if (fileScore < this.Score)
-                    {
-                        isBigger = true;
-                    }
-                
                 tr.Close();
             }
 
@@ -102,12 +100,13 @@
                 if (isBigger == true)
                 {
                     tw.WriteLine(this.Score);
-                
-
-                }else
+                }
+                else
                 {
                     tw.WriteLine(fileScore);
                 }
+
+                tw.WriteLine(killsCount);
                 tw.Close();
             }
         }
