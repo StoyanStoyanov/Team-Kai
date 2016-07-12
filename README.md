@@ -17,7 +17,7 @@ Sorry for the long post, here is a KaiFighter cat to brighten up your day!
 
 ![](kaifightercat.jpg)
 
-For more juicy stuff: [Git Repo](https://github.com/StoyanStoyanov/Team-Kai)  
+For more juicy stuff: [SOURCE CODE](https://github.com/StoyanStoyanov/Team-Kai/tree/master/KaiFighter/KaiFighterGame)  
 
 We had lots of fun while developing this simple game!  
 We hope you enjoy trying it out, too!
