@@ -117,11 +117,8 @@
         {
             if (this.enemyCount <= 0)
             {
-                if (someTimer != null)
-                {
-                    this.someTimer.Start();
-                }
-
+                this.someTimer.Start();
+ 
                 return;
             }
 
