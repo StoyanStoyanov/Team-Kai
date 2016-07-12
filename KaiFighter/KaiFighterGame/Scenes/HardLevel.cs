@@ -117,7 +117,10 @@
         {
             if (this.enemyCount <= 0)
             {
-                this.someTimer.Start();
+                if (someTimer != null)
+                {
+                    this.someTimer.Start();
+                }
 
                 return;
             }
@@ -199,7 +202,6 @@
         {
             this.someTimer.Stop();
             this.someTimer.Elapsed -= new ElapsedEventHandler(this.LoadWin);
-            this.someTimer.Dispose();
 
             SceneManager.LoadScene(new WinScene());
         }
