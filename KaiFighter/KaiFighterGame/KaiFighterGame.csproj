@@ -39,6 +39,7 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\BadInputException.cs" />
     <Compile Include="Interfaces\IDynamicObjectFactory.cs" />
     <Compile Include="Interfaces\IStaticObjectFactory.cs" />
     <Compile Include="Interfaces\IUiFactory.cs" />
@@ -54,7 +55,7 @@
     <Compile Include="Interfaces\IScene.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Character.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Boss.cs" />
-    <Compile Include="Objects\DynamicObjects\Characters\Enemies\Enemie.cs" />
+    <Compile Include="Objects\DynamicObjects\Characters\Enemies\Enemy.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Enemies\Wizard.cs" />
     <Compile Include="Objects\DynamicObjects\Characters\Player.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />

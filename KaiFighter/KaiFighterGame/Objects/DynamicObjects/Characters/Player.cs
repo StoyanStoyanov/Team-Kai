@@ -7,6 +7,7 @@
     using Utilities;
     using Interfaces;
     using System.IO;
+    using Exceptions;
 
     public class Player : Shooter
     {
@@ -14,8 +15,9 @@
         private KeyboardState previousKeyboardState;
         private int score;
 
-        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth, float speed, double damage, double health, int cooldown)
-            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
+        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale,
+                        float rotation, float layerDepth, float speed, double damage, double health, int cooldown)
+                        : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
         {
             this.Score = 0;
         }
@@ -35,8 +37,15 @@
 
         public override void Update(GameTime gameTime)
         {
-            // Handles the users inputw
-            this.HandleInput(Keyboard.GetState());
+            try
+            {
+                // Handles the users inputw
+                this.HandleInput(Keyboard.GetState());
+            }
+            catch (BadInputException exc)
+            {
+                exc.ActivateError();
+            }
 
             // update the dynamic object
             base.Update(gameTime);
@@ -54,34 +63,32 @@
             bool isBigger = false;
             int deathsCount = 0;
             int fileScore = 0;
+            int killsCount = 0;
 
-         
             using (var tr = new StreamReader(File.Open("../../SavedGame.txt", FileMode.OpenOrCreate)))
             {
+                string deaths = tr.ReadLine();
+                if (!String.IsNullOrEmpty(deaths))
+                {
+                    deathsCount = int.Parse(deaths);
+                }
 
-                //if (tr.Peek() == null)
-                //{
-                //    isBigger = true;
-                //}
-                //else
-                
-                    string deaths = tr.ReadLine();
-                    if (!String.IsNullOrEmpty(deaths))
-                    {
-                        deathsCount = int.Parse(deaths);
-                    }
+                string score = tr.ReadLine();
+                if (!String.IsNullOrEmpty(score))
+                {
+                    fileScore = int.Parse(score);
+                }
 
-                    string score = tr.ReadLine();
-                    if (!String.IsNullOrEmpty(score))
-                    {
-                        fileScore = int.Parse(score);
-                    }
+                if (fileScore < this.Score)
+                {
+                    isBigger = true;
+                }
+                string kills = tr.ReadLine();
+                if (!String.IsNullOrEmpty(kills))
+                {
+                    killsCount = int.Parse(kills);
+                }
 
-                    if (fileScore < this.Score)
-                    {
-                        isBigger = true;
-                    }
-                
                 tr.Close();
             }
 
@@ -93,13 +100,13 @@
                 if (isBigger == true)
                 {
                     tw.WriteLine(this.Score);
-                    // close the stream     
-                
-
-                }else
+                }
+                else
                 {
                     tw.WriteLine(fileScore);
                 }
+
+                tw.WriteLine(killsCount);
                 tw.Close();
             }
         }
@@ -112,7 +119,7 @@
                 this.PositionY = this.PreviousPositionY;
             }
             else if (gameObject.ObjType == ObjectType.Bullet
-                 && ((Bullet)gameObject).FriendlyFire == false)
+                && ((Bullet) gameObject).FriendlyFire == false)
             {
                 this.Health -= ((Bullet)gameObject).Damage;
             }
@@ -130,17 +137,28 @@
                 this.Health += rnd.Next(-5, 10);
                 this.Damage += rnd.Next(2, 10);
                 this.Score += rnd.Next(10, 20);
-
-            }
-            else if (gameObject.ObjType == ObjectType.Door)
-            {
-                // TODO- NEXT LEVEL
+                
             }
         }
 
         private void HandleInput(KeyboardState keyState)
         {
+            this.previousKeyboardState = this.currentKeyboardState;
             this.currentKeyboardState = Keyboard.GetState();
+
+            Keys[] currentPressedKeys = this.currentKeyboardState.GetPressedKeys();
+
+            if ((Array.IndexOf(currentPressedKeys, Keys.W) > -1 &&
+                Array.IndexOf(currentPressedKeys, Keys.A) > -1 &&
+                Array.IndexOf(currentPressedKeys, Keys.S) > -1 &&
+                Array.IndexOf(currentPressedKeys, Keys.D) > -1) ||
+                (Array.IndexOf(currentPressedKeys, Keys.Up) > -1 &&
+                Array.IndexOf(currentPressedKeys, Keys.Down) > -1 &&
+                Array.IndexOf(currentPressedKeys, Keys.Left) > -1 &&
+                Array.IndexOf(currentPressedKeys, Keys.Right) > -1))
+            {
+                throw new BadInputException();
+            }
 
             // movement input
             if (this.currentKeyboardState.IsKeyDown(Keys.A))
@@ -180,8 +198,6 @@
             {
                 this.Shoot(Vector2.Normalize(new Vector2(1, 0)));
             }
-
-            this.previousKeyboardState = this.currentKeyboardState;
         }
     }
 }

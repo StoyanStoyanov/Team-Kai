@@ -70,7 +70,7 @@
                  layerDepth: RenderLayers.CharacterLayer,
                  movementSpeed: 1f,
                  damage: 10,
-                 health: 300
+                 health: 1300
             );
             SceneManager.AddObject(testBoss);
 
