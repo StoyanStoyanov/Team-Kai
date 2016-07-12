@@ -20,6 +20,10 @@
         private Random colorRandomizer;
         private SoundEffect deathEffect;
 
+        public delegate void DeathAction();
+
+        public event DeathAction OnDead;
+
         public Character(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale,
                          float rotation, float layerDepth, float movementSpeed, double damage, double health)
                          : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)
@@ -27,6 +31,8 @@
             this.Health = health;
             this.Damage = damage;
             this.colorRandomizer = new Random();
+
+            this.OnDead += this.DeathActions;
         }
 
         public double Health { get; set; }
@@ -59,23 +65,7 @@
         {
             if (this.Health <= 0)
             {
-                SceneManager.DestroyObject(this);
-
-                var someBonus = (Bonus)StaticObjectFactory.Instance.Create(
-                    new Vector2(this.PositionX, this.PositionY),
-                    ImageAddresses.BonusImage,
-                    ObjectType.Bonus,
-                    Color.Red,
-                    scale: .2f,
-                    rotation: 0f,
-                    layerDepth: RenderLayers.StaticsLayer
-                );
-                SceneManager.AddObject(someBonus);
-
-                this.deathEffect.Play(.3f, 0f, 0f);
-
-                SceneManager.DestroyObject(this);
-                SaveToScoreBoard();
+                this.OnDead?.Invoke();
             }
 
             base.Update(gameTime);
@@ -90,9 +80,32 @@
 
         public override void UnloadContent()
         {
+            this.OnDead = null;
+
             this.deathEffect.Dispose();
 
             base.UnloadContent();   
+        }
+
+        private void DeathActions()
+        {
+            SceneManager.DestroyObject(this);
+
+            var someBonus = (Bonus)StaticObjectFactory.Instance.Create(
+                new Vector2(this.PositionX, this.PositionY),
+                ImageAddresses.BonusImage,
+                ObjectType.Bonus,
+                Color.Red,
+                scale: .2f,
+                rotation: 0f,
+                layerDepth: RenderLayers.StaticsLayer
+            );
+            SceneManager.AddObject(someBonus);
+
+            this.deathEffect.Play(.3f, 0f, 0f);
+
+            SceneManager.DestroyObject(this);
+            SaveToScoreBoard();
         }
 
         private void SaveToScoreBoard()

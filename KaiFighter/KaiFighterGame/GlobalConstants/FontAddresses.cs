@@ -7,5 +7,6 @@
     {
         public const string HudFont = "UI/Text/HUD";
         public const string StatsFont = "UI/Text/StatsFont";
+        public const string DeathWinFont = "UI/Text/DeathFont";
     }
 }

@@ -16,8 +16,8 @@
     public class HardLevel : IScene
     {
         private Song fightMusic;
-
         private readonly Random rand = new Random();
+        private int enemyCount = 0;
 
         public void Load()
         {
@@ -25,7 +25,7 @@
 
             MediaPlayer.IsRepeating = true;
 
-            if (MediaPlayer.State == MediaState.Stopped)
+            if (MediaPlayer.State != MediaState.Playing)
             {
                 MediaPlayer.Play(this.fightMusic);
             }
@@ -33,7 +33,7 @@
             Background backgr = (Background) UiFactory.Instance.Create(
                 Color.White,
                 ImageAddresses.HardLevelBackgroundImage,
-                3f,
+                .7f,
                 RenderLayers.BackgroundLayer);
             SceneManager.AddObject(backgr);
 
@@ -72,6 +72,10 @@
                  damage: 10,
                  health: 1300
             );
+
+            testBoss.OnDead += this.DecreaseEnemyCount;
+            this.enemyCount += 1;
+
             SceneManager.AddObject(testBoss);
 
             Wall topWall = (Wall) StaticObjectFactory.Instance.Create(
@@ -129,55 +133,72 @@
 
             var spawnEndWidth = GameResolution.DefaultWidth - 300;
 
-            for (int i = 0; i < 5; i++, spawnEndWidth -= 100)
-            {
-                SceneManager.AddObject((Creep) DynamicObjectFactory.Instance.Create(
-                    new Vector2(rand.Next(spawnStartWidth, spawnEndWidth), rand.Next(spawnStartHeigth, spawnEndHeight)),
-                    ImageAddresses.CreepImage,
-                    ObjectType.Creep,
-                    Color.White,
-                    scale: 0.5f,
-                    rotation: 0,
-                    layerDepth: RenderLayers.CharacterLayer,
-                    movementSpeed: 1f,
-                    damage: 5,
-                    health: 100
-                    )
-                );
+            //for (int i = 0; i < 5; i++, spawnEndWidth -= 100)
+            //{
+            //    var creep = (Creep)DynamicObjectFactory.Instance.Create(
+            //        new Vector2(rand.Next(spawnStartWidth, spawnEndWidth), rand.Next(spawnStartHeigth, spawnEndHeight)),
+            //        ImageAddresses.CreepImage,
+            //        ObjectType.Creep,
+            //        Color.White,
+            //        scale: 0.5f,
+            //        rotation: 0,
+            //        layerDepth: RenderLayers.CharacterLayer,
+            //        movementSpeed: 1f,
+            //        damage: 5,
+            //        health: 100
+            //        );
+            //    SceneManager.AddObject(creep);
+            //    creep.OnDead += this.DecreaseEnemyCount;
 
-                SceneManager.AddObject((Wizard) DynamicObjectFactory.Instance.Create(
-                    new Vector2(rand.Next(spawnStartWidth, spawnEndWidth), rand.Next(spawnStartHeigth, spawnEndHeight)),
-                    ImageAddresses.WizardImage,
-                    ObjectType.Wizard,
-                    Color.White,
-                    scale: 0.5f,
-                    rotation: 0,
-                    layerDepth: RenderLayers.CharacterLayer,
-                    movementSpeed: 1f,
-                    damage: 5,
-                    health: 100
-                    )
-                );
+            //    var wizard = (Wizard)DynamicObjectFactory.Instance.Create(
+            //        new Vector2(rand.Next(spawnStartWidth, spawnEndWidth), rand.Next(spawnStartHeigth, spawnEndHeight)),
+            //        ImageAddresses.WizardImage,
+            //        ObjectType.Wizard,
+            //        Color.White,
+            //        scale: 0.5f,
+            //        rotation: 0,
+            //        layerDepth: RenderLayers.CharacterLayer,
+            //        movementSpeed: 1f,
+            //        damage: 5,
+            //        health: 100
+            //        );
+            //    SceneManager.AddObject(wizard);
+            //    wizard.OnDead += this.DecreaseEnemyCount;
 
-                SceneManager.AddObject((Archer) DynamicObjectFactory.Instance.Create(
-                    new Vector2(rand.Next(spawnStartWidth, spawnEndWidth), rand.Next(spawnStartHeigth, spawnEndHeight)),
-                    ImageAddresses.ArcherImage,
-                    ObjectType.Archer,
-                    Color.White,
-                    scale: 0.5f,
-                    rotation: 0,
-                    layerDepth: RenderLayers.CharacterLayer,
-                    movementSpeed: 1f,
-                    damage: 5,
-                    health: 100,
-                    cooldown: 50
-                    )
-                );
-            }
+            //    var archer = (Archer)DynamicObjectFactory.Instance.Create(
+            //        new Vector2(rand.Next(spawnStartWidth, spawnEndWidth), rand.Next(spawnStartHeigth, spawnEndHeight)),
+            //        ImageAddresses.ArcherImage,
+            //        ObjectType.Archer,
+            //        Color.White,
+            //        scale: 0.5f,
+            //        rotation: 0,
+            //        layerDepth: RenderLayers.CharacterLayer,
+            //        movementSpeed: 1f,
+            //        damage: 5,
+            //        health: 100,
+            //        cooldown: 50
+            //        );
+            //    SceneManager.AddObject(archer);
+            //    archer.OnDead += this.DecreaseEnemyCount;
+
+            //    this.enemyCount += 3;
+            //}
+        }
+
+        private void DecreaseEnemyCount()
+        {
+            this.enemyCount -= 1;
         }
 
         public void Update(GameTime gameTime)
         {
+            if (this.enemyCount <= 0)
+            {
+                SceneManager.LoadScene(new WinScene());
+
+                return;
+            }
+
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 EntryPoint.TheGame.Exit();

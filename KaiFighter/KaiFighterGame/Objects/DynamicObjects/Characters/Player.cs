@@ -8,6 +8,7 @@
     using Interfaces;
     using System.IO;
     using Exceptions;
+    using Scenes;
 
     public class Player : Shooter
     {
@@ -20,6 +21,7 @@
                         : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
         {
             this.Score = 0;
+            this.OnDead += this.DeathActions;
         }
 
         public int Score
@@ -137,8 +139,12 @@
                 this.Health += rnd.Next(-5, 10);
                 this.Damage += rnd.Next(2, 10);
                 this.Score += rnd.Next(10, 20);
-                
             }
+        }
+
+        private void DeathActions()
+        {
+            SceneManager.LoadScene(new DeathScene());
         }
 
         private void HandleInput(KeyboardState keyState)

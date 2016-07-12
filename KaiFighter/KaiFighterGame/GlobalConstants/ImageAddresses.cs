@@ -45,5 +45,7 @@
         public const string StatsBackgroundImage = "Images/Backgrounds/statsBackground";
         public const string LevelBackgroundImage = "Images/Backgrounds/levelBackground";
         public const string HardLevelBackgroundImage = "Images/Backgrounds/hardLevelBackground";
+        public const string FailBackgroundImage = "Images/Backgrounds/FailBG";
+        public const string WinBackgroundImage = "Images/Backgrounds/WinBG";
     }
 }
