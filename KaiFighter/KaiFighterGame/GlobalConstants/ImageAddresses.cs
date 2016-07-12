@@ -6,9 +6,9 @@
     public struct ImageAddresses
     {
         public const string PlayerImage = "Images/Textures/PlayerTexture";
-        public const string CreepImage = "Images/Textures/CukiTest";
-        public const string ArcherImage = "Images/Textures/CukiTest";
-        public const string WizardImage = "Images/Textures/Wizard";
+        public const string CreepImage = "Images/Textures/koceto";
+        public const string ArcherImage = "Images/Textures/Doncho";
+        public const string WizardImage = "Images/Textures/veshef";
         public const string BossImage = "Images/Textures/CukiTest";
 
         public const string VerticalWall = "Images/Statics/verticalWall";
@@ -45,5 +45,7 @@
         public const string StatsBackgroundImage = "Images/Backgrounds/statsBackground";
         public const string LevelBackgroundImage = "Images/Backgrounds/levelBackground";
         public const string HardLevelBackgroundImage = "Images/Backgrounds/hardLevelBackground";
+        public const string FailBackgroundImage = "Images/Backgrounds/FailBG";
+        public const string WinBackgroundImage = "Images/Backgrounds/WinBG";
     }
 }

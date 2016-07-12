@@ -7,6 +7,7 @@
     using Projectiles;
     using Utilities;
     using GlobalConstants;
+    using Microsoft.Xna.Framework.Audio;
 
     public class Shooter : Character, IRanged
     {
@@ -14,6 +15,7 @@
         private int initialCooldown;
         private Vector2 shootDirection;
         private Random bulletRandomizer;
+        private SoundEffect laserEffect;
 
         public Shooter(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, 
                         float rotation, float layerDepth, float speed, double damage, double health, int cooldown) 
@@ -61,8 +63,24 @@
                 someBullet.FriendlyFire = (this.ObjType == ObjectType.Player);
                 SceneManager.AddObject(someBullet);
 
+                this.laserEffect.Play(.3f, 0f, 0f);
+
                 this.shooterCooldown = this.initialCooldown;
             }
+        }
+
+        public override void LoadContent(Game theGame)
+        {
+            this.laserEffect = theGame.Content.Load<SoundEffect>(AudioAddresses.BulletSound);
+
+            base.LoadContent(theGame);
+        }
+
+        public override void UnloadContent()
+        {
+            this.laserEffect.Dispose();
+
+            base.UnloadContent();   
         }
     }
 }

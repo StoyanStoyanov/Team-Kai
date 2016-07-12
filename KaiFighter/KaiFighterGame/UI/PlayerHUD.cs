@@ -54,9 +54,17 @@
 
         public override void Update(GameTime gameTime)
         {
-            this.health.Text = string.Format("HP: {0}", this.playerInScene.Health);
+            if ((int)this.playerInScene.Health < 0)
+            {
+                this.health.Text = string.Format("HP: {0}", 0);
+            }
+            else
+            {
+                this.health.Text = string.Format("HP: {0}", (int)this.playerInScene.Health);
+            }
+            
             this.score.Text = string.Format("Score: {0}", this.playerInScene.Score);
-            this.damage.Text = string.Format("Damage: {0}", this.playerInScene.Damage);
+            this.damage.Text = string.Format("Damage: {0}", (int)this.playerInScene.Damage);
         }
     }
 }

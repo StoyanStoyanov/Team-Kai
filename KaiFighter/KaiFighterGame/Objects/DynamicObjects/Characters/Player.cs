@@ -8,6 +8,7 @@
     using Interfaces;
     using System.IO;
     using Exceptions;
+    using Scenes;
 
     public class Player : Shooter
     {
@@ -137,8 +138,12 @@
                 this.Health += rnd.Next(-5, 10);
                 this.Damage += rnd.Next(2, 10);
                 this.Score += rnd.Next(10, 20);
-                
             }
+        }
+
+        protected override void DeathActions()
+        {
+            SceneManager.LoadScene(new DeathScene());
         }
 
         private void HandleInput(KeyboardState keyState)

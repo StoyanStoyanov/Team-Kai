@@ -4,6 +4,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
+    using Microsoft.Xna.Framework.Media;
     using Scenes;
     using Utilities;
 
@@ -12,6 +13,7 @@
     /// </summary>
     public class KaiFighterGame : Game
     {
+        private Song fightMusic;
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private bool canToggleFullScreen = true;
@@ -40,6 +42,8 @@
         /// </summary>
         protected override void Initialize()
         {
+            MediaPlayer.IsRepeating = true;
+
             SceneManager.LoadScene(new MainMenu());
 
             base.Initialize();
@@ -53,6 +57,9 @@
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            this.fightMusic = EntryPoint.TheGame.Content.Load<Song>(AudioAddresses.FightSong);
+            MediaPlayer.Play(this.fightMusic);
         }
 
         /// <summary>

@@ -4,7 +4,6 @@
     using GlobalConstants;
     using Interfaces;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Media;
     using UI;
     using Utilities;
 
@@ -13,7 +12,6 @@
         private Button startGameButton;
         private Button statsButton;
         private Button exitGameButton;
-        private Song menuSong;
 
         // scene initialization and object placement
         public void Load()
@@ -64,15 +62,6 @@
             this.startGameButton.OnPressed += this.LoadFirstLevel;
             this.exitGameButton.OnPressed += this.ExitGame;
             this.statsButton.OnPressed += this.LoadStatsLevel;
-
-            this.menuSong = EntryPoint.TheGame.Content.Load<Song>(AudioAddresses.MenuSong);
-
-            MediaPlayer.IsRepeating = true;
-
-            if (MediaPlayer.State == MediaState.Stopped)
-            {
-                MediaPlayer.Play(this.menuSong);
-            }
         }
 
         public override void Update(GameTime gameTime)
@@ -82,9 +71,6 @@
 
         private void LoadFirstLevel()
         {
-            MediaPlayer.Stop();
-            this.menuSong.Dispose();
-
             this.startGameButton.OnPressed -= this.LoadFirstLevel;
             this.statsButton.OnPressed -= this.LoadStatsLevel;
             this.exitGameButton.OnPressed -= this.ExitGame;

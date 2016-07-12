@@ -1,12 +1,12 @@
 ﻿namespace KaiFighterGame.Scenes
 {
     using System;
+    using System.Timers;
     using Factories;
     using GlobalConstants;
     using Interfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
-    using Microsoft.Xna.Framework.Media;
     using Objects.DynamicObjects.Characters;
     using Objects.DynamicObjects.Characters.Enemies;
     using Objects.StaticObjects;
@@ -15,25 +15,21 @@
 
     public class HardLevel : IScene
     {
-        private Song fightMusic;
-
+        
         private readonly Random rand = new Random();
+        private int enemyCount = 0;
+        private Timer someTimer;
 
         public void Load()
         {
-            this.fightMusic = EntryPoint.TheGame.Content.Load<Song>(AudioAddresses.FightSong);
-
-            MediaPlayer.IsRepeating = true;
-
-            if (MediaPlayer.State == MediaState.Stopped)
-            {
-                MediaPlayer.Play(this.fightMusic);
-            }
+            this.someTimer = new Timer();
+            this.someTimer.Interval = 2000;
+            this.someTimer.Elapsed += new ElapsedEventHandler(LoadWin);                  
 
             Background backgr = (Background) UiFactory.Instance.Create(
                 Color.White,
                 ImageAddresses.HardLevelBackgroundImage,
-                3f,
+                .7f,
                 RenderLayers.BackgroundLayer);
             SceneManager.AddObject(backgr);
 
@@ -72,6 +68,10 @@
                  damage: 10,
                  health: 1300
             );
+
+            testBoss.OnDead += this.DecreaseEnemyCount;
+            this.enemyCount += 1;
+
             SceneManager.AddObject(testBoss);
 
             Wall topWall = (Wall) StaticObjectFactory.Instance.Create(
@@ -131,7 +131,7 @@
 
             for (int i = 0; i < 5; i++, spawnEndWidth -= 100)
             {
-                SceneManager.AddObject((Creep) DynamicObjectFactory.Instance.Create(
+                var creep = (Creep)DynamicObjectFactory.Instance.Create(
                     new Vector2(rand.Next(spawnStartWidth, spawnEndWidth), rand.Next(spawnStartHeigth, spawnEndHeight)),
                     ImageAddresses.CreepImage,
                     ObjectType.Creep,
@@ -142,10 +142,11 @@
                     movementSpeed: 1f,
                     damage: 5,
                     health: 100
-                    )
-                );
+                    );
+                SceneManager.AddObject(creep);
+                creep.OnDead += this.DecreaseEnemyCount;
 
-                SceneManager.AddObject((Wizard) DynamicObjectFactory.Instance.Create(
+                var wizard = (Wizard)DynamicObjectFactory.Instance.Create(
                     new Vector2(rand.Next(spawnStartWidth, spawnEndWidth), rand.Next(spawnStartHeigth, spawnEndHeight)),
                     ImageAddresses.WizardImage,
                     ObjectType.Wizard,
@@ -156,10 +157,11 @@
                     movementSpeed: 1f,
                     damage: 5,
                     health: 100
-                    )
-                );
+                    );
+                SceneManager.AddObject(wizard);
+                wizard.OnDead += this.DecreaseEnemyCount;
 
-                SceneManager.AddObject((Archer) DynamicObjectFactory.Instance.Create(
+                var archer = (Archer)DynamicObjectFactory.Instance.Create(
                     new Vector2(rand.Next(spawnStartWidth, spawnEndWidth), rand.Next(spawnStartHeigth, spawnEndHeight)),
                     ImageAddresses.ArcherImage,
                     ObjectType.Archer,
@@ -171,13 +173,37 @@
                     damage: 5,
                     health: 100,
                     cooldown: 50
-                    )
-                );
+                    );
+                SceneManager.AddObject(archer);
+                archer.OnDead += this.DecreaseEnemyCount;
+
+                this.enemyCount += 3;
             }
+        }
+
+        private void DecreaseEnemyCount()
+        {
+            this.enemyCount -= 1;
+        }
+
+        private void LoadWin(object source, ElapsedEventArgs e)
+        {
+            this.someTimer.Stop();
+            this.someTimer.Elapsed -= new ElapsedEventHandler(this.LoadWin);
+            this.someTimer.Dispose();
+
+            SceneManager.LoadScene(new WinScene());
         }
 
         public void Update(GameTime gameTime)
         {
+            if (this.enemyCount <= 0)
+            {
+                this.someTimer.Start();
+
+                return;
+            }
+
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 EntryPoint.TheGame.Exit();
