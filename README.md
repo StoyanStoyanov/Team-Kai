@@ -18,4 +18,5 @@ Sorry for the long post, here is a KaiFighter cat to brighten up your day!
 
 For more juicy stuff: [Git Repo](https://github.com/StoyanStoyanov/Team-Kai)  
 
-We had lots of fun while developing this simple game! We hope you enjoy trying it out, too!
+We had lots of fun while developing this simple game!  
+We hope you enjoy trying it out, too!
