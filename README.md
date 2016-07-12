@@ -13,6 +13,8 @@ A horrible virus has infected the minds of the trainers team of Telerik Academy.
 * [**Rosen Georgiev** aka **Rosen_Georgiev**](http://telerikacademy.com/Users/Rosen_Georgiev)
 * [**Stoyan Stoyanov** aka **thewayofthesamurai**](http://telerikacademy.com/Users/thewayofthesamurai)
 
+![](classDiagram.jpg)  
+
 Sorry for the long post, here is a KaiFighter cat to brighten up your day!  
 
 ![](kaifightercat.jpg)
