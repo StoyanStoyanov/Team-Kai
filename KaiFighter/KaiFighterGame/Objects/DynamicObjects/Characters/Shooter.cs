@@ -10,7 +10,7 @@
     using Utilities;
     using GlobalConstants;
 
-    public class Shooter : Character, IRanged
+    public abstract class Shooter : Character, IRanged
     {
         private int shooterCooldown;
         private int initialCooldown;

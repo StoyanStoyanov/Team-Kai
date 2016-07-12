@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KaiFighterGame.EntryPoint" Collapsed="true">
+    <Position X="25.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAgAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>EntryPoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.KaiFighterGame" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAAAAAAAwAAAAAAAAAAEAAAAIgAAAAAAAAAAAQ=</HashCode>
+      <FileName>KaiFighterGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Exceptions.BadInputException" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAASAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\BadInputException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Factories.DynamicObjectFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAQAAAAAAAAAA=</HashCode>
+      <FileName>Factories\DynamicObjectFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KaiFighterGame.Factories.StaticObjectFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAQAAAAAAAAAA=</HashCode>
+      <FileName>Factories\StaticObjectFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KaiFighterGame.Factories.UiFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAQAAAAAAAAAA=</HashCode>
+      <FileName>Factories\UiFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KaiFighterGame.Objects.DynamicObjects.Characters.Character" Collapsed="true">
+    <Position X="4.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIGACAEIAAAAgAAAAAgABAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Objects\DynamicObjects\Characters\Character.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KaiFighterGame.Objects.DynamicObjects.Characters.Player" Collapsed="true">
+    <Position X="8" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAACgEIAAAAgAAAAIAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\DynamicObjects\Characters\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Objects.DynamicObjects.Characters.Shooter" Collapsed="true">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAABCAAAIAAAAAAAAAAAAAgAAAAAAAAAQQ=</HashCode>
+      <FileName>Objects\DynamicObjects\Characters\Shooter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KaiFighterGame.Objects.DynamicObjects.Characters.Enemies.Archer" Collapsed="true">
+    <Position X="1.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\DynamicObjects\Characters\Enemies\Archer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Objects.DynamicObjects.Characters.Enemies.Boss" Collapsed="true">
+    <Position X="5.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\DynamicObjects\Characters\Enemies\Boss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Objects.DynamicObjects.Characters.Enemies.Creep" Collapsed="true">
+    <Position X="3.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Objects\DynamicObjects\Characters\Enemies\Creep.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Objects.DynamicObjects.Characters.Enemies.Enemy" Collapsed="true">
+    <Position X="3.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARkAAgAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\DynamicObjects\Characters\Enemies\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Objects.DynamicObjects.Characters.Enemies.Wizard" Collapsed="true">
+    <Position X="5.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAIAIAAAAABAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Objects\DynamicObjects\Characters\Enemies\Wizard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Objects.DynamicObjects.Projectiles.Bullet" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAECAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Objects\DynamicObjects\Projectiles\Bullet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KaiFighterGame.Objects.StaticObjects.Bonus" Collapsed="true">
+    <Position X="19.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\StaticObjects\Bonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Objects.StaticObjects.Door" Collapsed="true">
+    <Position X="12.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\StaticObjects\Door.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Objects.StaticObjects.Obstacle" Collapsed="true">
+    <Position X="14.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Objects\StaticObjects\Obstacle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Objects.StaticObjects.Wall" Collapsed="true">
+    <Position X="17" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\StaticObjects\Wall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Scenes.DeathScene" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAgAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scenes\DeathScene.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KaiFighterGame.Scenes.HardLevel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAiIAAAAIAAAAAAAAAAAAAAAAAAAAAIAQAAAAQAAA=</HashCode>
+      <FileName>Scenes\HardLevel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KaiFighterGame.Scenes.MainMenu" Collapsed="true">
+    <Position X="0.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIgAAAAQAAEAAQAAAAAIAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Scenes\MainMenu.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KaiFighterGame.Scenes.NormalLevel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAIAAAAAAAAAAAAAAAAAAAAAAAQAIAAAAAA=</HashCode>
+      <FileName>Scenes\NormalLevel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KaiFighterGame.Scenes.StatsLevel" Collapsed="true">
+    <Position X="2.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAACAAAAAAAAAgIAAAAAQAAAAAgAAAAIAAEAEA=</HashCode>
+      <FileName>Scenes\StatsLevel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KaiFighterGame.Scenes.WinScene" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAgAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scenes\WinScene.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KaiFighterGame.UI.Background" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAEAAAAEAAAwAAAAAAAAACAAAAAACEAQAABAAAAAQ=</HashCode>
+      <FileName>UI\Background.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KaiFighterGame.UI.Button" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAEAACAQAAAwABAAAEKABCgEgAIAAAgQAAAgAAAAQ=</HashCode>
+      <FileName>UI\Button.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KaiFighterGame.UI.ButtonController" Collapsed="true">
+    <Position X="1.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCBAAgAAAgAAAAIAAAAEAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>UI\ButtonController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.UI.PlayerHUD" Collapsed="true">
+    <Position X="8.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAgQAACAAICACAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>UI\PlayerHUD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.UI.TextField" Collapsed="true">
+    <Position X="10.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAACAAAAAU=</HashCode>
+      <FileName>UI\TextField.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.UI.UiObject" Collapsed="true">
+    <Position X="9.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAEAAwABAAEAAAAAAAAAAAAAAQAAAAAAAAQ=</HashCode>
+      <FileName>UI\UiObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KaiFighterGame.Utilities.CollisionDispatcher" Collapsed="true">
+    <Position X="27" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\CollisionDispatcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Utilities.DynamicObject" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAUAAAAAAAAAAAAoAABAQAAAAEBAAAQIQBAABAACAAA=</HashCode>
+      <FileName>Utilities\DynamicObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KaiFighterGame.Utilities.GameObject" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAEAGABIAEAwAgAAAAIEBAECQAAAAAAYAAAIAAAAU=</HashCode>
+      <FileName>Utilities\GameObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KaiFighterGame.Utilities.ScalingViewportAdapter" Collapsed="true">
+    <Position X="25.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAAAAAAEAAAABIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\ScalingViewportAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Utilities.SceneManager" Collapsed="true">
+    <Position X="27" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAEABggAAACACAAABAAAAAEAABAAAAEAIAA=</HashCode>
+      <FileName>Utilities\SceneManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KaiFighterGame.Utilities.StaticObject" Collapsed="true">
+    <Position X="16" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\StaticObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="KaiFighterGame.GlobalConstants.AudioAddresses" Collapsed="true">
+    <Position X="21.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAABAAAAAEgAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GlobalConstants\AudioAddresses.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="KaiFighterGame.GlobalConstants.FontAddresses" Collapsed="true">
+    <Position X="23.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAgAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>GlobalConstants\FontAddresses.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="KaiFighterGame.GlobalConstants.GameResolution" Collapsed="true">
+    <Position X="25.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>GlobalConstants\GameResolution.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="KaiFighterGame.GlobalConstants.ImageAddresses" Collapsed="true">
+    <Position X="27" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAEAAAACgAACALBBZwAAIAxACQCAQAHAQxAg=</HashCode>
+      <FileName>GlobalConstants\ImageAddresses.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="KaiFighterGame.GlobalConstants.RenderLayers" Collapsed="true">
+    <Position X="21.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAACAEAAAAAgAAAAAAAA=</HashCode>
+      <FileName>GlobalConstants\RenderLayers.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="KaiFighterGame.Interfaces.ICollidable" Collapsed="true">
+    <Position X="21.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAIAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ICollidable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KaiFighterGame.Interfaces.IDamageable" Collapsed="true">
+    <Position X="23.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IDamageable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KaiFighterGame.Interfaces.IDynamicObjectFactory" Collapsed="true">
+    <Position X="25.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IDynamicObjectFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KaiFighterGame.Interfaces.IKiller" Collapsed="true">
+    <Position X="27" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IKiller.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KaiFighterGame.Interfaces.IMovable" Collapsed="true">
+    <Position X="21.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAQAAAAABAAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IMovable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KaiFighterGame.Interfaces.IProducable&lt;T&gt;" Collapsed="true">
+    <Position X="23.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IProducable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KaiFighterGame.Interfaces.IRanged" Collapsed="true">
+    <Position X="25.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IRanged.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KaiFighterGame.Interfaces.IRenderable" Collapsed="true">
+    <Position X="27" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAwAAAAAAAAAAAAAAAAAAAQAAAAAAAAQ=</HashCode>
+      <FileName>Interfaces\IRenderable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KaiFighterGame.Interfaces.IScene" Collapsed="true">
+    <Position X="21.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IScene.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KaiFighterGame.Interfaces.IStaticObjectFactory" Collapsed="true">
+    <Position X="23.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IStaticObjectFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KaiFighterGame.Interfaces.IUiFactory" Collapsed="true">
+    <Position X="25.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IUiFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="KaiFighterGame.Utilities.ObjectType" Collapsed="true">
+    <Position X="21.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAABCAAAAAAAAAAQAAAAAAAAgAAAAQEAAIAAQAQAAA=</HashCode>
+      <FileName>Utilities\ObjectType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -15,7 +15,7 @@
     /// <summary>
     /// The parent class of the player and all enemies.
     /// </summary>
-    public class Character : DynamicObject, IDamageable, IKiller
+    public abstract class Character : DynamicObject, IDamageable, IKiller
     {
         private Random colorRandomizer;
         private SoundEffect deathEffect;
