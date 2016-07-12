@@ -8,5 +8,7 @@
         public const string MenuSong = "Audio/menu";
         public const string FightSong = "Audio/fight";
         public const string ErrorSound = "Audio/error";
+        public const string BulletSound = "Audio/laser";
+        public const string ExplosionSound = "Audio/explosion";
     }
 }

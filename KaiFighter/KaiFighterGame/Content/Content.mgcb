@@ -379,3 +379,15 @@
 /processorParam:Quality=Best
 /build:Audio/error.mp3
 
+#begin Audio/laser.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/laser.wav
+
+#begin Audio/explosion.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/explosion.wav
+

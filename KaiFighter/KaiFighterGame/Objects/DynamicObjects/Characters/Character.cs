@@ -9,6 +9,7 @@
     using StaticObjects;
     using System.IO;
     using System;
+    using Microsoft.Xna.Framework.Audio;
 
     /// <summary>
     /// The parent class of the player and all enemies.
@@ -16,12 +17,16 @@
 
     public class Character : DynamicObject, IDamageable, IKiller
     {
+        private Random colorRandomizer;
+        private SoundEffect deathEffect;
+
         public Character(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale,
                          float rotation, float layerDepth, float movementSpeed, double damage, double health)
                          : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)
         {
             this.Health = health;
             this.Damage = damage;
+            this.colorRandomizer = new Random();
         }
 
         public double Health { get; set; }
@@ -42,6 +47,10 @@
 
             else if (gameObject.ObjType == ObjectType.Bullet && ((Bullet) gameObject).FriendlyFire)
             {
+                this.ObjectColor = new Color(this.colorRandomizer.Next(0, 255),
+                                this.colorRandomizer.Next(0, 255),
+                                this.colorRandomizer.Next(0, 255),
+                                255);
                 this.Health -= ((Bullet)gameObject).Damage;
             }
         }
@@ -59,14 +68,31 @@
                     Color.Red,
                     scale: .2f,
                     rotation: 0f,
-                    layerDepth: 1f
+                    layerDepth: RenderLayers.StaticsLayer
                 );
                 SceneManager.AddObject(someBonus);
+
+                this.deathEffect.Play(.3f, 0f, 0f);
+
                 SceneManager.DestroyObject(this);
                 SaveToScoreBoard();
             }
 
             base.Update(gameTime);
+        }
+
+        public override void LoadContent(Game theGame)
+        {
+            this.deathEffect = theGame.Content.Load<SoundEffect>(AudioAddresses.ExplosionSound);
+
+            base.LoadContent(theGame);  
+        }
+
+        public override void UnloadContent()
+        {
+            this.deathEffect.Dispose();
+
+            base.UnloadContent();   
         }
 
         private void SaveToScoreBoard()
