@@ -45,7 +45,11 @@
                     new Vector2(this.PositionX, this.PositionY),
                     bulletImages[this.bulletRandomizer.Next(0, bulletImages.Length)],
                     ObjectType.Bullet,
-                    Color.LimeGreen,
+                    new Color(this.bulletRandomizer.Next(0, 255),
+                                this.bulletRandomizer.Next(0, 255),
+                                this.bulletRandomizer.Next(0, 255),
+                                this.bulletRandomizer.Next(0, 255)),
+
                     layerDepth: 1f,
                     rotation: 0f,
                     scale: .3f,
