@@ -21,7 +21,6 @@
                         : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
         {
             this.Score = 0;
-            this.OnDead += this.DeathActions;
         }
 
         public int Score
@@ -142,7 +141,7 @@
             }
         }
 
-        private void DeathActions()
+        protected override void DeathActions()
         {
             SceneManager.LoadScene(new DeathScene());
         }

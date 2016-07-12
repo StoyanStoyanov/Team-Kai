@@ -5,7 +5,6 @@
     using Interfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
-    using Microsoft.Xna.Framework.Media;
     using Objects.DynamicObjects.Characters;
     using Objects.DynamicObjects.Characters.Enemies;
     using Objects.StaticObjects;
@@ -14,18 +13,12 @@
 
     public class NormalLevel : IScene
     {
-        private Song fightMusic;
+        private int enemyCount;
+        private bool doorAdded;
 
         public void Load()
         {
-            this.fightMusic = EntryPoint.TheGame.Content.Load<Song>(AudioAddresses.FightSong);
-
-            MediaPlayer.IsRepeating = true;
-
-            if (MediaPlayer.State == MediaState.Stopped)
-            {
-                MediaPlayer.Play(this.fightMusic);
-            }
+            this.doorAdded = false;
 
             // add background
             Background backgr = (Background)UiFactory.Instance.Create(
@@ -62,6 +55,8 @@
                 damage: 5,
                 health: 100
             );
+            testCreep.OnDead += this.DecreaseEnemyCount;
+            this.enemyCount += 1;
             SceneManager.AddObject(testCreep);
 
             Wizard testWizard = (Wizard)DynamicObjectFactory.Instance.Create(
@@ -76,6 +71,8 @@
                 damage: 5,
                 health: 100
             );
+            testWizard.OnDead += this.DecreaseEnemyCount;
+            this.enemyCount += 1;
             SceneManager.AddObject(testWizard);
 
             Archer testArcher = (Archer)DynamicObjectFactory.Instance.Create(
@@ -91,14 +88,16 @@
                 health: 100,
                 cooldown: 50
             );
-            SceneManager.AddObject(testArcher);
+            testWizard.OnDead += this.DecreaseEnemyCount;
+            this.enemyCount += 1;
+            SceneManager.AddObject(testWizard);
 
             // Add player HUD
-           PlayerHUD hud = (PlayerHUD) UiFactory.Instance.Create(
-               FontAddresses.HudFont,
-               Color.White,
-               fighter,
-               RenderLayers.UiLayer);
+            PlayerHUD hud = (PlayerHUD)UiFactory.Instance.Create(
+                FontAddresses.HudFont,
+                Color.White,
+                fighter,
+                RenderLayers.UiLayer);
             SceneManager.AddObject(hud);
 
             Wall topWall = (Wall)StaticObjectFactory.Instance.Create(
@@ -144,21 +143,30 @@
                    1f
                );
             SceneManager.AddObject(leftWall);
+        }
 
-            Door doorToNextLevel = (Door)StaticObjectFactory.Instance.Create(
-               new Vector2(25, GameResolution.DefaultHeight / 2),
-               ImageAddresses.DoorToNextLevelImage,
-               ObjectType.Door,
-               Color.DarkGray,
-               1f,
-               0f,
-               1f
-            );
-            SceneManager.AddObject(doorToNextLevel);
+        private void DecreaseEnemyCount()
+        {
+            this.enemyCount -= 1;
         }
 
         public void Update(GameTime gameTime)
         {
+            if (this.enemyCount <= 0 && this.doorAdded == false)
+            {
+                Door doorToNextLevel = (Door)StaticObjectFactory.Instance.Create(
+                new Vector2(50, GameResolution.DefaultHeight / 2),
+                ImageAddresses.DoorToNextLevelImage,
+                ObjectType.Door,
+                Color.White,
+                .65f,
+                0f,
+                RenderLayers.UiLayer);
+                SceneManager.AddObject(doorToNextLevel);
+
+                this.doorAdded = true;
+            }
+
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 EntryPoint.TheGame.Exit();

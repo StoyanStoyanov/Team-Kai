@@ -87,7 +87,7 @@
             base.UnloadContent();   
         }
 
-        private void DeathActions()
+        protected virtual void DeathActions()
         {
             SceneManager.DestroyObject(this);
 

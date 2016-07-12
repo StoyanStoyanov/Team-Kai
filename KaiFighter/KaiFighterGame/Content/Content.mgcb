@@ -61,18 +61,6 @@
 /processorParam:TextureFormat=Color
 /build:Images/Textures/CukiTest.png
 
-#begin Images/Textures/Wizard.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Images/Textures/Wizard.png
-
 #begin Images/Textures/bonus.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -337,18 +325,6 @@
 /processorParam:TextureFormat=Color
 /build:Images/Backgrounds/statsBackground.png
 
-#begin Audio/fight.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Audio/fight.mp3
-
-#begin Audio/menu.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Audio/menu.mp3
-
 #begin Images/Statics/doorImage.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -391,6 +367,42 @@
 /processorParam:TextureFormat=Color
 /build:Images/Backgrounds/hardLevelBackground.jpg
 
+#begin Images/Textures/koceto.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Textures/koceto.png
+
+#begin Images/Textures/veshef.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Textures/veshef.png
+
+#begin Images/Textures/Doncho.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Textures/Doncho.png
+
 #begin Images/Backgrounds/failBG.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -414,4 +426,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Images/Backgrounds/winBG.png
+
+#begin Audio/menu.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/menu.mp3
+
+#begin Audio/fight.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/fight.mp3
 

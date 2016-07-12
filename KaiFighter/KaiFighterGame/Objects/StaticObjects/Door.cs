@@ -19,8 +19,6 @@
         {
             if (gameObject.ObjType == ObjectType.Player)
             {
-                MediaPlayer.Stop();
-
                 SceneManager.LoadScene(new HardLevel());
             }
         }
