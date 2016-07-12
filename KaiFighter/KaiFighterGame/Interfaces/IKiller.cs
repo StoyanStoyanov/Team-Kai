@@ -1,5 +1,8 @@
 ﻿namespace KaiFighterGame.Interfaces
 {
+    /// <summary>
+    /// All unit who can damage other units must implement this interface.
+    /// </summary>
     public interface IKiller
     {
         /// <summary>

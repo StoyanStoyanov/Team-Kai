@@ -1,9 +1,10 @@
 ﻿namespace KaiFighterGame.UI
 {
-    using Interfaces;
-    using GlobalConstants;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+
+    using Interfaces;
+    using GlobalConstants;
 
     public class Button : IRenderable
     {

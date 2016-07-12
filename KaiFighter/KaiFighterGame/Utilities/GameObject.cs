@@ -148,7 +148,6 @@
         /// </summary>
         public virtual void Initialize()
         {
-            
         }
 
         /// <summary>
@@ -190,7 +189,6 @@
         {
             return this.position;
         }
-
 
         public virtual IEnumerable<GameObject> ProduceObjects()
         {

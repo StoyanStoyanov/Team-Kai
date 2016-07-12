@@ -20,7 +20,6 @@
         {
             this.doorAdded = false;
 
-            // add background
             Background backgr = (Background)UiFactory.Instance.Create(
                 Color.White,
                 ImageAddresses.LevelBackgroundImage,
@@ -29,7 +28,7 @@
             SceneManager.AddObject(backgr);
 
             Player fighter = (Player)DynamicObjectFactory.Instance.Create(
-                new Vector2(100, 600),
+                new Vector2(GameResolution.DefaultWidth - 300, GameResolution.DefaultHeight / 2),
                 ImageAddresses.PlayerImage,
                 ObjectType.Player,
                 Color.White,
@@ -37,13 +36,12 @@
                 rotation: 0,
                 layerDepth: RenderLayers.CharacterLayer,
                 movementSpeed: 5f,
-                damage: 50,
-                health: 100,
-                cooldown: 5
-            );
+                damage: 100,
+                health: 200,
+                cooldown: 5);
             SceneManager.AddObject(fighter);
 
-            Creep testCreep = (Creep)DynamicObjectFactory.Instance.Create(
+            Creep firstCreep = (Creep)DynamicObjectFactory.Instance.Create(
                 new Vector2(205, 555),
                 ImageAddresses.CreepImage,
                 ObjectType.Creep,
@@ -53,11 +51,40 @@
                 layerDepth: RenderLayers.CharacterLayer,
                 movementSpeed: 1f,
                 damage: 5,
-                health: 100
-            );
-            testCreep.OnDead += this.DecreaseEnemyCount;
+                health: 100);
+            firstCreep.OnDead += this.DecreaseEnemyCount;
             this.enemyCount += 1;
-            SceneManager.AddObject(testCreep);
+            SceneManager.AddObject(firstCreep);
+
+            Creep secondCreep = (Creep)DynamicObjectFactory.Instance.Create(
+                new Vector2(305, 555),
+                ImageAddresses.CreepImage,
+                ObjectType.Creep,
+                Color.Red,
+                scale: 0.5f,
+                rotation: 0,
+                layerDepth: RenderLayers.CharacterLayer,
+                movementSpeed: 1f,
+                damage: 5,
+                health: 100);
+            secondCreep.OnDead += this.DecreaseEnemyCount;
+            this.enemyCount += 1;
+            SceneManager.AddObject(secondCreep);
+
+            Creep thirdCreep = (Creep)DynamicObjectFactory.Instance.Create(
+                new Vector2(805, 405),
+                ImageAddresses.CreepImage,
+                ObjectType.Creep,
+                Color.Blue,
+                scale: 0.5f,
+                rotation: 0,
+                layerDepth: RenderLayers.CharacterLayer,
+                movementSpeed: 1f,
+                damage: 5,
+                health: 100);
+            thirdCreep.OnDead += this.DecreaseEnemyCount;
+            this.enemyCount += 1;
+            SceneManager.AddObject(thirdCreep);
 
             Wizard testWizard = (Wizard)DynamicObjectFactory.Instance.Create(
                 new Vector2(405, 305),
@@ -69,8 +96,7 @@
                 layerDepth: RenderLayers.CharacterLayer,
                 movementSpeed: 1f,
                 damage: 5,
-                health: 100
-            );
+                health: 100);
             testWizard.OnDead += this.DecreaseEnemyCount;
             this.enemyCount += 1;
             SceneManager.AddObject(testWizard);
@@ -86,8 +112,7 @@
                 movementSpeed: 1f,
                 damage: 5,
                 health: 100,
-                cooldown: 50
-            );
+                cooldown: 50);
             testWizard.OnDead += this.DecreaseEnemyCount;
             this.enemyCount += 1;
             SceneManager.AddObject(testWizard);
@@ -101,53 +126,44 @@
             SceneManager.AddObject(hud);
 
             Wall topWall = (Wall)StaticObjectFactory.Instance.Create(
-                    new Vector2(GameResolution.DefaultWidth / 2, 0),
-                    ImageAddresses.HorizontalWall,
-                    ObjectType.Wall,
-                    Color.DarkCyan,
-                    1f,
-                    0f,
-                    1f
-                );
+                new Vector2(GameResolution.DefaultWidth / 2, 0),
+                ImageAddresses.HorizontalWall,
+                ObjectType.Wall,
+                Color.DarkCyan,
+                1f,
+                0f,
+                1f);
             SceneManager.AddObject(topWall);
 
             Wall bottomWall = (Wall)StaticObjectFactory.Instance.Create(
-                    new Vector2(GameResolution.DefaultWidth / 2, GameResolution.DefaultHeight),
-                    ImageAddresses.HorizontalWall,
-                    ObjectType.Wall,
-                    Color.DarkCyan,
-                    1f,
-                    0f,
-                    1f
-                );
+                new Vector2(GameResolution.DefaultWidth / 2, GameResolution.DefaultHeight),
+                ImageAddresses.HorizontalWall,
+                ObjectType.Wall,
+                Color.DarkCyan,
+                1f,
+                0f,
+                1f);
             SceneManager.AddObject(bottomWall);
 
             Wall rightWall = (Wall)StaticObjectFactory.Instance.Create(
-                    new Vector2(0, GameResolution.DefaultHeight),
-                    ImageAddresses.VerticalWall,
-                    ObjectType.Wall,
-                    Color.DarkCyan,
-                    1f,
-                    0f,
-                    1f
-                );
+                new Vector2(0, GameResolution.DefaultHeight),
+                ImageAddresses.VerticalWall,
+                ObjectType.Wall,
+                Color.DarkCyan,
+                1f,
+                0f,
+                1f);
             SceneManager.AddObject(rightWall);
 
             Wall leftWall = (Wall)StaticObjectFactory.Instance.Create(
-                   new Vector2(GameResolution.DefaultWidth, GameResolution.DefaultHeight),
-                   ImageAddresses.VerticalWall,
-                   ObjectType.Wall,
-                   Color.DarkCyan,
-                   1f,
-                   0f,
-                   1f
-               );
+                new Vector2(GameResolution.DefaultWidth, GameResolution.DefaultHeight),
+                ImageAddresses.VerticalWall,
+                ObjectType.Wall,
+                Color.DarkCyan,
+                1f,
+                0f,
+                1f);
             SceneManager.AddObject(leftWall);
-        }
-
-        private void DecreaseEnemyCount()
-        {
-            this.enemyCount -= 1;
         }
 
         public void Update(GameTime gameTime)
@@ -171,6 +187,11 @@
             {
                 EntryPoint.TheGame.Exit();
             }
+        }
+
+        private void DecreaseEnemyCount()
+        {
+            this.enemyCount -= 1;
         }
     }
 }

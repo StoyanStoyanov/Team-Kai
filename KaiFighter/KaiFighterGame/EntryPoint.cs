@@ -5,13 +5,13 @@
     /// </summary>
     public static class EntryPoint
     {
-        private static readonly KaiFighterGame game = new KaiFighterGame();
+        private static readonly KaiFighterGame Game = new KaiFighterGame();
 
         public static KaiFighterGame TheGame
         {
             get
             {
-                return game;
+                return Game;
             }
         }
 
@@ -20,9 +20,9 @@
         /// </summary>
         private static void Main()
         {
-            using (game)
+            using (Game)
             {
-                game.Run();
+                Game.Run();
             }   
         }
     }

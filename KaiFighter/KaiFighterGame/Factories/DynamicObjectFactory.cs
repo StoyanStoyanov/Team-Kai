@@ -1,9 +1,10 @@
 ﻿namespace KaiFighterGame.Factories
 {
     using System;
+    using Microsoft.Xna.Framework;
+
     using Utilities;
     using Interfaces;
-    using Microsoft.Xna.Framework;
     using Objects.DynamicObjects.Characters;
     using Objects.DynamicObjects.Characters.Enemies;
     using Objects.DynamicObjects.Projectiles;
@@ -17,14 +18,16 @@
         /// Initializes an instance of the DynamicObjectFactory class the first time
         /// an instance is required, and holds this instance ever since.
         /// </summary>
-        private static readonly Lazy<DynamicObjectFactory> holder = 
+        private static readonly Lazy<DynamicObjectFactory> Holder = 
             new Lazy<DynamicObjectFactory>(
                 () => new DynamicObjectFactory());
 
         /// <summary>
         /// Private constructor, ensures restricted access.
         /// </summary>
-        private DynamicObjectFactory() { }
+        private DynamicObjectFactory()
+        {
+        }
 
         /// <summary>
         /// Provides access to the single instance of the DynamicObjectFactory class.
@@ -33,7 +36,7 @@
         {
             get
             {
-                return holder.Value;
+                return Holder.Value;
             }
         }
 

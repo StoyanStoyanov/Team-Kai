@@ -1,16 +1,16 @@
 ﻿namespace KaiFighterGame.Objects.DynamicObjects.Projectiles
 {
-    using Interfaces;
     using Microsoft.Xna.Framework;
+
+    using Interfaces;
     using Utilities;
 
     public class Bullet : DynamicObject, IKiller
     {
         private Vector2 targetDir;
 
-        public Bullet(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale,
-                        float rotation, float layerDepth, float movementSpeed, double damage, Vector2 targetDirection)
-                        : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)
+        public Bullet(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth, float movementSpeed, double damage, Vector2 targetDirection)
+            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, movementSpeed)
         {
             this.Damage = damage;
             this.targetDir = targetDirection;
@@ -30,7 +30,6 @@
         /// Also the shooter should not be affected
         /// </summary>
         /// <param name="gameObject"></param>
-        
         public override void RespondToCollision(ICollidable gameObject)
         {
             if (this.FriendlyFire)

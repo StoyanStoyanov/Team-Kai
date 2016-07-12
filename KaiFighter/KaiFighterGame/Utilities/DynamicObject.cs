@@ -17,6 +17,15 @@
         private Vector2 previousPosition;
         private float distance;
 
+        public DynamicObject(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth, float movementSpeed) 
+            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth)
+        {
+            this.objSpeed = movementSpeed;
+            this.objDirection = new Vector2(1, 1);
+            this.movingTowards = false;
+            this.movingWithoutStop = false;
+        }
+
         public float PreviousPositionX
         {
             get
@@ -31,15 +40,6 @@
             {
                 return this.previousPosition.Y;
             }
-        }
-
-        public DynamicObject(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth, float movementSpeed) 
-            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth)
-        {
-            this.objSpeed = movementSpeed;
-            this.objDirection = new Vector2(1, 1);
-            this.movingTowards = false;
-            this.movingWithoutStop = false;
         }
 
         public void MoveUp()

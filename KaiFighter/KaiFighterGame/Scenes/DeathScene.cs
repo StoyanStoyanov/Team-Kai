@@ -1,11 +1,12 @@
 ﻿namespace KaiFighterGame.Scenes
 {
-    using Interfaces;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Input;
+
     using Factories;
     using GlobalConstants;
-    using Microsoft.Xna.Framework.Input;
     using Utilities;
+    using Interfaces;
 
     public class DeathScene : IScene
     {

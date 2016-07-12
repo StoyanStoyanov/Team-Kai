@@ -1,9 +1,10 @@
 ﻿namespace KaiFighterGame.Factories
 {
     using System;
+    using Microsoft.Xna.Framework;
+
     using Interfaces;
     using Utilities;
-    using Microsoft.Xna.Framework;
     using Objects.StaticObjects;
 
     /// <summary>
@@ -15,14 +16,16 @@
         /// Initializes an instance of the StaticObjectFactory class the first time
         /// an instance is required, and holds this instance ever since.
         /// </summary>
-        private static readonly Lazy<StaticObjectFactory> holder = 
+        private static readonly Lazy<StaticObjectFactory> Holder = 
             new Lazy<StaticObjectFactory>(
                 () => new StaticObjectFactory());
 
         /// <summary>
         /// Private constructor, ensures restricted access.
         /// </summary>
-        private StaticObjectFactory() { }
+        private StaticObjectFactory()
+        {
+        }
 
         /// <summary>
         /// Provides access point to the single instance of the StaticObjectFactory class.
@@ -31,7 +34,7 @@
         {
             get
             {
-                return holder.Value;
+                return Holder.Value;
             }
         }
 

@@ -1,7 +1,8 @@
 ﻿namespace KaiFighterGame.Interfaces 
 {
-    using Utilities;
     using Microsoft.Xna.Framework;
+
+    using Utilities;
 
     /// <summary>
     /// The abstract Dynamic objects factory.
@@ -20,7 +21,6 @@
             double damage = 0,
             double health = 0,
             int cooldown = 0,
-            Vector2 targetDir = default(Vector2)
-        );
+            Vector2 targetDir = default(Vector2));
     }
 }

@@ -1,12 +1,13 @@
 ﻿namespace KaiFighterGame.Objects.DynamicObjects.Characters
 {
     using System;
+    using System.IO;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
+
     using Projectiles;
     using Utilities;
     using Interfaces;
-    using System.IO;
     using Exceptions;
     using Scenes;
 
@@ -16,9 +17,8 @@
         private KeyboardState previousKeyboardState;
         private int score;
 
-        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale,
-                        float rotation, float layerDepth, float speed, double damage, double health, int cooldown)
-                        : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
+        public Player(Vector2 position, string imageLocation, ObjectType objectType, Color objColor, float scale, float rotation, float layerDepth, float speed, double damage, double health, int cooldown)
+            : base(position, imageLocation, objectType, objColor, scale, rotation, layerDepth, speed, damage, health, cooldown)
         {
             this.Score = 0;
         }
@@ -53,62 +53,9 @@
 
             if (this.Health <= 0)
             {
-                SaveToScoreBoard();
+                this.SaveToScoreBoard();
 
                 SceneManager.DestroyObject(this);
-            }
-        }
-
-        private void SaveToScoreBoard()
-        {
-            bool isBigger = false;
-            int deathsCount = 0;
-            int fileScore = 0;
-            int killsCount = 0;
-
-            using (var tr = new StreamReader(File.Open("../../SavedGame.txt", FileMode.OpenOrCreate)))
-            {
-                string deaths = tr.ReadLine();
-                if (!String.IsNullOrEmpty(deaths))
-                {
-                    deathsCount = int.Parse(deaths);
-                }
-
-                string score = tr.ReadLine();
-                if (!String.IsNullOrEmpty(score))
-                {
-                    fileScore = int.Parse(score);
-                }
-
-                if (fileScore < this.Score)
-                {
-                    isBigger = true;
-                }
-                string kills = tr.ReadLine();
-                if (!String.IsNullOrEmpty(kills))
-                {
-                    killsCount = int.Parse(kills);
-                }
-
-                tr.Close();
-            }
-
-            TextWriter tw = new StreamWriter("../../SavedGame.txt", false);
-
-            using (tw)
-            {
-                tw.WriteLine(++deathsCount);
-                if (isBigger == true)
-                {
-                    tw.WriteLine(this.Score);
-                }
-                else
-                {
-                    tw.WriteLine(fileScore);
-                }
-
-                tw.WriteLine(killsCount);
-                tw.Close();
             }
         }
 
@@ -120,7 +67,7 @@
                 this.PositionY = this.PreviousPositionY;
             }
             else if (gameObject.ObjType == ObjectType.Bullet
-                && ((Bullet) gameObject).FriendlyFire == false)
+                && ((Bullet)gameObject).FriendlyFire == false)
             {
                 this.Health -= ((Bullet)gameObject).Damage;
             }
@@ -135,9 +82,9 @@
             else if (gameObject.ObjType == ObjectType.Bonus)
             {
                 Random rnd = new Random();
-                this.Health += rnd.Next(-5, 10);
-                this.Damage += rnd.Next(2, 10);
-                this.Score += rnd.Next(10, 20);
+                this.Health += rnd.Next(1, 30);
+                this.Damage += rnd.Next(1, 20);
+                this.Score += rnd.Next(1, 20);
             }
         }
 
@@ -202,6 +149,62 @@
             else if (this.currentKeyboardState.IsKeyDown(Keys.Right))
             {
                 this.Shoot(Vector2.Normalize(new Vector2(1, 0)));
+            }
+        }
+
+        private void SaveToScoreBoard()
+        {
+            bool isBigger = false;
+            int deathsCount = 0;
+            int fileScore = 0;
+            int killsCount = 0;
+
+            using (var reader = new StreamReader(File.Open("../../SavedGame.txt", FileMode.OpenOrCreate)))
+            {
+                string deaths = reader.ReadLine();
+
+                if (!string.IsNullOrEmpty(deaths))
+                {
+                    deathsCount = int.Parse(deaths);
+                }
+
+                string score = reader.ReadLine();
+
+                if (!string.IsNullOrEmpty(score))
+                {
+                    fileScore = int.Parse(score);
+                }
+
+                if (fileScore < this.Score)
+                {
+                    isBigger = true;
+                }
+
+                string kills = reader.ReadLine();
+
+                if (!string.IsNullOrEmpty(kills))
+                {
+                    killsCount = int.Parse(kills);
+                }
+
+                reader.Close();
+            }
+
+            using (var writer = new StreamWriter("../../SavedGame.txt", false))
+            {
+                writer.WriteLine(++deathsCount);
+
+                if (isBigger == true)
+                {
+                    writer.WriteLine(this.Score);
+                }
+                else
+                {
+                    writer.WriteLine(fileScore);
+                }
+
+                writer.WriteLine(killsCount);
+                writer.Close();
             }
         }
     }

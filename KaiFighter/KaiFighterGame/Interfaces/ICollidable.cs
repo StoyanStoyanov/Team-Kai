@@ -1,6 +1,7 @@
 ﻿namespace KaiFighterGame.Interfaces
 {
     using Microsoft.Xna.Framework;
+
     using Utilities;
 
     /// <summary>
@@ -8,11 +9,6 @@
     /// </summary>
     public interface ICollidable
     {
-        /// <summary>
-        /// How the object responds to a collision.
-        /// </summary>
-        void RespondToCollision(ICollidable gameObject);
-
         /// <summary>
         /// The bounding box of every ICollidable object.
         /// </summary>
@@ -22,5 +18,10 @@
         /// The object type of the object.
         /// </summary>
         ObjectType ObjType { get; }
+
+        /// <summary>
+        /// How the object responds to a collision.
+        /// </summary>
+        void RespondToCollision(ICollidable gameObject);
     }
 }

@@ -1,10 +1,11 @@
 ﻿namespace KaiFighterGame.Scenes
 {
-    using Interfaces;
     using Microsoft.Xna.Framework;
-    using Factories;
-    using GlobalConstants;
     using Microsoft.Xna.Framework.Input;
+
+    using Factories;
+    using Interfaces;
+    using GlobalConstants;
     using Utilities;
 
     public class WinScene : IScene

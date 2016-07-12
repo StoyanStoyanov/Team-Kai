@@ -1,7 +1,8 @@
 ﻿namespace KaiFighterGame.Interfaces 
 {
-    using Utilities;
     using Microsoft.Xna.Framework;
+
+    using Utilities;
 
     /// <summary>
     /// The abstract Static objects factory.
@@ -15,7 +16,6 @@
             Color objColor, 
             float scale, 
             float rotation, 
-            float layerDepth
-        );
+            float layerDepth);
     }
 }

@@ -1,7 +1,8 @@
 ﻿namespace KaiFighterGame.Utilities
 {
-    using Interfaces;
     using System.Collections.Generic;
+
+    using Interfaces;
 
     /// <summary>
     /// Handles the collisions between objects.

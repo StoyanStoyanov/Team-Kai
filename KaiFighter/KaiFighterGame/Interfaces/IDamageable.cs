@@ -9,7 +9,5 @@
         /// Determines the object's health.
         /// </summary>
         double Health { get; set; }
-
-       
     }
 }

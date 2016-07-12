@@ -1,11 +1,12 @@
 ﻿namespace KaiFighterGame.Scenes
 {
+    using System;
+    using System.IO;
+    using Microsoft.Xna.Framework;
+
     using Factories;
     using GlobalConstants;
     using Interfaces;
-    using Microsoft.Xna.Framework;
-    using System;
-    using System.IO;
     using UI;
     using Utilities;
 
@@ -88,14 +89,15 @@
 
         private void ClearStats()
         {
-            using (var tw = new StreamWriter(File.Open("../../SavedGame.txt", FileMode.OpenOrCreate)))
+            using (var writer = new StreamWriter(File.Open("../../SavedGame.txt", FileMode.OpenOrCreate)))
             {
-                tw.WriteLine("0");
-                tw.WriteLine("0");
-                tw.WriteLine("0");
+                writer.WriteLine("0");
+                writer.WriteLine("0");
+                writer.WriteLine("0");
 
-                tw.Close();
+                writer.Close();
             }
+
             SceneManager.LoadScene(new StatsLevel());
         }
 
@@ -109,17 +111,11 @@
 
         private void LoadStats()
         {
-            // TODO: Load the stats from file
-
-            //  StreamReader tr = new StreamReader("../../SavedGame.txt");
-            // read lines of text
-           
-            using (var tr = new StreamReader(File.Open("../../SavedGame.txt", FileMode.OpenOrCreate))) 
+            using (var reader = new StreamReader(File.Open("../../SavedGame.txt", FileMode.OpenOrCreate))) 
             {
-              
-                
-                string deaths = tr.ReadLine();
-                if (String.IsNullOrEmpty(deaths))
+                string deaths = reader.ReadLine();
+
+                if (string.IsNullOrEmpty(deaths))
                 {
                     this.deaths = 0;
                 }
@@ -128,8 +124,9 @@
                     this.deaths = int.Parse(deaths);
                 }
 
-                string score = tr.ReadLine();
-                if (String.IsNullOrEmpty(score))
+                string score = reader.ReadLine();
+
+                if (string.IsNullOrEmpty(score))
                 {
                     this.maxScore = 0;
                 }
@@ -138,8 +135,9 @@
                     this.maxScore = Convert.ToInt32(score);
                 }
 
-                string killsCount = tr.ReadLine();
-                if (String.IsNullOrEmpty(killsCount))
+                string killsCount = reader.ReadLine();
+
+                if (string.IsNullOrEmpty(killsCount))
                 {
                     this.killsCount = 0;
                 }
@@ -147,13 +145,9 @@
                 {
                     this.killsCount = int.Parse(killsCount);
                 }
-                tr.Close();
-            }
-          
 
-          //  this.deaths = 100;
-           //this.killsCount = 200;
- 
+                reader.Close();
+            }
         }
     }
 }

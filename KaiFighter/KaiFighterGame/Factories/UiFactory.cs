@@ -1,9 +1,10 @@
 ﻿namespace KaiFighterGame.Factories
 {
-    using Interfaces;
     using System;
-    using GlobalConstants;
     using Microsoft.Xna.Framework;
+
+    using Interfaces;
+    using GlobalConstants;
     using Objects.DynamicObjects.Characters;
     using UI;
 
@@ -16,12 +17,14 @@
         /// Initializes an instance of the UiFactory class the first time
         /// an instance is required, and holds this instance ever since.
         /// </summary>
-        private static readonly Lazy<UiFactory> holder = new Lazy<UiFactory>(() => new UiFactory());
+        private static readonly Lazy<UiFactory> Holder = new Lazy<UiFactory>(() => new UiFactory());
 
         /// <summary>
         /// Private constructor, ensures restricted access.
         /// </summary>
-        private UiFactory() { }
+        private UiFactory()
+        {
+        }
 
         /// <summary>
         /// Provides access to the single instance of the UiFactory class.
@@ -30,7 +33,7 @@
         {
             get
             {
-                return holder.Value;
+                return Holder.Value;
             }
         }
 

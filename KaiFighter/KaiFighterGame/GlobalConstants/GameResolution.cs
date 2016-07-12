@@ -1,5 +1,8 @@
 ﻿namespace KaiFighterGame.GlobalConstants
 {
+    /// <summary>
+    /// Holds the default game resolution.
+    /// </summary>
     public struct GameResolution
     {
         public const int DefaultWidth = 1366;

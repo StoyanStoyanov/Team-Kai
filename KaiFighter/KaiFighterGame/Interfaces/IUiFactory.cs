@@ -15,8 +15,7 @@
             string hoveredImage,
             string pressedImage, 
             float renderLayer, 
-            float scale
-        );
+            float scale);
 
         IRenderable Create(Color backgroundColor, string backgroundImageFile, float backgroundScale, float backgroundLayer);
 
